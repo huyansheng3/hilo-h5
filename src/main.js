@@ -4632,15 +4632,15 @@ function e() {
               $("audio").off();
             }, 1400);
 
-          var timeY = 0;
-          function autoScroll() {
-            requestAnimationFrame(x => {
-              timeY += 10;
-              g(1, timeY);
-              autoScroll();
-            });
-          }
-          autoScroll();
+          // var timeY = 0;
+          // function autoScroll() {
+          //   requestAnimationFrame(x => {
+          //     timeY += 50;
+          //     g(1, timeY);
+          //     autoScroll();
+          //   });
+          // }
+          // autoScroll();
 
         }),
         loadQueue.start();
