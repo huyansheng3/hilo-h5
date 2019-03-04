@@ -1,0 +1,549 @@
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+img,
+legend {
+  border: 0;
+}
+body,
+html,
+svg:not(:root) {
+  overflow: hidden;
+}
+body,
+sub,
+sup {
+  position: relative;
+}
+body,
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body,
+ul {
+  margin: 0;
+}
+legend,
+td,
+th,
+ul {
+  padding: 0;
+}
+.cover,
+.filter {
+  right: 0;
+  bottom: 0;
+}
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+optgroup,
+strong {
+  font-weight: 700;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+pre,
+textarea {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font: 28px/1.2 Heiti SC, Helvetica Neue, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+  -webkit-user-select: none;
+}
+a,
+img {
+  -webkit-touch-callout: none;
+}
+ul {
+  list-style: none;
+}
+#common-landscape,
+#common-loading,
+#common-pc,
+#common-share {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  display: none;
+}
+#common-landscape-center,
+#common-loading-center,
+#common-pc-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#common-loading {
+  background-color: #fff;
+}
+#common-landscape,
+#common-pc {
+  background: #000;
+}
+#common-landscape-center:before {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 2em;
+  margin: 0 auto 1em;
+  background: url(./common-landscape-phone.png) center no-repeat;
+  background-size: 100% 100%;
+  -webkit-animation: common-landscape 2.4s ease infinite;
+  animation: common-landscape 2.4s ease infinite;
+}
+#common-landscape-center:after {
+  content: "为了更好的体验，请使用竖屏浏览";
+  display: block;
+  color: #fff;
+  text-align: center;
+  font-size: 0.32em;
+}
+#common-pc-center img {
+  display: block;
+  border: 10px solid #fff;
+  margin: 0 auto 60px;
+}
+#common-pc-center:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 113px;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  background: url(./common-pc-logo.png) center no-repeat;
+  background-size: 100% 100%;
+  border-radius: 9px;
+}
+#common-pc-center:after {
+  content: "为了更好的体验，请使用手机扫描二维码浏览";
+  display: block;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+.filter,
+.log {
+  display: none;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+#common-share {
+  background: url(./share_icon.png) 668px 44px no-repeat, rgba(0, 0, 0, 0.6);
+}
+.common-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 750px;
+  height: 100%;
+}
+@-webkit-keyframes common-landscape {
+  0% {
+    -webkit-transform: rotate(90deg);
+    opacity: 0;
+  }
+  15% {
+    -webkit-transform: rotate(90deg);
+    opacity: 1;
+  }
+  50%,
+  85% {
+    -webkit-transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(0);
+    opacity: 0;
+  }
+}
+@keyframes common-landscape {
+  0% {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+  15% {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    opacity: 1;
+  }
+  50%,
+  85% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 0;
+  }
+}
+.common-container,
+body,
+html {
+  background: #000;
+}
+.filter {
+  width: 100%;
+  height: 100%;
+}
+.log {
+  width: 50%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  font: 24px/1.2 "";
+  color: #fff;
+  overflow: auto;
+}
+.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+.cover .rain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 750px;
+  height: 1157px;
+  background: url(./cover_rain.png) no-repeat;
+  animation: rain 0.3s steps(1) infinite;
+}
+.cover .progress {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 420px;
+  margin-top: -34px;
+  font: 34px/1 Arial;
+  color: #fff;
+  text-align: right;
+}
+.cover .wave {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 750px;
+  height: 100px;
+  background: url(./cover_wave.png) no-repeat;
+}
+.cover .wave1 {
+  bottom: -70px;
+  height: 194px;
+  background-position: 0 0;
+  -webkit-animation: wave1 2s ease-in-out infinite;
+  -o-animation: wave1 2s ease-in-out infinite;
+  animation: wave1 2s ease-in-out infinite;
+}
+.cover .wave2 {
+  bottom: -90px;
+  height: 274px;
+  background-position: 0 -200px;
+  -webkit-animation: wave2 2s ease-in-out infinite;
+  -o-animation: wave2 2s ease-in-out infinite;
+  animation: wave2 2s ease-in-out infinite;
+}
+.cover .wave3 {
+  bottom: 60px;
+  height: 229px;
+  background-position: 0 -480px;
+  -webkit-animation: wave3 2s ease-in-out infinite;
+  -o-animation: wave3 2s ease-in-out infinite;
+  animation: wave3 2s ease-in-out infinite;
+}
+.cover .wave4 {
+  bottom: 100px;
+  height: 297px;
+  background-position: 0 -710px;
+  -webkit-animation: wave4 2s ease-in-out infinite;
+  -o-animation: wave4 2s ease-in-out infinite;
+  animation: wave4 2s ease-in-out infinite;
+}
+.cover.active .wave {
+  -webkit-animation: none;
+  -o-animation: none;
+  animation: none;
+}
+.cover.none {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s linear 1s;
+  -o-transition: opacity 0.3s linear 1s;
+  transition: opacity 0.3s linear 1s;
+}
+.cover.none .progress,
+.cover.none .rain,
+.cover.none .wave {
+  -webkit-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
+.cover.none .progress,
+.cover.none .rain {
+  opacity: 0;
+}
+.cover.none .wave1 {
+  -webkit-transform: translate(0, 150px);
+  -ms-transform: translate(0, 150px);
+  -o-transform: translate(0, 150px);
+  transform: translate(0, 150px);
+}
+.cover.none .wave2 {
+  -webkit-transform: translate(0, 200px);
+  -ms-transform: translate(0, 200px);
+  -o-transform: translate(0, 200px);
+  transform: translate(0, 200px);
+}
+.cover.none .wave3 {
+  -webkit-transform: translate(0, 300px);
+  -ms-transform: translate(0, 300px);
+  -o-transform: translate(0, 300px);
+  transform: translate(0, 300px);
+}
+.cover.none .wave4 {
+  -webkit-transform: translate(0, 410px);
+  -ms-transform: translate(0, 410px);
+  -o-transform: translate(0, 410px);
+  transform: translate(0, 410px);
+}
+.logo {
+  position: absolute;
+  left: 36px;
+  top: 40px;
+  width: 256px;
+  height: 40px;
+  background: url(./cover_wave.png) 0 -1008px no-repeat;
+}
+@keyframes rain {
+  from {
+    background-position: 0 0;
+  }
+  33.3% {
+    background-position: -750px 0;
+  }
+  66.6% {
+    background-position: -1500px 0;
+  }
+  100% {
+    background-position: -2250px 0;
+  }
+}
+@keyframes wave1 {
+  50% {
+    -webkit-transform: translate(0, -70px);
+    -ms-transform: translate(0, -70px);
+    -o-transform: translate(0, -70px);
+    transform: translate(0, -70px);
+  }
+  100%,
+  from {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes wave2 {
+  50% {
+    -webkit-transform: translate(0, -17px);
+    -ms-transform: translate(0, -17px);
+    -o-transform: translate(0, -17px);
+    transform: translate(0, -17px);
+  }
+  100%,
+  from {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes wave3 {
+  50% {
+    -webkit-transform: translate(0, 8px);
+    -ms-transform: translate(0, 8px);
+    -o-transform: translate(0, 8px);
+    transform: translate(0, 8px);
+  }
+  100%,
+  from {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes wave4 {
+  50% {
+    -webkit-transform: translate(0, 32px);
+    -ms-transform: translate(0, 32px);
+    -o-transform: translate(0, 32px);
+    transform: translate(0, 32px);
+  }
+  100%,
+  from {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}

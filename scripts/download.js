@@ -180,12 +180,12 @@ const l = [
 ];
 
 const download = require("download");
-const { join } = require("path");
 
 l.forEach(item => {
-  download(item.src, "images", { filename: `${item.id}.png` })
+  const filename = item.src.replace(s + "img/", "");
+  download(item.src, "../public/img", { filename })
     .then(() => {
-      console.log(`${item.id}.png download`);
+      console.log(`${filename}download`);
     })
     .catch(error => {
       console.error(error);

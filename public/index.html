@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>hilo-h5</title>
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <link rel="stylesheet" href="./index.min.css" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <script src="./zepto.js"></script>
+    <script src="./qrcode.min.js"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but hilo-h5 doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+
+    <div id="common-loading">
+      <div id="common-loading-center"></div>
+    </div>
+    <div id="common-landscape">
+      <div id="common-landscape-center"></div>
+    </div>
+    <div id="common-pc">
+      <div id="common-pc-center"></div>
+    </div>
+
+    <div class="common-container">
+      <!--TODO-->
+      <canvas id="app"></canvas>
+      <div class="cover">
+        <div class="rain"></div>
+        <div class="wave wave4"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave1"></div>
+        <div class="progress">0%</div>
+      </div>
+      <div class="logo"></div>
+      <div class="filter"></div>
+      <div class="log"></div>
+    </div>
+
+    <div class="musics">
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z0_m1.mp3?3"
+        id="z0_m1"
+        loop="true"
+      ></audio
+      ><!-- 开头水花音效 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z1_m1.mp3"
+        id="z1_m1"
+      ></audio
+      ><!-- 场景一：插 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z1_m2.mp3"
+        id="z1_m2"
+      ></audio
+      ><!-- 场景一：怪兽喷火声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z1_m3.mp3"
+        id="z1_m3"
+      ></audio
+      ><!-- 场景一：女孩被插到下一个画框倒地痛呼声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z3_m1.mp3"
+        id="z3_m1"
+      ></audio
+      ><!-- 场景三：鱼叉滴血声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z3_m2.mp3"
+        id="z3_m2"
+      ></audio
+      ><!-- 场景三：群兽出现嚎叫（怪兽撕完纸之后） -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z3_m3.mp3"
+        id="z3_m3"
+      ></audio
+      ><!-- 场景三：怪兽撕纸咆哮 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z3_m4.mp3"
+        id="z3_m4"
+      ></audio
+      ><!-- 场景三：放风筝时的鸟叫声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z4_m1.mp3"
+        id="z4_m1"
+      ></audio
+      ><!-- 场景四：怪兽经过窗前+嚎叫 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z5_m1.mp3"
+        id="z5_m1"
+      ></audio
+      ><!-- 场景五：女孩吃垃圾咀嚼声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z5_m2.mp3"
+        id="z5_m2"
+      ></audio
+      ><!-- 场景五：怪兽踩碎画片声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z6_m1.mp3"
+        id="z6_m1"
+      ></audio
+      ><!-- 场景六：爸爸被刺中呻吟倒地 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z7_m1.mp3"
+        id="z7_m1"
+      ></audio
+      ><!-- 场景七：爪子抓过的声音 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z7_m2.mp3"
+        id="z7_m2"
+      ></audio
+      ><!-- 场景七：被妈妈推落地 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z9_m1.mp3"
+        id="z9_m1"
+      ></audio
+      ><!-- 场景九：女孩变蓝鲸时的鲸叫声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z9_m2.mp3"
+        id="z9_m2"
+      ></audio
+      ><!-- 场景九：蓝鲸撞船声 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z9_m3.mp3"
+        id="z9_m3"
+      ></audio
+      ><!-- 场景九：蓝鲸撞船后落水 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z10_m1.mp3"
+        id="z10_m1"
+      ></audio
+      ><!-- 场景十：蓝鲸死时迸血（怪兽变人后面那只鲸开始溅出血时加声） -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z10_m2.mp3"
+        id="z10_m2"
+        loop="true"
+      ></audio
+      ><!-- BGM：从野兽变人之后开始播放至结束，循环播放 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z10_m3.mp3"
+        id="z10_m3"
+        loop="true"
+      ></audio
+      ><!-- BGM：从群兽出现（在怪兽撕完纸之后）到“我竟成了最后一个幸存者”处停止.mp3 -->
+      <audio
+        src="//static.ws.126.net/163/f2e/news/dada_protection/img/z12_m1.mp3"
+        id="z12_m1"
+      ></audio
+      ><!-- 场景十二：一堆动物名字消散 -->
+    </div>
+
+    <!-- built files will be auto injected -->
+  </body>
+</html>
