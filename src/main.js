@@ -3,8 +3,13 @@ import "./lib/check";
 import Hilo from "hilojs";
 import { Scroller } from "scroller";
 import pace from "pace";
+import { musics, images } from "./constant";
 
 function e() {
+  const width = 750,
+    height = window.innerHeight > 1334 ? 1334 : window.innerHeight,
+    app = $("#app")[0];
+
   var e = 750,
     t = window.innerHeight > 1334 ? 1334 : window.innerHeight,
     i = $("#app"),
@@ -12,208 +17,6 @@ function e() {
     a = null,
     r = null,
     o = !1,
-    p = [
-      { id: "z0_m1", start: 590, end: 3750 },
-      { id: "z1_m1", start: 7600 },
-      { id: "z1_m3", start: 8100 },
-      { id: "z1_m2" },
-      { id: "z3_m1", start: 21800 },
-      { id: "z3_m2", start: 18500 },
-      { id: "z3_m3", start: 15800 },
-      { id: "z3_m4", start: 14100 },
-      { id: "z4_m1", start: 22e3 },
-      { id: "z5_m1", start: 25e3 },
-      { id: "z5_m2", start: 26e3 },
-      { id: "z6_m1", start: 28e3 },
-      { id: "z7_m1", start: 33800 },
-      { id: "z7_m2", start: 33500 },
-      { id: "z9_m1", start: 39e3 },
-      { id: "z9_m2", start: 39700 },
-      { id: "z9_m3", start: 40200 },
-      { id: "z10_m1", start: 42800 },
-      { id: "z12_m1", start: 57400 },
-      { id: "z10_m2", start: 35300, end: 99999 },
-      { id: "z10_m3", start: 4500, end: 35e3 }
-    ],
-    s = "/",
-    l = [
-      { id: "p9_text2", src: s + "img/p9_text2.png" },
-      { id: "p0", src: s + "img/p0.png" },
-      { id: "p1_face", src: s + "img/p1_face.jpg" },
-      { id: "p1_text", src: s + "img/p1_text.png" },
-      { id: "p1_eye1", src: s + "img/p1_eye1.png" },
-      { id: "p1_eye2", src: s + "img/p1_eye2.png" },
-      { id: "p1_sprite", src: s + "img/p1_sprite.png" },
-      { id: "p1_tears", src: s + "img/p1_tears.png" },
-      { id: "p2_bg1", src: s + "img/p1_bg.png" },
-      { id: "p2_bg2", src: s + "img/p1_bg2.png" },
-      { id: "p2_m1", src: s + "img/p2_m1.jpg" },
-      { id: "p2_m2", src: s + "img/p2_m2.jpg" },
-      { id: "p2_m3", src: s + "img/p2_m3.jpg" },
-      { id: "p2_m4", src: s + "img/p2_m4.jpg" },
-      { id: "p2_monster", src: s + "img/p2_monster.png" },
-      { id: "p2_weapon", src: s + "img/p2_weapon.png" },
-      { id: "p2_girl2", src: s + "img/p2_girl2.png" },
-      { id: "p2_girl3", src: s + "img/p2_girl3.png" },
-      { id: "p2_girl2_4", src: s + "img/p2_girl4.png" },
-      { id: "p2_fire0", src: s + "img/huo_00088.jpg" },
-      { id: "p2_fire1", src: s + "img/huo_00090.jpg" },
-      { id: "p2_fire2", src: s + "img/huo_00091.jpg" },
-      { id: "p2_fire3", src: s + "img/huo_00092.jpg" },
-      { id: "p2_fire4", src: s + "img/huo_00093.jpg" },
-      { id: "p2_fire5", src: s + "img/huo_00094.jpg" },
-      { id: "p2_fire6", src: s + "img/huo_00095.jpg" },
-      { id: "p2_fire7", src: s + "img/huo_00096.jpg" },
-      { id: "p2_fire8", src: s + "img/huo_00097.jpg" },
-      { id: "p2_fire9", src: s + "img/huo_00098.jpg" },
-      { id: "p2_fire10", src: s + "img/huo_00099.jpg" },
-      { id: "p2_fire11", src: s + "img/huo_00100.jpg" },
-      { id: "p2_fire12", src: s + "img/huo_00101.jpg" },
-      { id: "p2_fire13", src: s + "img/huo_00102.jpg" },
-      { id: "p2_fire14", src: s + "img/huo_00103.jpg" },
-      { id: "p2_fire15", src: s + "img/huo_00104.jpg" },
-      { id: "p2_fire16", src: s + "img/huo_00105.jpg" },
-      { id: "p2_fire17", src: s + "img/huo_00106.jpg" },
-      { id: "p2_fire18", src: s + "img/huo_00107.jpg" },
-      { id: "p2_fire19", src: s + "img/huo_00108.jpg" },
-      { id: "p2_fire20", src: s + "img/huo_00109.jpg" },
-      { id: "p2_fire21", src: s + "img/huo_00110.jpg" },
-      { id: "p2_fire22", src: s + "img/huo_00111.jpg" },
-      { id: "p2_fire23", src: s + "img/huo_00112.jpg" },
-      { id: "p2_fire24", src: s + "img/huo_00113.jpg" },
-      { id: "p2_fire25", src: s + "img/huo_00114.jpg" },
-      { id: "p2_fire26", src: s + "img/huo_00115.jpg" },
-      { id: "p2_fire27", src: s + "img/huo_00116.jpg" },
-      { id: "p2_fire28", src: s + "img/huo_00117.jpg" },
-      { id: "p2_fire29", src: s + "img/huo_00118.jpg" },
-      { id: "p2_fire30", src: s + "img/huo_00119.jpg" },
-      { id: "p2_fire31", src: s + "img/huo_00120.jpg" },
-      { id: "p2_fire32", src: s + "img/huo_00121.jpg" },
-      { id: "p2_fire33", src: s + "img/huo_00122.jpg" },
-      { id: "p2_fire34", src: s + "img/huo_00123.jpg" },
-      { id: "p2_fire35", src: s + "img/huo_00124.jpg" },
-      { id: "p2_fire36", src: s + "img/huo_00125.jpg" },
-      { id: "p2_fire37", src: s + "img/huo_00126.jpg" },
-      { id: "p2_fire38", src: s + "img/huo_00127.jpg" },
-      { id: "p3_clouds", src: s + "img/p3_clouds.png" },
-      { id: "p3_bg", src: s + "img/p3_bg.png" },
-      { id: "p3_people", src: s + "img/p3_people.png" },
-      { id: "p4_bg", src: s + "img/p4_bg.jpg" },
-      { id: "p4_craft0", src: s + "img/fengzheng_00000.png" },
-      { id: "p4_craft2", src: s + "img/fengzheng_00002.png" },
-      { id: "p4_craft4", src: s + "img/fengzheng_00004.png" },
-      { id: "p4_craft6", src: s + "img/fengzheng_00006.png" },
-      { id: "p4_craft8", src: s + "img/fengzheng_00008.png" },
-      { id: "p4_craft10", src: s + "img/fengzheng_00010.png" },
-      { id: "p4_craft12", src: s + "img/fengzheng_00012.png" },
-      { id: "p4_craft14", src: s + "img/fengzheng_00014.png" },
-      { id: "p4_craft16", src: s + "img/fengzheng_00016.png" },
-      { id: "p4_craft18", src: s + "img/fengzheng_00018.png" },
-      { id: "p4_craft20", src: s + "img/fengzheng_00020.png" },
-      { id: "p4_craft22", src: s + "img/fengzheng_00022.png" },
-      { id: "p4_craft24", src: s + "img/fengzheng_00024.png" },
-      { id: "p4_people1", src: s + "img/p4_people1.png" },
-      { id: "p4_people2", src: s + "img/p4_people2.png" },
-      { id: "p4_mon1", src: s + "img/p4_mon1.jpg" },
-      { id: "p4_mon2", src: s + "img/p4_mon2.jpg" },
-      { id: "p4_mon3", src: s + "img/p4_mon3.jpg" },
-      { id: "p4_mon4", src: s + "img/p4_mon4.jpg" },
-      { id: "p4_mon5", src: s + "img/p4_mon5.jpg" },
-      { id: "p4_mon6", src: s + "img/p4_mon6.jpg" },
-      { id: "p4_mon7", src: s + "img/p4_mon7.png" },
-      { id: "p4_bg2", src: s + "img/p4_bg2.png" },
-      { id: "p4_paper", src: s + "img/p4_paper.png" },
-      { id: "p4_mon8", src: s + "img/p4_mon8.png" },
-      { id: "p5_bg", src: s + "img/p5_bg.png" },
-      { id: "p5_mon1", src: s + "img/p5_mon1.png" },
-      { id: "p5_mon2", src: s + "img/p5_mon2.png" },
-      { id: "p5_mon3", src: s + "img/p5_mon3.png" },
-      { id: "p5_mon4", src: s + "img/p5_mon4.png" },
-      { id: "p5_window", src: s + "img/p5_window.png" },
-      { id: "p5_m0", src: s + "img/p5_m0.png" },
-      { id: "p5_m1", src: s + "img/p5_m1.png" },
-      { id: "p5_m2", src: s + "img/p5_m2.png" },
-      { id: "p5_m3", src: s + "img/p5_m3.png" },
-      { id: "p5_text", src: s + "img/p5_text.png" },
-      { id: "p6_f0", src: s + "img/p6_f0.png" },
-      { id: "p6_f1", src: s + "img/p6_f1.png" },
-      { id: "p6_fork", src: s + "img/p6_fork.png" },
-      { id: "p6_m", src: s + "img/p6_m.png" },
-      { id: "p7_bg", src: s + "img/p7_bg.png" },
-      { id: "p7_line", src: s + "img/p7_line.png" },
-      { id: "p7_mon1", src: s + "img/p7_mon1.png" },
-      { id: "p7_person", src: s + "img/p7_person.png" },
-      { id: "p7_person1", src: s + "img/p7_person1.png" },
-      { id: "p8_bg1", src: s + "img/p8_bg1.png" },
-      { id: "p8_bg2", src: s + "img/p8_bg2.png" },
-      { id: "p8_bg3", src: s + "img/p8_bg3.png" },
-      { id: "p8_text1", src: s + "img/p8_text1.png" },
-      { id: "p8_text2", src: s + "img/p8_text2.png?3" },
-      { id: "p8_text3", src: s + "img/p8_text3.png" },
-      { id: "p8_text4", src: s + "img/p8_text4.png" },
-      { id: "p8_cloud", src: s + "img/p8_cloud.png" },
-      { id: "p8_ship", src: s + "img/p8_ship.png" },
-      { id: "p8_blood", src: s + "img/p8_blood.png" },
-      { id: "p8_blood2", src: s + "img/p8_blood2.png" },
-      { id: "p8_fish", src: s + "img/p8_fish.png" },
-      { id: "p8_gs1", src: s + "img/gs1.png" },
-      { id: "p8_gs2", src: s + "img/gs2.png" },
-      { id: "p8_gs3", src: s + "img/gs3.png" },
-      { id: "p8_gs4", src: s + "img/gs4.png" },
-      { id: "p8_gs5", src: s + "img/gs5.png" },
-      { id: "p8_gs6", src: s + "img/gs6.png" },
-      { id: "p8_gs7", src: s + "img/gs7.png" },
-      { id: "p8_gs8", src: s + "img/gs8.png" },
-      { id: "p8_gs9", src: s + "img/gs9.png" },
-      { id: "p8_gs10", src: s + "img/gs10.png" },
-      { id: "p8_gs11", src: s + "img/gs11.png" },
-      { id: "p8_gs12", src: s + "img/gs12.png" },
-      { id: "p8_gs13", src: s + "img/gs13.png" },
-      { id: "p8_gs14", src: s + "img/gs14.png" },
-      { id: "p8_whale1", src: s + "img/p8_whale1.png" },
-      { id: "p8_whale2", src: s + "img/p8_whale2.png" },
-      { id: "p8_whale3", src: s + "img/p8_whale3.png" },
-      { id: "p8_whale5_bg", src: s + "img/p8_whale5_bg.png" },
-      { id: "p8_whale5_cover", src: s + "img/p8_whale5_cover.png" },
-      { id: "p8_whale5_r", src: s + "img/p8_whale5_r.png" },
-      { id: "p8_m1", src: s + "img/p8_m1.png" },
-      { id: "p8_m2", src: s + "img/p8_m2.png" },
-      { id: "p8_fish2", src: s + "img/p8_fish2.png" },
-      { id: "p9_text", src: s + "img/p9_text.png" },
-      { id: "p9_text3", src: s + "img/p9_text3.png" },
-      { id: "p9_m1", src: s + "img/p9_m1.jpg" },
-      { id: "p9_m2", src: s + "img/p9_m2.jpg" },
-      { id: "p9_m3", src: s + "img/p9_m3.jpg" },
-      { id: "p9_m4", src: s + "img/p9_m4.jpg" },
-      { id: "p9_eval", src: s + "img/p9_eval.png" },
-      { id: "p9_whale_bg", src: s + "img/p9_whale_bg.png" },
-      { id: "p9_lz00", src: s + "img/lz00.png" },
-      { id: "p9_lz01", src: s + "img/lz01.png" },
-      { id: "p9_lz02", src: s + "img/lz02.png" },
-      { id: "p9_lz03", src: s + "img/lz03.png" },
-      { id: "p9_lz04", src: s + "img/lz04.png" },
-      { id: "p9_lz05", src: s + "img/lz05.png" },
-      { id: "p9_lz06", src: s + "img/lz06.png" },
-      { id: "p9_lz07", src: s + "img/lz07.png" },
-      { id: "p9_lz08", src: s + "img/lz08.png" },
-      { id: "p9_lz09", src: s + "img/lz09.png" },
-      { id: "p9_lz10", src: s + "img/lz10.png" },
-      { id: "p9_lz11", src: s + "img/lz11.png" },
-      { id: "p9_lz12", src: s + "img/lz12.png" },
-      { id: "p9_lz13", src: s + "img/lz13.png" },
-      { id: "p9_lz14", src: s + "img/lz14.png" },
-      { id: "p9_lz15", src: s + "img/lz15.png" },
-      { id: "p9_lz16", src: s + "img/lz16.png" },
-      { id: "p9_lz17", src: s + "img/lz17.png" },
-      { id: "p9_lz18", src: s + "img/lz18.png" },
-      { id: "p9_lz19", src: s + "img/lz19.png" },
-      { id: "p9_lz20", src: s + "img/lz20.png" },
-      { id: "p9_lz21", src: s + "img/lz21.png" },
-      { id: "p9_lz22", src: s + "img/lz22.png" },
-      { id: "p9_lz23", src: s + "img/lz23.png" },
-      { id: "p9_lz24", src: s + "img/lz24.png" },
-      { id: "p9_lz24", src: s + "img/lz24.png" }
-    ],
     c = {
       p0: 0,
       p1: 4400,
@@ -4595,7 +4398,7 @@ function e() {
         animations: []
       }
     ],
-    d = null,
+    loadQueue = null,
     m = {},
     f = function() {
       w(), b(), (window.pages = m);
@@ -4604,7 +4407,7 @@ function e() {
       for (var e = 0; e < u.length; e++) {
         var t = u[e];
         t.propes.mask && (t.propes.mask = m[t.propes.mask]),
-          t.image ? (t.propes.image = d.get(t.image).content) : "",
+          t.image ? (t.propes.image = loadQueue.get(t.image).content) : "",
           t.frames
             ? (t.propes.frames = m[t.frames.split(".")[0]].getSprite(
                 t.frames.split(".")[1]
@@ -4619,81 +4422,106 @@ function e() {
             })),
           "null" !== t.parent && m[t.id].addTo(t.parent ? m[t.parent] : a);
       }
-      y.initFire(),
-        v.init(),
-        Hilo.Tween.to(
-          m.p0_tipround,
-          { y: -40 },
-          { time: 1e3, repeatDelay: 600, loop: !0 }
-        ),
-        Hilo.Tween.to(
-          m.p0_tipround,
-          { alpha: 0 },
-          {
-            time: 1200,
-            repeatDelay: 400,
-            loop: !0,
-            ease: Hilo.Ease.Quad.EaseIn
-          }
-        );
-      for (var e = 0; e < p.length; e++) {
-        var i = p[e];
+      y.initFire();
+      v.init();
+      // 小球动画
+      Hilo.Tween.to(
+        m.p0_tipround,
+        { y: -40 },
+        { time: 1000, repeatDelay: 600, loop: true }
+      );
+      Hilo.Tween.to(
+        m.p0_tipround,
+        { alpha: 0 },
+        {
+          time: 1200,
+          repeatDelay: 400,
+          loop: true,
+          ease: Hilo.Ease.Quad.EaseIn
+        }
+      );
+      for (var e = 0; e < musics.length; e++) {
+        var i = musics[e];
         i.el = $("#" + i.id)[0];
       }
     },
-    g = function(e, t, i) {
-      var n = t;
-      window.timer = n;
-      for (var a = u.length, r = 0; r < a; r++)
+    g = function(left, top, zoom) {
+      var n = top;
+      window.timer = top;
+
+      for (var a = u.length, r = 0; r < a; r++) {
         for (var o = u[r], s = o.animations, l = 0; l < s.length; l++) {
-          var h = s[l],
-            d = h.value,
-            f = h.time,
-            _ = c[o.delay ? o.delay : "p1"];
-          n < f[1] + _ && n > f[0] + _
-            ? (m[o.id][h.prope] = d[0])
-            : n < f[f.length - 1] + _ &&
-              n > f[f.length - 2] + _ &&
-              (m[o.id][h.prope] = d[d.length - 1]);
-          for (var g = 0; g < d.length - 1; g++)
-            n < f[g + 2] + _ &&
-              n > f[g + 1] + _ &&
-              (m[o.id][h.prope] = x(
-                d[g],
-                d[g + 1],
-                f[g + 1] + _,
-                f[g + 2] + _,
+          var animation = s[l],
+            value = animation.value,
+            time = animation.time,
+            delay = c[o.delay ? o.delay : "p1"];
+
+          if (n < time[1] + delay && n > time[0] + delay) {
+            m[o.id][animation.prope] = value[0];
+            // console.log(o.id, animation.prope, value[0]);
+          } else if (
+            n < time[time.length - 1] + delay &&
+            n > time[time.length - 2] + delay
+          ) {
+            m[o.id][animation.prope] = value[value.length - 1];
+            // console.log(o.id, animation.prope, value[value.length - 1]);
+          }
+
+          for (var g = 0; g < value.length - 1; g++) {
+            if (n < time[g + 2] + delay && n > time[g + 1] + delay) {
+              m[o.id][animation.prope] = x(
+                value[g],
+                value[g + 1],
+                time[g + 1] + delay,
+                time[g + 2] + delay,
                 n
-              ));
+              );
+
+              // console.log(
+              //   o.id,
+              //   animation.prope,
+              //   x(
+              //     value[g],
+              //     value[g + 1],
+              //     time[g + 1] + delay,
+              //     time[g + 2] + delay,
+              //     n
+              //   )
+              // );
+            }
+          }
         }
-      t < 8500 ? ((y.fired = !1), (m.p3.alpha = 0)) : t < 8600 && y.start();
-      for (var e = 0; e < p.length; e++) {
-        var v = p[e];
-        v.start && t < v.start && !v.el.paused
+      }
+
+      top < 8500 ? ((y.fired = !1), (m.p3.alpha = 0)) : top < 8600 && y.start();
+
+      for (var e = 0; e < musics.length; e++) {
+        var v = musics[e];
+        v.start && top < v.start && !v.el.paused
           ? ((v.played = ""),
             v.el.pause(),
             D("min pause " + v.el.id + ", top:" + n))
-          : v.end && t >= v.end && !v.el.paused
+          : v.end && top >= v.end && !v.el.paused
           ? (v.el.pause(),
             (v.played = ""),
             D("max pause " + v.el.id + ", top:" + n))
           : v.start &&
-            t >= v.start &&
+            top >= v.start &&
             !v.played &&
             v.el.paused &&
-            ((v.end && t < v.end) || !v.end) &&
+            ((v.end && top < v.end) || !v.end) &&
             (v.el.play(), (v.played = !0), D("play " + v.el.id + ", top:" + n));
       }
     },
     y = {
-      fired: !1,
-      firing: !1,
+      fired: false,
+      firing: false,
       time: 50,
       filter: $(".filter"),
       initFire: function() {
         m.fires = [];
         for (var e = 0; e < 39; e++) {
-          var i = d.get("p2_fire" + e).content,
+          var i = loadQueue.get("p2_fire" + e).content,
             n = new Hilo.Bitmap({
               x: 0,
               y: t - 1334,
@@ -4736,7 +4564,7 @@ function e() {
       init: function() {
         console.log(v.len);
         for (var e = 0; e < v.len; e++) {
-          var t = d.get("p4_craft" + 2 * e).content;
+          var t = loadQueue.get("p4_craft" + 2 * e).content;
           v.arr.push(
             new Hilo.Bitmap({ x: 0, y: 458, image: t }).addTo(m.p4_craft)
           );
@@ -4774,11 +4602,11 @@ function e() {
     b = function() {
       var e = 0,
         t = $(".cover .progress"),
-        i = l.length;
-      (d = new Hilo.LoadQueue()),
-        (d.maxConnections = 5),
-        d.add(l),
-        d
+        i = images.length;
+      (loadQueue = new Hilo.LoadQueue()),
+        (loadQueue.maxConnections = 5),
+        loadQueue.add(images),
+        loadQueue
           .on("load", function(n) {
             e++;
             var a = parseInt((e / i) * 100, 10);
@@ -4789,7 +4617,7 @@ function e() {
             var a = parseInt((e / i) * 100, 10);
             t.html(a + "%");
           }),
-        d.on("complete", function() {
+        loadQueue.on("complete", function() {
           _(),
             T(),
             A(),
@@ -4803,8 +4631,19 @@ function e() {
             setTimeout(function() {
               $("audio").off();
             }, 1400);
+
+          var timeY = 0;
+          function autoScroll() {
+            requestAnimationFrame(x => {
+              timeY += 10;
+              g(1, timeY);
+              autoScroll();
+            });
+          }
+          autoScroll();
+
         }),
-        d.start();
+        loadQueue.start();
     },
     T = function() {
       i
@@ -4845,26 +4684,29 @@ function e() {
       });
     },
     B = function() {
-      for (var e = 0; e < p.length; e++)
+      for (var e = 0; e < musics.length; e++)
         !(function(e) {
-          var t = $("#" + p[e].id)[0],
+          var t = $("#" + musics[e].id)[0],
             i = function() {
               document.removeEventListener("WeixinJSBridgeReady", i),
                 document.removeEventListener("YixinJSBridgeReady", i),
                 t.play();
             };
-          t.play(),
-            $(t).on("play", function() {
-              this.pause();
-            }),
-            document.addEventListener("WeixinJSBridgeReady", i, !1),
-            document.addEventListener("YixinJSBridgeReady", i, !1);
+
+          $(t).on("play", function() {
+            this.pause();
+          });
+          t.play();
+          document.addEventListener("WeixinJSBridgeReady", i, !1);
+          document.addEventListener("YixinJSBridgeReady", i, !1);
         })(e);
     },
     D = function(e) {
       $(".log").append("<p>" + e + "</p>");
     };
   f(), B(), (window.nyphile = a);
+
+  window.loadQueue = loadQueue;
 }
 
 (function() {
