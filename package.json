@@ -32,6 +32,9 @@
       "eslint:recommended"
     ],
     "rules": {},
+    "globals": {
+      "$": true
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

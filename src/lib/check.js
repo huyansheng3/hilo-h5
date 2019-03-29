@@ -1,4 +1,4 @@
-(function() {
+(function () {
   "use strict";
   function e() {
     t(), i(), n();
@@ -10,7 +10,7 @@
       (s = $(".common-container"));
   }
   function i() {
-    var e = function() {
+    var e = function () {
       switch (window.orientation) {
         case 0:
         case 180:
@@ -32,10 +32,10 @@
     $.os.phone ||
       $.os.tablet ||
       (new QRCode(o.children()[0]).makeCode(location.href),
-      $("body")
-        .children()
-        .hide(),
-      o.show());
+        $("body")
+          .children()
+          .hide(),
+        o.show());
   }
   var r, o, p, s;
   $(e);
