@@ -1,25 +1,10 @@
 export const musics = [
   { id: "z0_m1", start: 590, end: 3750 },
   { id: "z1_m1", start: 7600 },
-  { id: "z1_m3", start: 8100 },
-  { id: "z1_m2" },
   { id: "z3_m1", start: 21800 },
-  { id: "z3_m2", start: 18500 },
-  { id: "z3_m3", start: 15800 },
-  { id: "z3_m4", start: 14100 },
   { id: "z4_m1", start: 22e3 },
   { id: "z5_m1", start: 25e3 },
-  { id: "z5_m2", start: 26e3 },
   { id: "z6_m1", start: 28e3 },
-  { id: "z7_m1", start: 33800 },
-  { id: "z7_m2", start: 33500 },
-  { id: "z9_m1", start: 39e3 },
-  { id: "z9_m2", start: 39700 },
-  { id: "z9_m3", start: 40200 },
-  { id: "z10_m1", start: 42800 },
-  { id: "z12_m1", start: 57400 },
-  { id: "z10_m2", start: 35300, end: 99999 },
-  { id: "z10_m3", start: 4500, end: 35e3 }
 ];
 
 const source = "/";
@@ -199,5 +184,46 @@ export const images = [
   { id: "p9_lz22", src: source + "img/lz22.png" },
   { id: "p9_lz23", src: source + "img/lz23.png" },
   { id: "p9_lz24", src: source + "img/lz24.png" },
-  { id: "p9_lz24", src: source + "img/lz24.png" }
+  { id: "p9_lz24", src: source + "img/lz24.png" },
+
+  { id: "封面.jpg", src: source + "images/封面.jpg" },
+  { id: "故事1-1.jpg", src: source + "images/故事1-1.jpg" },
+  { id: "故事1-2.jpg", src: source + "images/故事1-2.jpg" },
+  { id: "故事1-3.jpg", src: source + "images/故事1-3.jpg" },
+  { id: "故事1-4.jpg", src: source + "images/故事1-4.jpg" },
+  { id: "故事1.jpg", src: source + "images/故事1.jpg" },
+  { id: "故事2-1.jpg", src: source + "images/故事2-1.jpg" },
+  { id: "故事2-2.jpg", src: source + "images/故事2-2.jpg" },
+  { id: "故事2-3.jpg", src: source + "images/故事2-3.jpg" },
+  { id: "故事2-4.jpg", src: source + "images/故事2-4.jpg" },
+  { id: "故事2.jpg", src: source + "images/故事2.jpg" },
+  { id: "故事3-1.jpg", src: source + "images/故事3-1.jpg" },
+  { id: "故事3-2.jpg", src: source + "images/故事3-2.jpg" },
+  { id: "故事3-3.jpg", src: source + "images/故事3-3.jpg" },
+  { id: "故事3-4.jpg", src: source + "images/故事3-4.jpg" },
+  { id: "故事3-5.jpg", src: source + "images/故事3-5.jpg" },
+  { id: "故事3-6.jpg", src: source + "images/故事3-6.jpg" },
+  { id: "故事3-7.jpg", src: source + "images/故事3-7.jpg" },
+  { id: "故事3.jpg", src: source + "images/故事3.jpg" },
+
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

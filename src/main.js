@@ -1,4 +1,3 @@
-import "./lib/flexible";
 import "./lib/check";
 import Hilo from "hilojs";
 import { Scroller } from "scroller";
@@ -10,26 +9,31 @@ function mix(e, t, i, n, a) {
   return e + ((t - e) / (n - i)) * (a - i);
 }
 
+function LOG(e) {
+  $(".log").append("<p>" + e + "</p>");
+};
+
 function init() {
   const width = 750,
     height = window.innerHeight > 1334 ? 1334 : window.innerHeight,
     app$ = $("#app");
 
+  const delays = {
+    p0: 0,
+    p1: 4400,
+    p2: 4800,
+    p3: 3300,
+    p4: 13900,
+    p5: 20800,
+    p6: -16500,
+    p7: -20600,
+    p8: 34800,
+    p9: 47840
+  };
+
   let hiloStage, ticker, loadQueue, scroller = null, hiloViews = {};
 
-  let isScrolling = false,
-    c = {
-      p0: 0,
-      p1: 4400,
-      p2: 4800,
-      p3: 3300,
-      p4: 13900,
-      p5: 20800,
-      p6: -16500,
-      p7: -20600,
-      p8: 34800,
-      p9: 47840
-    };
+  let isScrolling = false;
 
   function initHilo() {
     app$.attr({ width, height });
@@ -44,37 +48,42 @@ function init() {
   }
 
   function loadResource() {
-    var e = 0,
-      t = $(".cover .progress"),
-      i = images.length;
-    (loadQueue = new Hilo.LoadQueue()),
-      (loadQueue.maxConnections = 5),
-      loadQueue.add(images),
-      loadQueue
-        .on("load", function (n) {
-          e++;
-          var a = parseInt((e / i) * 100, 10);
-          t.html(a + "%");
-        })
-        .on("error", function (n) {
-          e++;
-          var a = parseInt((e / i) * 100, 10);
-          t.html(a + "%");
-        }),
+    let progress = 0,
+      progress$ = $(".cover .progress"),
+      progressBar$ = $(".cover .progress-bar"),
+      len = images.length;
+    loadQueue = new Hilo.LoadQueue();
+    loadQueue.maxConnections = 5
+    loadQueue.add(images)
+
+    loadQueue
+      .on("load", function (n) {
+        progress++;
+        let currentProgress = parseInt((progress / len) * 100, 10);
+        progress$.html(currentProgress + "%");
+        progressBar$.css({ width: currentProgress + "%" })
+      })
+      .on("error", function (n) {
+        progress++;
+        let currentProgress = parseInt((progress / len) * 100, 10);
+        progress$.html(currentProgress + "%");
+        progressBar$.css({ width: currentProgress + "%" })
+      }),
       loadQueue.on("complete", function () {
         initViews();
         initEvents();
-        removeCoverDefaultTouchEvent(),
-          $(".cover").addClass("active"),
-          setTimeout(function () {
-            $(".cover").addClass("none");
-          }, 50),
-          setTimeout(function () {
-            $(".cover").hide(), $(".logo").fadeOut(300);
-          }, 1400),
-          setTimeout(function () {
-            $("audio").off();
-          }, 1400);
+        removeCoverDefaultTouchEvent();
+        $(".cover").addClass("active");
+        setTimeout(function () {
+          $(".cover").addClass("none");
+        }, 50);
+        setTimeout(function () {
+          $(".cover").hide();
+          $(".logo").fadeOut(300);
+        }, 1400);
+        setTimeout(function () {
+          $("audio").off();
+        }, 1400);
       }),
       loadQueue.start();
   }
@@ -116,55 +125,36 @@ function init() {
       }
     }
 
-    // 小球动画
-    Hilo.Tween.to(
-      hiloViews.p0_tipround,
-      { y: -40 },
-      { time: 1000, repeatDelay: 600, loop: true }
-    );
-    Hilo.Tween.to(
-      hiloViews.p0_tipround,
-      { alpha: 0 },
-      {
-        time: 1200,
-        repeatDelay: 400,
-        loop: true,
-        ease: Hilo.Ease.Quad.EaseIn
-      }
-    );
-    for (var e = 0; e < musics.length; e++) {
-      var i = musics[e];
+    for (let e = 0; e < musics.length; e++) {
+      let i = musics[e];
       i.el = $("#" + i.id)[0];
     }
   }
 
-
-
   function scrollerCallback(left, top, zoom) {
-    var n = top;
+    let n = top;
     window.timer = top;
 
-    for (var a = views.length, r = 0; r < a; r++) {
-      for (var o = views[r], s = o.animations, l = 0; l < s.length; l++) {
-        var animation = s[l],
+    for (let len = views.length, i = 0; i < len; i++) {
+      for (let view = views[i], animations = view.animations, j = 0; j < animations.length; j++) {
+        let animation = animations[j],
           value = animation.value,
           time = animation.time,
-          delay = c[o.delay ? o.delay : "p1"];
+          delay = delays[view.delay ? view.delay : "p1"];
 
         if (n < time[1] + delay && n > time[0] + delay) {
-          hiloViews[o.id][animation.prope] = value[0];
-          // console.log(o.id, animation.prope, value[0]);
+          hiloViews[view.id][animation.prope] = value[0];
+
         } else if (
           n < time[time.length - 1] + delay &&
           n > time[time.length - 2] + delay
         ) {
-          hiloViews[o.id][animation.prope] = value[value.length - 1];
-          // console.log(o.id, animation.prope, value[value.length - 1]);
+          hiloViews[view.id][animation.prope] = value[value.length - 1];
         }
 
-        for (var g = 0; g < value.length - 1; g++) {
+        for (let g = 0; g < value.length - 1; g++) {
           if (n < time[g + 2] + delay && n > time[g + 1] + delay) {
-            hiloViews[o.id][animation.prope] = x(
+            hiloViews[view.id][animation.prope] = mix(
               value[g],
               value[g + 1],
               time[g + 1] + delay,
@@ -177,21 +167,28 @@ function init() {
     }
 
     for (var e = 0; e < musics.length; e++) {
-      var v = musics[e];
-      v.start && top < v.start && !v.el.paused
-        ? ((v.played = ""),
-          v.el.pause(),
-          D("min pause " + v.el.id + ", top:" + n))
-        : v.end && top >= v.end && !v.el.paused
-          ? (v.el.pause(),
-            (v.played = ""),
-            D("max pause " + v.el.id + ", top:" + n))
-          : v.start &&
-          top >= v.start &&
-          !v.played &&
-          v.el.paused &&
-          ((v.end && top < v.end) || !v.end) &&
-          (v.el.play(), (v.played = !0), D("play " + v.el.id + ", top:" + n));
+      let music = musics[e];
+      if (music.start && top < music.start && !music.el.paused) {
+        music.played = ""
+        music.el.pause()
+        LOG("min pause " + music.el.id + ", top:" + n)
+      } else {
+        if (music.end && top >= music.end && !music.el.paused) {
+          music.el.pause()
+          music.played = ""
+          LOG("max pause " + music.el.id + ", top:" + n)
+        } else {
+          if (music.start &&
+            top >= music.start &&
+            !music.played &&
+            music.el.paused &&
+            ((music.end && top < music.end) || !music.end)) {
+            music.el.play();
+            music.played = true;
+            LOG("play " + music.el.id + ", top:" + n)
+          }
+        }
+      }
     }
   }
 
