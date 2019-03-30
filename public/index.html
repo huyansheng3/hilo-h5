@@ -46,33 +46,18 @@
       <div class="progress">0%</div>
     </div>
 
-    <div class="videos">
-
-      <!-- <div class="video" id="mother">
-      </div>
-
-      <div class="video" id="manager">
-      </div>
-
-      <div class="video" id="student">
-      </div>
-
-      <div class="video" id="shallen">
-      </div> -->
-
-      <video id="manager" preload="auto" poster="/images/manager.png"
-        src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/manager.mp4"></video>
-
-      <video id="mother" preload="auto" poster="/images/mother.png"
-        src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/mum.mp4"></video>
-
-      <video id="student" preload="auto" poster="/images/student.png"
-        src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/student.mp4"></video>
-
-      <video id="shallen" preload="auto" poster="/images/shallen.png"
-        src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/shallen.mp4"></video>
-
+    <div class="video" id="mother">
     </div>
+
+    <div class="video" id="manager">
+    </div>
+
+    <div class="video" id="student">
+    </div>
+
+    <div class="video" id="shallen">
+    </div>
+
 
     <div id="lansidai">
       <img id="left-btn" src="/images/left-btn.png" alt="btn" role="button">
@@ -138,5 +123,12 @@
 
   <!-- built files will be auto injected -->
 </body>
+
+<script src="./eruda.min.js"></script>
+<script>
+  if (location.search.indexOf('test') !== -1) {
+    eruda.init();
+  }
+</script>
 
 </html>

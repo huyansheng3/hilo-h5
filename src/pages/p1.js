@@ -14,6 +14,8 @@ const views = [
             { prope: "alpha", time: [0, 5.5 * t, 6 * t, 6 * t], value: [1, 0] }
         ]
     },
+
+
     {
         id: "story1.jpg",
         type: "Bitmap",
@@ -25,28 +27,57 @@ const views = [
         },
         animations: []
     },
+
     {
-        id: "story1-1.jpg",
-        type: "Bitmap",
-        image: "story1-1.jpg",
-        parent: "p1",
-        delay: "p1",
+        id: "story1-1-texture",
+        type: "TextureAtlas",
+        image: "story1-1-texture.jpg",
+        parent: "null",
         propes: {
-            y: t
+            frames: [[2, 2674, 750, 1334],
+            [2, 1338, 750, 1334],
+            [2, 2, 750, 1334]],
+            sprites: {
+                sprite: [0, 1, 2]
+            }
         },
-        animations: []
+        animations: {}
     },
     {
-        id: "story1-2.jpg",
-        type: "Bitmap",
-        image: "story1-2.jpg",
+        id: "story1-1-sprite",
+        type: "Sprite",
+        frames: "story1-1-texture.sprite",
         parent: "p1",
         delay: "p1",
-        propes: {
-            y: 2 * t
-        },
+        propes: { interval: 200, timeBased: true, y: t },
         animations: []
     },
+
+    {
+        id: "story1-2-texture",
+        type: "TextureAtlas",
+        image: "story1-2-texture.jpg",
+        parent: "null",
+        propes: {
+            frames: [[2, 1338, 750, 1334],
+            [2, 2, 750, 1334],
+            ],
+            sprites: {
+                sprite: [0, 1]
+            }
+        },
+        animations: {}
+    },
+    {
+        id: "story1-2-sprite",
+        type: "Sprite",
+        frames: "story1-2-texture.sprite",
+        parent: "p1",
+        delay: "p1",
+        propes: { interval: 200, timeBased: true, y: 2 * t },
+        animations: []
+    },
+
     {
         id: "story1-3.jpg",
         type: "Bitmap",
@@ -57,37 +88,52 @@ const views = [
             y: 3 * t
         },
         animations: []
-    }, {
-        id: "story1-4.jpg",
-        type: "Bitmap",
-        image: "story1-4.jpg",
-        parent: "p1",
-        delay: "p1",
-        propes: {
-            y: 4 * t
-        },
-        animations: []
     },
+
     {
-        id: "story1-5-1-2",
+        id: "story1-4-texture",
         type: "TextureAtlas",
-        image: "story1-5-1-2.jpg",
+        image: "story1-4-texture.jpg",
         parent: "null",
         propes: {
-            frames: [
-                [754, 2, 750, 1334],
-                [2, 2, 750, 1334],
-            ],
+            frames: [[2, 2674, 750, 1334],
+            [2, 1338, 750, 1334],
+            [2, 2, 750, 1334]],
             sprites: {
-                sprite: [0, 1]
+                sprite: [0, 1, 2]
             }
         },
         animations: {}
     },
     {
-        id: "story1-5-1-2-sprite",
+        id: "story1-4-sprite",
         type: "Sprite",
-        frames: "story1-5-1-2.sprite",
+        frames: "story1-4-texture.sprite",
+        parent: "p1",
+        delay: "p1",
+        propes: { interval: 200, timeBased: true, y: 4 * t },
+        animations: []
+    },
+
+    {
+        id: "story1-5-texture",
+        type: "TextureAtlas",
+        image: "story1-5-texture.jpg",
+        parent: "null",
+        propes: {
+            frames: [[2, 2674, 750, 1334],
+            [2, 1338, 750, 1334],
+            [2, 2, 750, 1334]],
+            sprites: {
+                sprite: [0, 1, 2]
+            }
+        },
+        animations: {}
+    },
+    {
+        id: "story1-5-sprite",
+        type: "Sprite",
+        frames: "story1-5-texture.sprite",
         parent: "p1",
         delay: "p1",
         propes: { interval: 200, timeBased: true, y: 5 * t },

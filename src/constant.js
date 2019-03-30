@@ -31,13 +31,13 @@ export const videos = [
 const source = "/";
 export const images = [
   { id: "homepage.jpg", src: source + "images/homepage.jpg" },
-  { id: "story1-1.jpg", src: source + "images/story1-1.jpg" },
-  { id: "story1-2.jpg", src: source + "images/story1-2.jpg" },
+  { id: "story1-1-texture.jpg", src: source + "images/story1-1-texture.jpg" },
+  { id: "story1-2-texture.jpg", src: source + "images/story1-2-texture.jpg" },
   { id: "story1-3.jpg", src: source + "images/story1-3.jpg" },
-  { id: "story1-4.jpg", src: source + "images/story1-4.jpg" },
-  { id: "story1-5-1-2.jpg", src: source + "images/story1-5-1-2.jpg" },
+  { id: "story1-4-texture.jpg", src: source + "images/story1-4-texture.jpg" },
+  { id: "story1-5-texture.jpg", src: source + "images/story1-5-texture.jpg" },
   { id: "story1.jpg", src: source + "images/story1.jpg" },
-  { id: "story2-1.jpg", src: source + "images/story2-1.jpg" },
+  { id: "story2-1-texture.jpg", src: source + "images/story2-1-texture.jpg" },
   { id: "story2-2.jpg", src: source + "images/story2-2.jpg" },
   { id: "story2-3.jpg", src: source + "images/story2-3.jpg" },
   { id: "story2-4.jpg", src: source + "images/story2-4.jpg" },
@@ -46,10 +46,10 @@ export const images = [
   { id: "story3-1.jpg", src: source + "images/story3-1.jpg" },
   { id: "story3-2.jpg", src: source + "images/story3-2.jpg" },
   { id: "story3-3.jpg", src: source + "images/story3-3.jpg" },
-  { id: "story3-4.jpg", src: source + "images/story3-4.jpg" },
-  { id: "story3-5-1-2-3.jpg", src: source + "images/story3-5-1-2-3.jpg" },
-  { id: "story3-6.jpg", src: source + "images/story3-6.jpg" },
-  { id: "story3-7.jpg", src: source + "images/story3-7.jpg" },
+  { id: "story3-4-texture.jpg", src: source + "images/story3-4-texture.jpg" },
+  { id: "story3-5-texture.jpg", src: source + "images/story3-5-texture.jpg" },
+  { id: "story3-6-texture.jpg", src: source + "images/story3-6-texture.jpg" },
+  { id: "story3-7-texture.jpg", src: source + "images/story3-7-texture.jpg" },
   { id: "story3.jpg", src: source + "images/story3.jpg" },
 
 ];

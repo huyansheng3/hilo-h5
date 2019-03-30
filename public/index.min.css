@@ -360,13 +360,16 @@ html {
 }
 
 
-/* .videos,  .video {
+.video {
   height: 100%;
   width: 100%;
-} */
+  position: relative;
+  display: none;
+}
 
-video {
-  width: 100%;
+.video .wechat_h5_video__playBtn svg {
+  min-width: 80px;
+  min-height: 80px;
 }
 
 .cover .progress-box {
@@ -442,6 +445,7 @@ video {
   width: 100%;
   background: url(./images/lansidai.jpg) no-repeat;
   position: relative;
+  display: none;
 }
 
 #poster {

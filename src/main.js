@@ -7,6 +7,26 @@ import views from "./views";
 import wechatH5Video from 'wechat-h5-video';
 
 
+function initVideos() {
+  for (let i = 0, len = videos.length; i < len; i++) {
+    let video = videos[i]
+    if (video.wechatVideo) return
+    let wechatVideo = new wechatH5Video(video.src, {
+      context: video.id,
+      mask: true,
+      fill: true,
+      poster: `/images/${video.id}.png`,
+      playBtn: true,
+      jumpBtn: false,
+      autoClose: false,
+      canvas: false,
+      isRotate: false,
+    });
+    wechatVideo.load();
+    video.wechatVideo = wechatVideo
+  }
+}
+
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
 }
@@ -189,7 +209,10 @@ function init() {
 
   function scrollerCallback(left, top, zoom) {
     if (top === 20 * height) {
-      app$.hide()
+      app$.hide();
+      $('.video').show();
+      $('#lansidai').show();
+      initVideos();
       $('.common-container').css({
         'overflow-y': 'scroll'
       })
@@ -343,44 +366,9 @@ function init() {
     }, 500);
   }
 
-  function initNormalVideosEl() {
-    for (let e = 0; e < videos.length; e++) {
-      let i = videos[e];
-      i.el = $("#" + i.id)[0];
-    }
-  }
 
-  function initNormalVideos() {
-    for (let i = 0, len = videos.length; i < len; i++) {
-      let video = videos[i]
-      $(`#${video.id}`).on('click', e => {
-        videos.forEach(item => {
-          item.el.pause()
-        })
-        if (!video.playing) {
-          console.log('123', video.playing)
-          e.target.play()
-        } else {
-          console.log('456', video.playing, e.target)
-          e.target.pause()
-        }
-      })
 
-      $(`#${video.id}`).on('playing', e => {
-        console.log('playing', e)
-        video.playing = true
-      })
 
-      $(`#${video.id}`).on('pause', function () {
-        console.log('pause', e)
-        video.playing = false
-      })
-
-    }
-  }
-
-  initNormalVideosEl();
-  initNormalVideos();
   initPoster();
   window.pages = hiloViews;
   window.nyphile = app$;

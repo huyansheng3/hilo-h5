@@ -25,17 +25,32 @@ const views = [
         },
         animations: []
     },
+
     {
-        id: "story2-1.jpg",
-        type: "Bitmap",
-        image: "story2-1.jpg",
+        id: "story2-1-texture",
+        type: "TextureAtlas",
+        image: "story2-1-texture.jpg",
+        parent: "null",
+        propes: {
+            frames: [[2, 1338, 750, 1334],
+            [2, 2, 750, 1334]
+            ],
+            sprites: {
+                sprite: [0, 1]
+            }
+        },
+        animations: {}
+    },
+    {
+        id: "story2-1-sprite",
+        type: "Sprite",
+        frames: "story2-1-texture.sprite",
         parent: "p2",
         delay: "p2",
-        propes: {
-            y: t
-        },
+        propes: { interval: 200, timeBased: true, y: t },
         animations: []
     },
+
     {
         id: "story2-2.jpg",
         type: "Bitmap",
