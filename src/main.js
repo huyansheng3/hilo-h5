@@ -20,9 +20,9 @@ function init() {
 
   const delays = {
     p0: 0, //1
-    p1: height, //5
-    p2: height * 7, //7
-    p3: height * 13, //6
+    p1: height, //6
+    p2: height * 7, //6
+    p3: height * 13, //8
   };
 
   let hiloStage, ticker, loadQueue, scroller = null, hiloViews = {};
@@ -126,6 +126,12 @@ function init() {
   }
 
   function scrollerCallback(left, top, zoom) {
+    if (top === 20 * height) {
+      app$.hide()
+      $('.common-container').css({
+        'overflow-y': 'scroll'
+      })
+    }
     window.timer = top;
 
     for (let len = views.length, i = 0; i < len; i++) {
@@ -214,7 +220,7 @@ function init() {
       .on("touchmove", handleTouchMove)
       .on("touchend", handleTouchEnd);
 
-    scroller.setDimensions(width, height, width, 59e3 + height + 800 + 200);
+    scroller.setDimensions(width, height, width, 21 * height);
     window.scroller = scroller;
   }
 
@@ -232,11 +238,14 @@ function init() {
         document.removeEventListener("YixinJSBridgeReady", handleBridgeReady)
         music.play();
       };
-
       $(music).on("play", function () {
         this.pause();
       });
-      music.play();
+      try {
+        music.play();
+      } catch (e) {
+        console.log(e)
+      }
       document.addEventListener("WeixinJSBridgeReady", handleBridgeReady, false);
       document.addEventListener("YixinJSBridgeReady", handleBridgeReady, false);
     }
@@ -245,6 +254,26 @@ function init() {
   initHilo();
   loadResource();
   setTimeout(() => initMusics(), 500)
+
+  const mother$ = $('#mother')[0], manager$ = $('#manager')[0], student$ = $('#student')[0]
+
+  $('#mother').on("touchstart", e => {
+    mother$.play()
+    manager$.pause()
+    student$.pause()
+  })
+
+  $('#manager').on("touchstart", e => {
+    manager$.play()
+    mother$.pause()
+    student$.pause()
+  })
+
+  $('#student').on("touchstart", e => {
+    student$.play()
+    manager$.pause()
+    mother$.pause()
+  })
 
   window.pages = hiloViews;
   window.nyphile = app$;

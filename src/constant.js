@@ -16,6 +16,13 @@ export const musics = [
   { id: "z6_m1", start: height * 15.5 },
 ];
 
+export const videos = [
+  { id: "manager", },
+  { id: "mother", },
+  { id: "student", },
+
+];
+
 const source = "/";
 export const images = [
   { id: "homepage.jpg", src: source + "images/homepage.jpg" },
