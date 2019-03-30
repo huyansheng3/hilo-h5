@@ -2,8 +2,10 @@ import "./lib/check";
 import Hilo from "hilojs";
 import { Scroller } from "scroller";
 import pace from "pace";
-import { musics, images } from "./constant";
+import { musics, images, videos } from "./constant";
 import views from "./views";
+import wechatH5Video from 'wechat-h5-video';
+
 
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
@@ -12,6 +14,66 @@ function mix(v0, v1, t1, t2, time) {
 function LOG(e) {
   $(".log").append("<p>" + e + "</p>");
 };
+
+function initPoster() {
+  let uploadImage = '', name = '', address = '';
+
+  $('#left-btn').on('click', e => {
+    $('#lansidai').hide()
+    $('#poster').show()
+  })
+
+  $('#right-btn').on('click', e => {
+    $('#lansidai').hide()
+    $('#form').show()
+  })
+
+  $('#upload-btn').on('click', e => {
+    $('#upload').click()
+  })
+
+  $('#confirm-btn').on('click', e => {
+
+    // $('#upload').files
+    name = $('#name')[0].value
+    address = $('#address')[0].value
+    // $('#username')
+    $('#wall-image').attr('src', uploadImage)
+    $('#wall-name').text(name)
+    $('#wall-address').text(address)
+    $('#form').hide()
+    $('#wall').show()
+  })
+
+  $('#upload').on('change', e => {
+    const files = e.target.files
+    if (files && files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        uploadImage = e.target.result
+        $('#upload-btn').attr('src', e.target.result);
+      };
+      reader.readAsDataURL(files[0]);
+    }
+  })
+}
+
+function audioAutoPlay(id) {
+  var audio = document.getElementById(id);
+  if (window.WeixinJSBridge) {
+    WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+      audio.play();
+    }, false);
+  } else {
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+        audio.play();
+      });
+    }, false);
+  }
+  audio.play();
+  return false;
+}
 
 function init() {
   const width = 750,
@@ -165,28 +227,44 @@ function init() {
     }
 
     for (var e = 0; e < musics.length; e++) {
-      let music = musics[e];
-      if (music.start && top < music.start && !music.el.paused) {
-        music.played = ""
-        music.el.pause()
-        LOG("min pause " + music.el.id + ", top:" + top)
-      } else {
-        if (music.end && top >= music.end && !music.el.paused) {
-          music.el.pause()
-          music.played = ""
-          LOG("max pause " + music.el.id + ", top:" + top)
-        } else {
-          if (music.start &&
-            top >= music.start &&
-            !music.played &&
-            music.el.paused &&
-            ((music.end && top < music.end) || !music.end)) {
-            music.el.play();
-            music.played = true;
-            LOG("play " + music.el.id + ", top:" + top)
-          }
-        }
-      }
+      // let music = musics[e];
+      // if (music.start && top < music.start && !music.el.paused) {
+      //   music.played = ""
+      //   music.el.pause()
+      //   LOG("min pause " + music.el.id + ", top:" + top)
+      // } else {
+      //   if (music.end && top >= music.end && !music.el.paused) {
+      //     music.el.pause()
+      //     music.played = ""
+      //     LOG("max pause " + music.el.id + ", top:" + top)
+      //   } else {
+      //     if (music.start &&
+      //       top >= music.start &&
+      //       !music.played &&
+      //       music.el.paused &&
+      //       ((music.end && top < music.end) || !music.end)) {
+      //       music.el.play();
+      //       music.played = true;
+      //       LOG("play " + music.el.id + ", top:" + top)
+      //     }
+      //   }
+      // }
+
+      let v = musics[e];
+      v.start && top < v.start && !v.el.paused
+        ? ((v.played = ""),
+          v.el.pause(),
+          LOG("min pause " + v.el.id + ", top:" + top))
+        : v.end && top >= v.end && !v.el.paused
+          ? (v.el.pause(),
+            (v.played = ""),
+            LOG("max pause " + v.el.id + ", top:" + top))
+          : v.start &&
+          top >= v.start &&
+          !v.played &&
+          v.el.paused &&
+          ((v.end && top < v.end) || !v.end) &&
+          (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
     }
   }
 
@@ -241,43 +319,74 @@ function init() {
         this.pause();
       });
       try {
-        music.play();
+        if (music.paused) {
+          music.play();
+        }
       } catch (e) {
         console.log(e)
       }
       document.addEventListener("WeixinJSBridgeReady", handleBridgeReady, false);
       document.addEventListener("YixinJSBridgeReady", handleBridgeReady, false);
     }
+
+    audioAutoPlay('z0_m1')
   }
 
   initHilo();
   loadResource();
-  setTimeout(() => initMusics(), 500)
 
-  const mother$ = $('#mother')[0], manager$ = $('#manager')[0], student$ = $('#student')[0]
+  if (window.WeixinJSBridge) {
+    document.addEventListener("WeixinJSBridgeReady", initMusics, false);
+  } else {
+    setTimeout(() => {
+      initMusics()
+    }, 500);
+  }
 
-  $('#mother').on("touchstart", e => {
-    mother$.play()
-    manager$.pause()
-    student$.pause()
-  })
+  function initNormalVideosEl() {
+    for (let e = 0; e < videos.length; e++) {
+      let i = videos[e];
+      i.el = $("#" + i.id)[0];
+    }
+  }
 
-  $('#manager').on("touchstart", e => {
-    manager$.play()
-    mother$.pause()
-    student$.pause()
-  })
+  function initNormalVideos() {
+    for (let i = 0, len = videos.length; i < len; i++) {
+      let video = videos[i]
+      $(`#${video.id}`).on('click', e => {
+        videos.forEach(item => {
+          item.el.pause()
+        })
+        if (!video.playing) {
+          console.log('123', video.playing)
+          e.target.play()
+        } else {
+          console.log('456', video.playing, e.target)
+          e.target.pause()
+        }
+      })
 
-  $('#student').on("touchstart", e => {
-    student$.play()
-    manager$.pause()
-    mother$.pause()
-  })
+      $(`#${video.id}`).on('playing', e => {
+        console.log('playing', e)
+        video.playing = true
+      })
 
+      $(`#${video.id}`).on('pause', function () {
+        console.log('pause', e)
+        video.playing = false
+      })
+
+    }
+  }
+
+  initNormalVideosEl();
+  initNormalVideos();
+  initPoster();
   window.pages = hiloViews;
   window.nyphile = app$;
   window.loadQueue = loadQueue;
   window.musics = musics;
+  window.videos = videos;
 }
 
 init()

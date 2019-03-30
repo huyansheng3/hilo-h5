@@ -15,6 +15,7 @@
     "hilojs": "^1.4.0",
     "pace": "^0.0.4",
     "scroller": "^0.0.3",
+    "wechat-h5-video": "^1.0.7",
     "zepto": "^1.2.0"
   },
   "devDependencies": {
