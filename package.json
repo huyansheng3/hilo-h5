@@ -9,6 +9,9 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "compression": "^1.7.4",
+    "connect-history-api-fallback": "^1.6.0",
+    "express": "^4.16.4",
     "hilojs": "^1.4.0",
     "pace": "^0.0.4",
     "scroller": "^0.0.3",
@@ -19,12 +22,9 @@
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
     "babel-eslint": "^10.0.1",
-    "compression": "^1.7.4",
-    "connect-history-api-fallback": "^1.6.0",
     "download": "^7.1.0",
     "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "express": "^4.16.4"
+    "eslint-plugin-vue": "^5.0.0"
   },
   "eslintConfig": {
     "root": true,
@@ -47,6 +47,10 @@
     "plugins": {
       "autoprefixer": {}
     }
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
   },
   "browserslist": [
     "> 1%",

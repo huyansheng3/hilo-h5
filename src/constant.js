@@ -1,6 +1,6 @@
 const height = window.innerHeight > 1334 ? 1334 : window.innerHeight
 
-// 1封面背景音效.mp3
+// 1homepage背景音效.mp3
 // 2等待红绿灯.mp3
 // 3手拍打车窗声音.mp3
 // 4草丛沙沙，树叶声音.mp3
@@ -18,27 +18,27 @@ export const musics = [
 
 const source = "/";
 export const images = [
-  { id: "封面.jpg", src: source + "images/封面.jpg" },
-  { id: "故事1-1.jpg", src: source + "images/故事1-1.jpg" },
-  { id: "故事1-2.jpg", src: source + "images/故事1-2.jpg" },
-  { id: "故事1-3.jpg", src: source + "images/故事1-3.jpg" },
-  { id: "故事1-4.jpg", src: source + "images/故事1-4.jpg" },
-  { id: "故事1-5-1-2.jpg", src: source + "images/故事1-5-1-2.jpg" },
-  { id: "故事1.jpg", src: source + "images/故事1.jpg" },
-  { id: "故事2-1.jpg", src: source + "images/故事2-1.jpg" },
-  { id: "故事2-2.jpg", src: source + "images/故事2-2.jpg" },
-  { id: "故事2-3.jpg", src: source + "images/故事2-3.jpg" },
-  { id: "故事2-4.jpg", src: source + "images/故事2-4.jpg" },
-  { id: "故事2-5-1-2.jpg", src: source + "images/故事2-5-1-2.jpg" },
-  { id: "故事2.jpg", src: source + "images/故事2.jpg" },
-  { id: "故事3-1.jpg", src: source + "images/故事3-1.jpg" },
-  { id: "故事3-2.jpg", src: source + "images/故事3-2.jpg" },
-  { id: "故事3-3.jpg", src: source + "images/故事3-3.jpg" },
-  { id: "故事3-4.jpg", src: source + "images/故事3-4.jpg" },
-  { id: "故事3-5-1-2-3.jpg", src: source + "images/故事3-5-1-2-3.jpg" },
-  { id: "故事3-6.jpg", src: source + "images/故事3-6.jpg" },
-  { id: "故事3-7.jpg", src: source + "images/故事3-7.jpg" },
-  { id: "故事3.jpg", src: source + "images/故事3.jpg" },
+  { id: "homepage.jpg", src: source + "images/homepage.jpg" },
+  { id: "story1-1.jpg", src: source + "images/story1-1.jpg" },
+  { id: "story1-2.jpg", src: source + "images/story1-2.jpg" },
+  { id: "story1-3.jpg", src: source + "images/story1-3.jpg" },
+  { id: "story1-4.jpg", src: source + "images/story1-4.jpg" },
+  { id: "story1-5-1-2.jpg", src: source + "images/story1-5-1-2.jpg" },
+  { id: "story1.jpg", src: source + "images/story1.jpg" },
+  { id: "story2-1.jpg", src: source + "images/story2-1.jpg" },
+  { id: "story2-2.jpg", src: source + "images/story2-2.jpg" },
+  { id: "story2-3.jpg", src: source + "images/story2-3.jpg" },
+  { id: "story2-4.jpg", src: source + "images/story2-4.jpg" },
+  { id: "story2-5-1-2.jpg", src: source + "images/story2-5-1-2.jpg" },
+  { id: "story2.jpg", src: source + "images/story2.jpg" },
+  { id: "story3-1.jpg", src: source + "images/story3-1.jpg" },
+  { id: "story3-2.jpg", src: source + "images/story3-2.jpg" },
+  { id: "story3-3.jpg", src: source + "images/story3-3.jpg" },
+  { id: "story3-4.jpg", src: source + "images/story3-4.jpg" },
+  { id: "story3-5-1-2-3.jpg", src: source + "images/story3-5-1-2-3.jpg" },
+  { id: "story3-6.jpg", src: source + "images/story3-6.jpg" },
+  { id: "story3-7.jpg", src: source + "images/story3-7.jpg" },
+  { id: "story3.jpg", src: source + "images/story3.jpg" },
 
 ];
 

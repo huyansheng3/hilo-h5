@@ -15,9 +15,9 @@ const views = [
         ]
     },
     {
-        id: "故事3.jpg",
+        id: "story3.jpg",
         type: "Bitmap",
-        image: "故事3.jpg",
+        image: "story3.jpg",
         parent: "p3",
         delay: "p3",
         propes: {
@@ -26,9 +26,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事3-1.jpg",
+        id: "story3-1.jpg",
         type: "Bitmap",
-        image: "故事3-1.jpg",
+        image: "story3-1.jpg",
         parent: "p3",
         delay: "p3",
         propes: {
@@ -37,9 +37,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事3-2.jpg",
+        id: "story3-2.jpg",
         type: "Bitmap",
-        image: "故事3-2.jpg",
+        image: "story3-2.jpg",
         parent: "p3",
         delay: "p3",
         propes: {
@@ -47,9 +47,9 @@ const views = [
         },
         animations: []
     }, {
-        id: "故事3-3.jpg",
+        id: "story3-3.jpg",
         type: "Bitmap",
-        image: "故事3-3.jpg",
+        image: "story3-3.jpg",
         parent: "p3",
         delay: "p3",
         propes: {
@@ -58,9 +58,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事3-4.jpg",
+        id: "story3-4.jpg",
         type: "Bitmap",
-        image: "故事3-4.jpg",
+        image: "story3-4.jpg",
         parent: "p3",
         delay: "p3",
         propes: {
@@ -71,9 +71,9 @@ const views = [
 
 
     {
-        id: "故事3-5-1-2-3",
+        id: "story3-5-1-2-3",
         type: "TextureAtlas",
-        image: "故事3-5-1-2-3.jpg",
+        image: "story3-5-1-2-3.jpg",
         parent: "null",
         propes: {
             frames: [
@@ -88,18 +88,18 @@ const views = [
         animations: {}
     },
     {
-        id: "故事3-5-1-2-3-sprite",
+        id: "story3-5-1-2-3-sprite",
         type: "Sprite",
-        frames: "故事3-5-1-2-3.sprite",
+        frames: "story3-5-1-2-3.sprite",
         parent: "p3",
         delay: "p3",
         propes: { interval: 200, timeBased: true, y: 5 * t },
         animations: []
     },
     {
-        id: "故事3-6.jpg",
+        id: "story3-6.jpg",
         type: "Bitmap",
-        image: "故事3-6.jpg",
+        image: "story3-6.jpg",
         parent: "p3",
         delay: "p3",
         propes: {
@@ -109,9 +109,9 @@ const views = [
     },
 
     {
-        id: "故事3-7.jpg",
+        id: "story3-7.jpg",
         type: "Bitmap",
-        image: "故事3-7.jpg",
+        image: "story3-7.jpg",
         parent: "p3",
         delay: "p3",
         propes: {

@@ -15,9 +15,9 @@ const views = [
         ]
     },
     {
-        id: "故事1.jpg",
+        id: "story1.jpg",
         type: "Bitmap",
-        image: "故事1.jpg",
+        image: "story1.jpg",
         parent: "p1",
         delay: "p1",
         propes: {
@@ -26,9 +26,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事1-1.jpg",
+        id: "story1-1.jpg",
         type: "Bitmap",
-        image: "故事1-1.jpg",
+        image: "story1-1.jpg",
         parent: "p1",
         delay: "p1",
         propes: {
@@ -37,9 +37,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事1-2.jpg",
+        id: "story1-2.jpg",
         type: "Bitmap",
-        image: "故事1-2.jpg",
+        image: "story1-2.jpg",
         parent: "p1",
         delay: "p1",
         propes: {
@@ -48,9 +48,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事1-3.jpg",
+        id: "story1-3.jpg",
         type: "Bitmap",
-        image: "故事1-3.jpg",
+        image: "story1-3.jpg",
         parent: "p1",
         delay: "p1",
         propes: {
@@ -58,9 +58,9 @@ const views = [
         },
         animations: []
     }, {
-        id: "故事1-4.jpg",
+        id: "story1-4.jpg",
         type: "Bitmap",
-        image: "故事1-4.jpg",
+        image: "story1-4.jpg",
         parent: "p1",
         delay: "p1",
         propes: {
@@ -69,9 +69,9 @@ const views = [
         animations: []
     },
     {
-        id: "故事1-5-1-2",
+        id: "story1-5-1-2",
         type: "TextureAtlas",
-        image: "故事1-5-1-2.jpg",
+        image: "story1-5-1-2.jpg",
         parent: "null",
         propes: {
             frames: [
@@ -85,9 +85,9 @@ const views = [
         animations: {}
     },
     {
-        id: "故事1-5-1-2-sprite",
+        id: "story1-5-1-2-sprite",
         type: "Sprite",
-        frames: "故事1-5-1-2.sprite",
+        frames: "story1-5-1-2.sprite",
         parent: "p1",
         delay: "p1",
         propes: { interval: 200, timeBased: true, y: 5 * t },

@@ -12,9 +12,9 @@ const views = [
         animations: [{ prope: "y", time: [0, 0, t, t], value: [0, -t] }]
     },
     {
-        id: "封面.jpg",
+        id: "homepage.jpg",
         type: "Bitmap",
-        image: "封面.jpg",
+        image: "homepage.jpg",
         parent: "p0",
         delay: "p0",
         propes: {},
