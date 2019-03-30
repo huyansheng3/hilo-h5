@@ -352,13 +352,21 @@ html {
 }
 
 #app {
-  position: absolute;
+  /* position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  right: 0;
-  width: 100%;
+  right: 0; */
+}
+
+
+/* .videos,  .video {
   height: 100%;
+  width: 100%;
+} */
+
+video {
+  width: 100%;
 }
 
 .cover .progress-box {
@@ -428,3 +436,145 @@ html {
   height: 40px;
   background: url(./cover_wave.png) 0 -1008px no-repeat;
 }
+
+#lansidai {
+  height: 100%;
+  width: 100%;
+  background: url(./images/lansidai.jpg) no-repeat;
+  position: relative;
+}
+
+#poster {
+  height: 100%;
+  width: 100%;
+  background: url(./images/poster.jpg) no-repeat;
+  position: relative;
+  display: none;
+}
+
+#form {
+  height: 100%;
+  width: 100%;
+  background: url(./images/form.jpg) no-repeat;
+  position: relative;
+  display: none;
+}
+
+#lansidai #left-btn {
+  position: absolute;
+  left: 15%;
+  bottom: 20%;
+}
+
+#lansidai #right-btn {
+  position: absolute;
+  right: 15%;
+  bottom: 20%;
+}
+
+#poster #avator{
+  position: absolute;
+  width: 200px;
+  left: 50%;
+  top: 10%;
+  margin-left: -10%;
+
+}
+#poster #count{
+  position: absolute;
+  font-size: 50px;
+  top: 45%;
+  left: 45%;
+  color: rgb(35, 52, 71);
+  font-weight: bold;
+}
+
+#form #confirm-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 28%;
+  transform: translateX(-50%);
+}
+
+#form #upload-btn {
+  height: 250px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#form .form {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#form .form .form-item {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 28px;
+  border: 2px solid #4fb8b4;
+  border-radius: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+#form .form .form-item .label {
+  width: 100px;
+  display: inline-block;
+}
+
+#form .form .form-item input {
+  background: transparent;
+  border: none;
+  line-height: 40px;
+  padding: 5px 10px;
+  height: 40px;
+  outline: none;
+  border-left: 2px solid #4fb8b4;
+}
+
+#wall {
+  height: 100%;
+  width: 100%;
+  background: url(./images/wall.jpg) no-repeat;
+  position: relative;
+  display: none;
+}
+
+#wall-info {
+    color: #b0e9eb;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 30px;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#wall-info #wall-name {
+  letter-spacing: 4px;
+  border-bottom: 1px dashed #b0e9eb;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+#wall-image-bg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10%;
+  max-height: 450px;
+  width: 80%;
+  overflow: hidden;
+  background: url(./images/wall-image-bg.svg) no-repeat;
+}
+
+#wall-image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
