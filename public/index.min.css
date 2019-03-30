@@ -264,6 +264,7 @@ ul {
   font-size: 20px;
 }
 .filter,
+
 .log {
   display: none;
   top: 0;
@@ -350,6 +351,14 @@ html {
   background-size: cover;
 }
 
+#app {
+  /* position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0; */
+}
+
 .cover .progress-box {
   position: absolute;
   left: 20%;
@@ -365,6 +374,7 @@ html {
   height: 20px;
   border-radius: 10px;
   background-color: #83cdd1;
+  width: 0;
 }
 
 .cover .progress {

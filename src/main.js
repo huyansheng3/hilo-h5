@@ -195,7 +195,6 @@ function init() {
       zooming: !1,
       animating: !0,
       bouncing: !1,
-      animationDuration: 1e3
     });
 
     const handleTouchStart = function (e) {
@@ -278,6 +277,7 @@ function init() {
   window.pages = hiloViews;
   window.nyphile = app$;
   window.loadQueue = loadQueue;
+  window.musics = musics;
 }
 
 init()

@@ -9,7 +9,10 @@ const views = [
         type: "Container",
         propes: {},
         delay: "p0",
-        animations: [{ prope: "y", time: [0, 0, t, t], value: [0, -t] }]
+        animations: [
+            { prope: "y", time: [0, 0, t, t], value: [0, -t] },
+            { prope: "alpha", time: [0, 0, t, t], value: [1, 0] },
+        ]
     },
     {
         id: "homepage.jpg",
