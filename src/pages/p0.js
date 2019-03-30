@@ -3,12 +3,13 @@ const t = window.innerHeight > 1334 ? 1334 : window.innerHeight;
 const h = { p1: 0, p2: t - 1206, p3: t - 1334, p4: t - 1334 };
 
 const views = [
+
     {
         id: "p0",
         type: "Container",
         propes: {},
         delay: "p0",
-        animations: [{ prope: "alpha", time: [0, 3800, 4400, 6e3], value: [1, 0] }]
+        animations: [{ prope: "y", time: [0, 0, t, t], value: [0, -t] }]
     },
     {
         id: "封面.jpg",
@@ -19,7 +20,6 @@ const views = [
         propes: {},
         animations: []
     },
-
 ];
 
 export default views;

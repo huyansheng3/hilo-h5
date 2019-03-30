@@ -5,8 +5,8 @@ import pace from "pace";
 import { musics, images } from "./constant";
 import views from "./views";
 
-function mix(e, t, i, n, a) {
-  return e + ((t - e) / (n - i)) * (a - i);
+function mix(v0, v1, t1, t2, time) {
+  return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
 }
 
 function LOG(e) {
@@ -19,16 +19,10 @@ function init() {
     app$ = $("#app");
 
   const delays = {
-    p0: 0,
-    p1: 4400,
-    p2: 4800,
-    p3: 3300,
-    p4: 13900,
-    p5: 20800,
-    p6: -16500,
-    p7: -20600,
-    p8: 34800,
-    p9: 47840
+    p0: 0, //1
+    p1: height, //5
+    p2: height * 7, //7
+    p3: height * 13, //6
   };
 
   let hiloStage, ticker, loadQueue, scroller = null, hiloViews = {};
@@ -132,7 +126,6 @@ function init() {
   }
 
   function scrollerCallback(left, top, zoom) {
-    let n = top;
     window.timer = top;
 
     for (let len = views.length, i = 0; i < len; i++) {
@@ -142,24 +135,23 @@ function init() {
           time = animation.time,
           delay = delays[view.delay ? view.delay : "p1"];
 
-        if (n < time[1] + delay && n > time[0] + delay) {
+        if (top < time[1] + delay && top > time[0] + delay) {
           hiloViews[view.id][animation.prope] = value[0];
-
         } else if (
-          n < time[time.length - 1] + delay &&
-          n > time[time.length - 2] + delay
+          top < time[time.length - 1] + delay &&
+          top > time[time.length - 2] + delay
         ) {
           hiloViews[view.id][animation.prope] = value[value.length - 1];
         }
 
         for (let g = 0; g < value.length - 1; g++) {
-          if (n < time[g + 2] + delay && n > time[g + 1] + delay) {
+          if (top < time[g + 2] + delay && top > time[g + 1] + delay) {
             hiloViews[view.id][animation.prope] = mix(
               value[g],
               value[g + 1],
               time[g + 1] + delay,
               time[g + 2] + delay,
-              n
+              top
             );
           }
         }
@@ -171,12 +163,12 @@ function init() {
       if (music.start && top < music.start && !music.el.paused) {
         music.played = ""
         music.el.pause()
-        LOG("min pause " + music.el.id + ", top:" + n)
+        LOG("min pause " + music.el.id + ", top:" + top)
       } else {
         if (music.end && top >= music.end && !music.el.paused) {
           music.el.pause()
           music.played = ""
-          LOG("max pause " + music.el.id + ", top:" + n)
+          LOG("max pause " + music.el.id + ", top:" + top)
         } else {
           if (music.start &&
             top >= music.start &&
@@ -185,7 +177,7 @@ function init() {
             ((music.end && top < music.end) || !music.end)) {
             music.el.play();
             music.played = true;
-            LOG("play " + music.el.id + ", top:" + n)
+            LOG("play " + music.el.id + ", top:" + top)
           }
         }
       }
@@ -233,34 +225,30 @@ function init() {
   }
 
   function initMusics() {
-    for (var e = 0; e < musics.length; e++)
-      !(function (e) {
-        var t = $("#" + musics[e].id)[0],
-          i = function () {
-            document.removeEventListener("WeixinJSBridgeReady", i),
-              document.removeEventListener("YixinJSBridgeReady", i),
-              t.play();
-          };
+    for (let e = 0; e < musics.length; e++) {
+      let music = $("#" + musics[e].id)[0];
+      function handleBridgeReady() {
+        document.removeEventListener("WeixinJSBridgeReady", handleBridgeReady)
+        document.removeEventListener("YixinJSBridgeReady", handleBridgeReady)
+        music.play();
+      };
 
-        $(t).on("play", function () {
-          this.pause();
-        });
-        t.play();
-        document.addEventListener("WeixinJSBridgeReady", i, !1);
-        document.addEventListener("YixinJSBridgeReady", i, !1);
-      })(e);
-  }
-
-  function updateLogs(e) {
-    $(".log").append("<p>" + e + "</p>");
+      $(music).on("play", function () {
+        this.pause();
+      });
+      music.play();
+      document.addEventListener("WeixinJSBridgeReady", handleBridgeReady, false);
+      document.addEventListener("YixinJSBridgeReady", handleBridgeReady, false);
+    }
   }
 
   initHilo();
   loadResource();
-  // window.pages = hiloViews;
-  // initMusics();
-  // window.nyphile = app$;
-  // window.loadQueue = loadQueue;
+  setTimeout(() => initMusics(), 500)
+
+  window.pages = hiloViews;
+  window.nyphile = app$;
+  window.loadQueue = loadQueue;
 }
 
 init()
