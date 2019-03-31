@@ -249,7 +249,7 @@ function init() {
       }
     }
 
-    for (var e = 0; e < musics.length; e++) {
+    for (let e = 0; e < musics.length; e++) {
       // let music = musics[e];
       // if (music.start && top < music.start && !music.el.paused) {
       //   music.played = ""
@@ -355,16 +355,34 @@ function init() {
 
   }
 
+  function initMusicsOld() {
+    for (var e = 0; e < musics.length; e++)
+      !(function (e) {
+        var t = $("#" + musics[e].id)[0],
+          i = function () {
+            document.removeEventListener("WeixinJSBridgeReady", i),
+              document.removeEventListener("YixinJSBridgeReady", i),
+              t.play();
+          };
+
+        $(t).on("play", function () {
+          this.pause();
+        });
+        try {
+          t.play();
+        } catch (error) {
+          console.error(error)
+        }
+        document.addEventListener("WeixinJSBridgeReady", i, !1);
+        document.addEventListener("YixinJSBridgeReady", i, !1);
+      })(e);
+  }
+
   initHilo();
   loadResource();
+  initMusicsOld();
 
-  if (window.WeixinJSBridge) {
-    document.addEventListener("WeixinJSBridgeReady", initMusics, false);
-  } else {
-    setTimeout(() => {
-      initMusics()
-    }, 500);
-  }
+  audioAutoPlay('z0_m1')
 
   initPoster();
   window.pages = hiloViews;
@@ -374,4 +392,4 @@ function init() {
   window.videos = videos;
 }
 
-init()
+$(init)

@@ -8,7 +8,7 @@ const height = window.innerHeight > 1334 ? 1334 : window.innerHeight
 // 6电动车飞驰而过.mp3
 
 export const musics = [
-  { id: "z0_m1", start: 0, end: height * 2 },
+  { id: "z0_m1", start: 1, end: height * 3 },
   { id: "z1_m1", start: height * 3.5 },
   { id: "z3_m1", start: height * 5.5 },
   { id: "z4_m1", start: height * 7.5 },
