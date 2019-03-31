@@ -1,4 +1,4 @@
-!(function() {
+!(function () {
   function e(e, t, i) {
     var n,
       a,
@@ -18,18 +18,18 @@
     r.setAttribute(
       "content",
       "width=" +
-        n +
-        ",initial-scale=" +
-        a +
-        ",maximum-scale=" +
-        a +
-        ",minimum-scale=" +
-        a
+      n +
+      ",initial-scale=" +
+      a +
+      ",maximum-scale=" +
+      a +
+      ",minimum-scale=" +
+      a
     ),
       i &&
-        window.addEventListener("DOMContentLoaded", function() {
-          document.body.style.fontSize = 50 / a + "px";
-        });
+      window.addEventListener("DOMContentLoaded", function () {
+        document.body.style.fontSize = 50 / a + "px";
+      });
   }
   e("fixed", 750);
 })();

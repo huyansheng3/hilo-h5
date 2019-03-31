@@ -6,34 +6,7 @@ import { musics, images, videos } from "./constant";
 import views from "./views";
 import wechatH5Video from 'wechat-h5-video';
 
-; (function (win, doc, undefined) {
-  // 原理：模拟用户触发播放
-  Audio.prototype._play = Audio.prototype.play;
-  HTMLAudioElement.prototype._play = HTMLAudioElement.prototype.play;
-
-  function wxPlayAudio(audio) {
-    WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
-      audio._play();
-    });
-  }
-
-  function play() {
-    var that = this;
-    that._play();
-    try {
-      wxPlayAudio(that);
-      return;
-    } catch (e) {
-      document.addEventListener("WeixinJSBridgeReady", function () {
-        that._play();
-      }, false);
-    }
-  }
-
-  Audio.prototype.play = play;
-  HTMLAudioElement.prototype.play = play;
-})(window, document);
-
+console.log('innerHeight', window.innerHeight, window.innerWidth);
 
 function initVideos() {
   for (let i = 0, len = videos.length; i < len; i++) {
@@ -67,8 +40,26 @@ function initPoster() {
   let uploadImage = '', name = '', address = '';
 
   $('#left-btn').on('click', e => {
-    $('#lansidai').hide()
-    $('#poster').show()
+
+
+    // http://api.hongyu.ren/lsd/posters
+    // 参数
+    // openid   微信openid
+    // w   浏览器可见宽度
+    // h   浏览器可见高度
+
+    const data = {
+      openid: '',
+      w: $(window).width(),
+      h: $(window).height(),
+    }
+
+    $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+      console.log(response)
+      $('#lansidai').hide()
+      $('#count').text(1233)
+      $('#poster').show()
+    })
   })
 
   $('#right-btn').on('click', e => {
@@ -82,10 +73,34 @@ function initPoster() {
 
   $('#confirm-btn').on('click', e => {
 
-    // $('#upload').files
+
+    // http://api.hongyu.ren/lsd/apply
+
     name = $('#name')[0].value
     address = $('#address')[0].value
-    // $('#username')
+    address = $('#username')[0].value
+
+    // 参数
+    // store_name   酒店名称
+    // store_address   酒店地址
+    // store_image   酒店图片（base64）
+    // name   申请人
+    // w   浏览器可见宽度
+    // h   浏览器可见高度
+
+    const data = {
+      store_name: $('#name')[0].value,
+      store_address: $('#address')[0].value,
+      store_image: uploadImage,
+      name: $('#username')[0].value,
+      w: $(window).width(),
+      h: $(window).height(),
+    }
+
+    $.post('http://api.hongyu.ren/lsd/apply', data, function (response) {
+      console.log(response)
+    })
+
     $('#wall-image').attr('src', uploadImage)
     $('#wall-name').text(name)
     $('#wall-address').text(address)
@@ -101,6 +116,7 @@ function initPoster() {
         uploadImage = e.target.result
         $('#upload-btn').attr('src', e.target.result);
       };
+
       reader.readAsDataURL(files[0]);
     }
   })
