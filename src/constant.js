@@ -8,12 +8,12 @@ const height = window.innerHeight > 1334 ? 1334 : window.innerHeight
 // 6电动车飞驰而过.mp3
 
 export const musics = [
-  { id: "z0_m1", start: 1, end: height * 3 },
-  { id: "z1_m1", start: height * 3.5 },
-  { id: "z3_m1", start: height * 5.5 },
-  { id: "z4_m1", start: height * 7.5 },
-  { id: "z5_m1", start: height * 13.5 },
-  { id: "z6_m1", start: height * 15.5 },
+  { id: "z0_m1", start: 0, end: height * 3 },
+  { id: "z1_m1", start: height * 3.5, end: height * 4 },
+  { id: "z3_m1", start: height * 5.5, end: height * 7 },
+  { id: "z4_m1", start: height * 7.5, end: height * 13 },
+  { id: "z5_m1", start: height * 13.5, end: height * 15 },
+  { id: "z6_m1", start: height * 15.5, end: height * 17 },
 ];
 
 // http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/manager.mp4

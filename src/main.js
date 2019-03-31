@@ -6,6 +6,34 @@ import { musics, images, videos } from "./constant";
 import views from "./views";
 import wechatH5Video from 'wechat-h5-video';
 
+; (function (win, doc, undefined) {
+  // 原理：模拟用户触发播放
+  Audio.prototype._play = Audio.prototype.play;
+  HTMLAudioElement.prototype._play = HTMLAudioElement.prototype.play;
+
+  function wxPlayAudio(audio) {
+    WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+      audio._play();
+    });
+  }
+
+  function play() {
+    var that = this;
+    that._play();
+    try {
+      wxPlayAudio(that);
+      return;
+    } catch (e) {
+      document.addEventListener("WeixinJSBridgeReady", function () {
+        that._play();
+      }, false);
+    }
+  }
+
+  Audio.prototype.play = play;
+  HTMLAudioElement.prototype.play = play;
+})(window, document);
+
 
 function initVideos() {
   for (let i = 0, len = videos.length; i < len; i++) {
@@ -331,7 +359,7 @@ function init() {
   }
 
   function initMusics() {
-    for (let e = 0; e < musics.length; e++) {
+    for (let e = 1; e < musics.length; e++) {
       let music = musics[e]
       function handleBridgeReady() {
         document.removeEventListener("WeixinJSBridgeReady", handleBridgeReady)
@@ -356,7 +384,7 @@ function init() {
   }
 
   function initMusicsOld() {
-    for (var e = 0; e < musics.length; e++)
+    for (var e = 1; e < musics.length; e++)
       !(function (e) {
         var t = $("#" + musics[e].id)[0],
           i = function () {
@@ -368,6 +396,11 @@ function init() {
         $(t).on("play", function () {
           this.pause();
         });
+
+        t.addEventListener('ended', () => {
+          musics[e].played = ''
+        })
+
         try {
           t.play();
         } catch (error) {
@@ -382,7 +415,11 @@ function init() {
   loadResource();
   initMusicsOld();
 
-  audioAutoPlay('z0_m1')
+  //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
+  document.addEventListener("WeixinJSBridgeReady", function () {
+    document.getElementById('z0_m1').play();
+    musics[0].played = true
+  }, false);
 
   initPoster();
   window.pages = hiloViews;
