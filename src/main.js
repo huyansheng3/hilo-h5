@@ -40,7 +40,9 @@ function initPoster() {
   let uploadImage = '', name = '', address = '';
 
   $('#left-btn').on('click', e => {
-
+    // 详细参考 https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
+    const oauthUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=${encodeURI(location.href)}&response_type=code&scope=snsapi_base&state=authed#wechat_redirect`
+    location.href = oauthUrl
 
     // http://api.hongyu.ren/lsd/posters
     // 参数

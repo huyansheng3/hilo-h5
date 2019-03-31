@@ -11,7 +11,7 @@ export const musics = [
   { id: "z0_m1", start: 0, end: height * 3 },
   { id: "z1_m1", start: height * 3.5, end: height * 4 },
   { id: "z3_m1", start: height * 5.5, end: height * 7 },
-  { id: "z4_m1", start: height * 7.5, end: height * 13 },
+  { id: "z4_m1", start: height * 7.5, end: height * 9 },
   { id: "z5_m1", start: height * 13.5, end: height * 15 },
   { id: "z6_m1", start: height * 15.5, end: height * 17 },
 ];
