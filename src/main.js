@@ -44,24 +44,36 @@ function initPoster() {
     const oauthUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=${encodeURI(location.href)}&response_type=code&scope=snsapi_base&state=authed#wechat_redirect`
     location.href = oauthUrl
 
-    // http://api.hongyu.ren/lsd/posters
-    // 参数
-    // openid   微信openid
-    // w   浏览器可见宽度
-    // h   浏览器可见高度
-
-    const data = {
-      openid: '',
-      w: $(window).width(),
-      h: $(window).height(),
+    const accessTokenData = {
+      appid: 'APPID',
+      secret: 'SECRET',
+      code: 'CODE',
+      grant_type: 'authorization_code'
     }
 
-    $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
-      console.log(response)
-      $('#lansidai').hide()
-      $('#count').text(1233)
-      $('#poster').show()
+    $.get('https://api.weixin.qq.com/sns/oauth2/access_token', accessTokenData, function (response) {
+      // http://api.hongyu.ren/lsd/posters
+      // 参数
+      // openid   微信openid
+      // w   浏览器可见宽度
+      // h   浏览器可见高度
+      const data = {
+        openid: response.openid,
+        w: $(window).width(),
+        h: $(window).height(),
+      }
+
+      $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+        console.log(response)
+        $('#lansidai').hide()
+        $('#count').text(1233)
+        $('#poster').show()
+      })
     })
+
+
+
+
   })
 
   $('#right-btn').on('click', e => {
