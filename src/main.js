@@ -332,27 +332,27 @@ function init() {
 
   function initMusics() {
     for (let e = 0; e < musics.length; e++) {
-      let music = $("#" + musics[e].id)[0];
+      let music = musics[e]
       function handleBridgeReady() {
         document.removeEventListener("WeixinJSBridgeReady", handleBridgeReady)
         document.removeEventListener("YixinJSBridgeReady", handleBridgeReady)
-        music.play();
+        music.el.play();
       };
-      $(music).on("play", function () {
+      $(`#${music.id}`).on("play", function () {
         this.pause();
       });
-      try {
-        if (music.paused) {
-          music.play();
-        }
-      } catch (e) {
-        console.log(e)
-      }
       document.addEventListener("WeixinJSBridgeReady", handleBridgeReady, false);
       document.addEventListener("YixinJSBridgeReady", handleBridgeReady, false);
     }
 
-    audioAutoPlay('z0_m1')
+    let firstTouch = true;
+    $("body").on("touchstart", function (e) {
+      if (firstTouch) {
+        firstTouch = false;
+        document.getElementById('z0_m1').play();
+      }
+    });
+
   }
 
   initHilo();
@@ -365,9 +365,6 @@ function init() {
       initMusics()
     }, 500);
   }
-
-
-
 
   initPoster();
   window.pages = hiloViews;
