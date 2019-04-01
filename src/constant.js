@@ -1,4 +1,4 @@
-const height = window.innerHeight > 1334 ? 1334 : window.innerHeight
+const height = 1334
 
 // 1homepage背景音效.mp3
 // 2等待红绿灯.mp3

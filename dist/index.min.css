@@ -496,7 +496,7 @@ html {
 #form #confirm-btn {
   position: absolute;
   left: 50%;
-  bottom: 28%;
+  top: 72%;
   transform: translateX(-50%);
 }
 

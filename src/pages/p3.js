@@ -1,5 +1,5 @@
 const e = 750;
-const t = window.innerHeight > 1334 ? 1334 : window.innerHeight;
+const t = 1334;
 const h = { p2: 0, p2: t - 1206, p3: t - 1334, p4: t - 1334 };
 
 

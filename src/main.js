@@ -155,7 +155,7 @@ function audioAutoPlay(id) {
 
 function init() {
   const width = 750,
-    height = window.innerHeight > 1334 ? 1334 : window.innerHeight,
+    height = 1334,
     app$ = $("#app");
 
   const delays = {
