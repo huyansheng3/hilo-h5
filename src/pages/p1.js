@@ -15,7 +15,6 @@ const views = [
         ]
     },
 
-
     {
         id: "story1.jpg",
         type: "Bitmap",
@@ -49,10 +48,11 @@ const views = [
         frames: "story1-1-texture.sprite",
         parent: "p1",
         delay: "p1",
-        propes: { interval: 200, timeBased: true, y: t },
-        animations: []
+        propes: {
+            interval: 200, timeBased: true, y: t
+        },
+        animations: {}
     },
-
     {
         id: "story1-2-texture",
         type: "TextureAtlas",
@@ -74,8 +74,19 @@ const views = [
         frames: "story1-2-texture.sprite",
         parent: "p1",
         delay: "p1",
-        propes: { interval: 200, timeBased: true, y: 2 * t },
-        animations: []
+        propes: {
+            interval: 200, timeBased: true,
+            y: 2 * t,
+            x: e / 2,
+            pivotX: e / 2,
+            pivotY: t / 2,
+            scaleX: 1,
+            scaleY: 1
+        },
+        animations: [
+            { prope: "scaleX", time: [0, 1 * t, 3 * t, 3 * t], value: [1, 3] },
+            { prope: "scaleY", time: [0, 1 * t, 3 * t, 3 * t], value: [1, 3] },
+        ]
     },
 
     {

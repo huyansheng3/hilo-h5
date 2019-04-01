@@ -13,18 +13,21 @@
   <meta name="x5-fullscreen" content="true" />
   <meta name="360-fullscreen" content="true" />
   <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-  <script id="fiboDataSDK" type="text/javascript" src="http://sdk.fibodata.com/data/datasdk.min.js?pfid=fiboUser&appid=VCessiJ9"> </script>
+  <script id="fiboDataSDK" type="text/javascript"
+    src="http://sdk.fibodata.com/data/datasdk.min.js?pfid=fiboUser&appid=VCessiJ9"> </script>
   <script src="./flexible.js"></script>
   <script src="./zepto.js"></script>
   <script src="./qrcode.min.js"></script>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script src="./share.js"></script>
-
-  <script src="./eruda.min.js"></script>
   <script>
-    if (location.search.indexOf('test') !== -1) {
-      eruda.init();
-    }
+    ; (function () {
+      var src = './eruda.min.js';
+      if (location.search.indexOf('test') !== -1) {
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+      }
+    })();
   </script>
   <link rel="stylesheet" href="./index.min.css" />
 </head>
@@ -56,18 +59,42 @@
       <div class="progress">0%</div>
     </div>
 
-    <div class="video" id="mother">
-    </div>
+    <div class="pages">
+      <div class="page">
+        <video preload="auto" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true"
+          playsinline="true" x5-playsinline="true" poster="/images/mother.png"
+          src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/manager.mp4" class="video"
+          id="mother"></video>
+      </div>
 
-    <div class="video" id="manager">
-    </div>
 
-    <div class="video" id="student">
-    </div>
+      <div class="page">
+        <video preload="auto" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true"
+          playsinline="true" x5-playsinline="true" poster="/images/manager.png"
+          src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/mum.mp4" class="video"
+          id="manager"></video>
+      </div>
 
-    <div class="video" id="shallen">
-    </div>
+      <div class="page">
+        <video preload="auto" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true"
+          playsinline="true" x5-playsinline="true" poster="/images/student.png"
+          src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/student.mp4" class="video"
+          id="student"></video>
 
+      </div>
+
+      <div class="page">
+        <video preload="auto" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true"
+          playsinline="true" x5-playsinline="true" poster="/images/shallen.png"
+          src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/shallen.mp4" class="video"
+          id="shallen"></video>
+      </div>
+
+
+
+
+
+    </div>
 
     <div id="lansidai">
       <img id="left-btn" src="/images/left-btn.png" alt="btn" role="button">
@@ -111,16 +138,12 @@
     </div>
 
     <div id="wall">
-      <div id="wall-image-bg">
-        <img id="wall-image" src="" alt="">
-      </div>
-      <div id="wall-info">
-        <div id="wall-name"></div>
-        <div id="wall-address"></div>
-      </div>
+      <img id="wall-image" src="" alt="">
     </div>
 
+
   </div>
+
 
   <div class="musics">
 

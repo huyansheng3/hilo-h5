@@ -31,6 +31,7 @@ export const videos = [
 const source = "/";
 export const images = [
   { id: "homepage.jpg", src: source + "images/homepage.jpg" },
+  { id: "star.png", src: source + "images/star.png" },
   { id: "story1-1-texture.jpg", src: source + "images/story1-1-texture.jpg" },
   { id: "story1-2-texture.jpg", src: source + "images/story1-2-texture.jpg" },
   { id: "story1-3.jpg", src: source + "images/story1-3.jpg" },

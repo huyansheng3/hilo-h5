@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="UTF-8">
+    <title>礼敬贵人，国喜天下</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!-- 独立样式 -->
+</head>
+
+<body>
+    <!-- 公共JS -->
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="js/share.js"></script>
+
+    <script>
+        (function (doc, win, undefined) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (clientWidth === undefined) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                };
+            if (doc.addEventListener === undefined) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false)
+        })(document, window);
+    </script>
+    <div class="page page-1 js-page-1">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/huawei-quan.png" alt=""
+            class="quan animated fadeIn">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/huawei-map.png" alt=""
+            class="map animated zoomIn">
+        <img src="imgs/one-title.png" alt="" class="title animated zoomIn">
+        <img src="imgs/yx.png" alt="" class="yx animated bounceIn">
+    </div>
+    <div class="page page-2 js-page-2" style="display: none;">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/two-map.png" alt="" class="map">
+        <img src="imgs/two-title.png" alt="" class="two-title">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/chuan-1.png" alt="" class="chuan-1">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/chuan-2.png" alt="" class="chuan-2">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/chuan-3.png" alt="" class="chuan-3">
+        <video preload="auto" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true"
+            playsinline="true" x5-playsinline="true"
+            src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/jinqiu.mp4" id="video"></video>
+    </div>
+    <div class="page page-2 page-3 js-page-3" style="display: none;">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/two-map.png" alt="" class="map">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/chuan-1.png" alt="" class="chuan-1">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/chuan-2.png" alt="" class="chuan-2">
+        <img src="http://hongyu-static.oss-cn-beijing.aliyuncs.com/shx/imgs/chuan-3.png" alt="" class="chuan-3">
+        <img src="imgs/three-title.png" alt="" class="three-title animated zoomIn">
+
+        <div id="cover" class="cover"
+            style="position: absolute;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.6);z-index: 5">
+            <div class="relative" style="width: 100%;height: 100%;">
+                <img src="imgs/1.png" alt="" style="position: absolute;width: 4.56rem;top: 0;right: 0;">
+            </div>
+        </div>
+    </div>
+    <script>
+        videoAutoPlay();
+        function videoAutoPlay() {
+            var video = document.getElementById('video');
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                video.play();
+                var timer = setInterval(function () {
+                    if (video.currentTime) {
+                        video.pause();
+                        clearInterval(timer)
+                    }
+                }, 50)
+
+            }, false);
+            video.onended = function () {
+                $(".js-page-2").fadeOut(0)
+                $(".js-page-3").fadeIn(500)
+            }
+        }
+        setTimeout(funcTwo, 3000);
+
+        function funcTwo() {
+            $(".js-page-1").fadeOut(0)
+            $(".js-page-2").fadeIn(500)
+            var video = document.getElementById('video');
+            video.play()
+        }
+        $("#cover").click(function () {
+            $(this).fadeOut(0)
+            // console.log('a');
+        });
+    </script>
+</body>
+
+</html>

@@ -79,9 +79,17 @@ const views = [
         parent: "p2",
         delay: "p2",
         propes: {
-            y: 4 * t
+            y: 4 * t,
+            x: e / 2,
+            pivotX: e / 2,
+            pivotY: t / 2,
+            scaleX: 1,
+            scaleY: 1
         },
-        animations: []
+        animations: [
+            { prope: "scaleX", time: [0, 3 * t, 5 * t, 5 * t], value: [1, 3] },
+            { prope: "scaleY", time: [0, 3 * t, 5 * t, 5 * t], value: [1, 3] },
+        ]
     },
     {
         id: "story2-5-1-2",

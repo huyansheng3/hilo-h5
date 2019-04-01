@@ -4,9 +4,7 @@ import { Scroller } from "scroller";
 import pace from "pace";
 import { musics, images, videos } from "./constant";
 import views from "./views";
-import wechatH5Video from 'wechat-h5-video';
-
-console.log('innerHeight', window.innerHeight, window.innerWidth);
+import AnimateCurve, { coord } from './lib/bezier';
 
 function initVideos() {
   for (let i = 0, len = videos.length; i < len; i++) {
@@ -43,39 +41,26 @@ function initPoster() {
     var openid = "<?php echo $userinfo['openid'];?>";
 
     // 详细参考 https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
-    const oauthUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=${encodeURI(location.href)}&response_type=code&scope=snsapi_base&state=authed#wechat_redirect`
-    location.href = oauthUrl
+    // const oauthUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=${encodeURI(location.href)}&response_type=code&scope=snsapi_base&state=authed#wechat_redirect`
+    // location.href = oauthUrl
 
-    const accessTokenData = {
-      appid: 'APPID',
-      secret: 'SECRET',
-      code: 'CODE',
-      grant_type: 'authorization_code'
+    // http://api.hongyu.ren/lsd/posters
+    // 参数
+    // openid   微信openid
+    // w   浏览器可见宽度
+    // h   浏览器可见高度
+    const data = {
+      openid: openid,
+      w: $(window).width(),
+      h: $(window).height(),
     }
 
-    $.get('https://api.weixin.qq.com/sns/oauth2/access_token', accessTokenData, function (response) {
-      // http://api.hongyu.ren/lsd/posters
-      // 参数
-      // openid   微信openid
-      // w   浏览器可见宽度
-      // h   浏览器可见高度
-      const data = {
-        openid: response.openid,
-        w: $(window).width(),
-        h: $(window).height(),
-      }
-
-      $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
-        console.log(response)
-        $('#lansidai').hide()
-        $('#count').text(1233)
-        $('#poster').show()
-      })
+    $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+      console.log(response)
+      $('#lansidai').hide()
+      $('#count').text(1233)
+      $('#poster').show()
     })
-
-
-
-
   })
 
   $('#right-btn').on('click', e => {
@@ -88,8 +73,6 @@ function initPoster() {
   })
 
   $('#confirm-btn').on('click', e => {
-
-
     // http://api.hongyu.ren/lsd/apply
 
     name = $('#name')[0].value
@@ -115,13 +98,11 @@ function initPoster() {
 
     $.post('http://api.hongyu.ren/lsd/apply', data, function (response) {
       console.log(response)
+      // response.image
+      $('#wall-image').attr('src', response.imgurl)
+      $('#form').hide()
+      $('#wall').show()
     })
-
-    $('#wall-image').attr('src', uploadImage)
-    $('#wall-name').text(name)
-    $('#wall-address').text(address)
-    $('#form').hide()
-    $('#wall').show()
   })
 
   $('#upload').on('change', e => {
@@ -132,28 +113,28 @@ function initPoster() {
         uploadImage = e.target.result
         $('#upload-btn').attr('src', e.target.result);
       };
-
       reader.readAsDataURL(files[0]);
     }
   })
 }
 
-function audioAutoPlay(id) {
-  var audio = document.getElementById(id);
-  if (window.WeixinJSBridge) {
-    WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
-      audio.play();
-    }, false);
-  } else {
-    document.addEventListener("WeixinJSBridgeReady", function () {
-      WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
-        audio.play();
-      });
-    }, false);
-  }
-  audio.play();
-  return false;
+function videoAutoPlay(id) {
+  var video = document.getElementById(id);
+  document.addEventListener("WeixinJSBridgeReady", function () {
+    video.play();
+    var timer = setInterval(function () {
+      if (video.currentTime) {
+        video.pause();
+        clearInterval(timer)
+      }
+    }, 50)
+
+  }, false);
 }
+
+videos.forEach((video) => {
+  videoAutoPlay(video.id)
+})
 
 function init() {
   const width = 750,
@@ -261,6 +242,32 @@ function init() {
       }
     }
 
+    let P1 = coord(380, 500),
+      P2 = coord(300, 780),
+      P3 = coord(180, 570),
+      P4 = coord(400, 900)
+
+    function drawStar(pos) {
+      hiloViews.star.x = pos.x
+      hiloViews.star.y = pos.y
+      if (hiloViews.star.scaleX > 3) {
+        hiloViews.star.scaleX = 1
+        hiloViews.star.scaleY = 1
+      }
+
+      if (hiloViews.star.rotation > 90) {
+        hiloViews.star.rotation = 0
+      }
+
+      hiloViews.star.rotation = hiloViews.star.rotation + 0.5
+      hiloViews.star.scaleX = hiloViews.star.scaleX + 0.02
+      hiloViews.star.scaleY = hiloViews.star.scaleY + 0.02
+    }
+
+    const animateCurve = new AnimateCurve({ P1, P2, P3, P4, callback: drawStar })
+
+    animateCurve.start()
+
     for (let e = 0; e < musics.length; e++) {
       let i = musics[e];
       i.el = $("#" + i.id)[0];
@@ -271,12 +278,13 @@ function init() {
     if (top === 20 * height) {
       app$.hide();
       $('.video').show();
+
       $('#lansidai').show();
-      initVideos();
       $('.common-container').css({
         'overflow-y': 'scroll'
       })
     }
+
     window.timer = top;
 
     for (let len = views.length, i = 0; i < len; i++) {
@@ -310,29 +318,6 @@ function init() {
     }
 
     for (let e = 0; e < musics.length; e++) {
-      // let music = musics[e];
-      // if (music.start && top < music.start && !music.el.paused) {
-      //   music.played = ""
-      //   music.el.pause()
-      //   LOG("min pause " + music.el.id + ", top:" + top)
-      // } else {
-      //   if (music.end && top >= music.end && !music.el.paused) {
-      //     music.el.pause()
-      //     music.played = ""
-      //     LOG("max pause " + music.el.id + ", top:" + top)
-      //   } else {
-      //     if (music.start &&
-      //       top >= music.start &&
-      //       !music.played &&
-      //       music.el.paused &&
-      //       ((music.end && top < music.end) || !music.end)) {
-      //       music.el.play();
-      //       music.played = true;
-      //       LOG("play " + music.el.id + ", top:" + top)
-      //     }
-      //   }
-      // }
-
       let v = musics[e];
       v.start && top < v.start && !v.el.paused
         ? ((v.played = ""),
@@ -454,6 +439,7 @@ function init() {
   }, false);
 
   initPoster();
+
   window.pages = hiloViews;
   window.nyphile = app$;
   window.loadQueue = loadQueue;

@@ -14,6 +14,8 @@ const views = [
             { prope: "alpha", time: [0, 0, t, t], value: [1, 0] },
         ]
     },
+
+
     {
         id: "homepage.jpg",
         type: "Bitmap",
@@ -23,6 +25,39 @@ const views = [
         propes: {},
         animations: []
     },
+
+    {
+        id: "star",
+        type: "Bitmap",
+        image: "star.png",
+        parent: "p0",
+        delay: "p0",
+        propes: {
+            x: e / 2, y: t / 2,
+            pivotX: 90,
+            pivotY: 74,
+        },
+        animations: {}
+    },
+
+    // {
+    //     id: "star2",
+    //     type: "Graphics",
+    //     parent: "p0",
+    //     propes: { x: e / 2, y: t / 2 },
+    //     delay: "p0",
+    //     draw: function () {
+    //         this.lineStyle(1, "#b5dced")
+    //             .beginFill("#b5dced")
+    //             .drawRect(0, 0, 10, 10)
+    //             .endFill();
+    //     },
+    //     animations: [
+    //     ]
+    // },
+
+
+
 ];
 
 export default views;
