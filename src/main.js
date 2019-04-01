@@ -37,8 +37,48 @@ function LOG(e) {
 function initPoster() {
   let uploadImage = '', name = '', address = '';
 
+  //解决ios微信浏览器页面滑动上去不能归位bug
+    let focus_hotel_name = false;
+    let focus_hotel_address = false;
+    let focus_name = false;
+    $('.hotel_name').on('focus', function() {
+        focus_hotel_name = true
+    });
+    $('.hotel_address').on('focus', function() {
+        focus_hotel_address = true
+    });
+    $('.name').on('focus', function() {
+        focus_name = true
+    });
+    $('.hotel_name').on('blur', function() {
+        focus_hotel_name = false
+        setTimeout( function(){
+            if (!focus_hotel_name && !focus_hotel_address && !focus_name) {
+                $(window).scrollTop(0);
+            }
+        }, 50 );
+
+    });
+    $('.hotel_address').on('blur', function() {
+        focus_hotel_address = false
+        setTimeout( function(){
+            if (!focus_hotel_name && !focus_hotel_address && !focus_name) {
+                $(window).scrollTop(0);
+            }
+        }, 50 );
+    });
+    $('.name').on('blur', function() {
+        focus_name = false
+        setTimeout( function(){
+            if (!focus_hotel_name && !focus_hotel_address && !focus_name) {
+                $(window).scrollTop(0);
+            }
+        }, 50 );
+    });
+
+
+
   $('#left-btn').on('click', e => {
-    var openid = "<?php echo $userinfo['openid'];?>";
 
     // 详细参考 https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
     // const oauthUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=${encodeURI(location.href)}&response_type=code&scope=snsapi_base&state=authed#wechat_redirect`
@@ -99,7 +139,7 @@ function initPoster() {
     $.post('http://api.hongyu.ren/lsd/apply', data, function (response) {
       console.log(response)
       // response.image
-      $('#wall-image').attr('src', response.imgurl)
+      $('#wall-image').attr('src', response.data.imgurl)
       $('#form').hide()
       $('#wall').show()
     })
@@ -438,6 +478,8 @@ function init() {
     musics[0].played = true
   }, false);
 
+  var openid = "<?php echo $userinfo['openid'];?>";
+  console.log('op = ' + openid)
   initPoster();
 
   window.pages = hiloViews;

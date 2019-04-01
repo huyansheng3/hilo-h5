@@ -28,19 +28,19 @@ $.ajax({
 
 function initShar() {
     wx.onMenuShareTimeline({
-        title: '蓝丝带活动',
-        desc: '蓝丝带活动',
-        link: dataSDK.dealUrl('http://mapp.hongyu.ren/2019/03/lsd/index.html'),
-        imgUrl: 'http://mapp.hongyu.ren/2019/03/lsd/images/share.png',
+        title: '她们在黑暗中苦苦挣扎 最终无力坠入深渊里',
+        desc: '用3个真实故事为你揭开险恶的真面目',
+        link: dataSDK.dealUrl('http://lsd.hongyu.ren/index.php'),
+        imgUrl: 'http://lsd.hongyu.ren/images/share.png',
         success: function(res){
             dataSDK.share('timeline');
         }
     });
     wx.onMenuShareAppMessage({
-        title: '蓝丝带活动',
-        desc: '蓝丝带活动',
-        link: dataSDK.dealUrl('http://mapp.hongyu.ren/2019/03/lsd/index.html'),
-        imgUrl: 'http://mapp.hongyu.ren/2019/03/lsd/images/share.png',
+        title: '她们在黑暗中苦苦挣扎 最终无力坠入深渊里',
+        desc: '用3个真实故事为你揭开险恶的真面目',
+        link: dataSDK.dealUrl('http://lsd.hongyu.ren/index.php'),
+        imgUrl: 'http://lsd.hongyu.ren/images/share.png',
         success: function(res){
             dataSDK.share('message');
         }

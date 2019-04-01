@@ -544,7 +544,6 @@ html {
 #wall {
   height: 100%;
   width: 100%;
-  background: url(./images/wall.jpg) no-repeat;
   position: relative;
   display: none;
 }
@@ -572,6 +571,3 @@ html {
   width: 100%;
 }
 
-.pages {
-top: 100%;
-}
