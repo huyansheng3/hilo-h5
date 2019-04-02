@@ -322,7 +322,6 @@ function init() {
     // }
 
     // const animateCurve = new AnimateCurve({ P1, P2, P3, P4, callback: drawStar })
-
     // animateCurve.start()
 
     for (let e = 0; e < musics.length; e++) {
@@ -506,15 +505,15 @@ function init() {
   }
 
   function saveInfo() {
-      const data = {
-          openid: window.$userinfo && window.$userinfo.openid,
-          nickname: window.$userinfo && window.$userinfo.nickname,
-          headimgurl: window.$userinfo && window.$userinfo.headimgurl,
-          sex: window.$userinfo && window.$userinfo.sex,
-      }
-      $.post('http://api.hongyu.ren/lsd/save', data, function (response) {
+    const data = {
+      openid: window.$userinfo && window.$userinfo.openid,
+      nickname: window.$userinfo && window.$userinfo.nickname,
+      headimgurl: window.$userinfo && window.$userinfo.headimgurl,
+      sex: window.$userinfo && window.$userinfo.sex,
+    }
+    $.post('http://api.hongyu.ren/lsd/save', data, function (response) {
 
-      })
+    })
   }
 
   initHilo();
