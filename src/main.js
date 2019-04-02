@@ -505,8 +505,21 @@ function init() {
       })(e);
   }
 
+  function saveInfo() {
+      const data = {
+          openid: window.$userinfo && window.$userinfo.openid,
+          nickname: window.$userinfo && window.$userinfo.nickname,
+          headimgurl: window.$userinfo && window.$userinfo.headimgurl,
+          sex: window.$userinfo && window.$userinfo.sex,
+      }
+      $.post('http://api.hongyu.ren/lsd/save', data, function (response) {
+
+      })
+  }
+
   initHilo();
   loadResource();
+  saveInfo();
   initMusicsOld();
 
   //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
