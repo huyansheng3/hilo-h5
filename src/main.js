@@ -335,11 +335,31 @@ function init() {
     if (top === 20 * height) {
       app$.hide();
       $('.video').show();
+      $('.wp').show();
+      $('.wp-inner').fullpage({
+        change: function (e) {
+          console.log('change', e.next, e.cur);
+          $('.indicator li').removeClass('cur').eq(e.cur).addClass('cur');
+        },
+        beforeChange: function (e) {
+          console.log('beforeChange', e.next, e.cur);
+          let nextVideo, currVideo
+          if (e.next !== undefined && videos[e.next]) {
+            nextVideo = document.getElementById(videos[e.next].id);
+          }
+          if (e.cur !== undefined && videos[e.cur]) {
+            currVideo = document.getElementById(videos[e.cur].id);
+          }
+          nextVideo && nextVideo.play()
+          currVideo && currVideo.pause()
+        },
+        afterChange: function (e) {
+          console.log('afterChange', e.next, e.cur);
+        }
+      });
 
       $('#lansidai').show();
-      $('.common-container').css({
-        'overflow-y': 'scroll'
-      })
+
     }
 
     window.timer = top;
@@ -499,6 +519,8 @@ function init() {
   console.log('op = ' + openid)
   initPoster();
   initVideos();
+
+
 
   window.pages = hiloViews;
   window.nyphile = app$;
