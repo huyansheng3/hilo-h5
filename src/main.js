@@ -6,25 +6,25 @@ import { musics, images, videos } from "./constant";
 import views from "./views";
 import AnimateCurve, { coord } from './lib/bezier';
 
-function initVideos() {
-  for (let i = 0, len = videos.length; i < len; i++) {
-    let video = videos[i]
-    if (video.wechatVideo) return
-    let wechatVideo = new wechatH5Video(video.src, {
-      context: video.id,
-      mask: true,
-      fill: true,
-      poster: `/images/${video.id}.png`,
-      playBtn: true,
-      jumpBtn: false,
-      autoClose: false,
-      canvas: false,
-      isRotate: false,
-    });
-    wechatVideo.load();
-    video.wechatVideo = wechatVideo
-  }
-}
+// function initVideos() {
+//   for (let i = 0, len = videos.length; i < len; i++) {
+//     let video = videos[i]
+//     if (video.wechatVideo) return
+//     let wechatVideo = new wechatH5Video(video.src, {
+//       context: video.id,
+//       mask: true,
+//       fill: true,
+//       poster: `/images/${video.id}.png`,
+//       playBtn: true,
+//       jumpBtn: false,
+//       autoClose: false,
+//       canvas: false,
+//       isRotate: false,
+//     });
+//     wechatVideo.load();
+//     video.wechatVideo = wechatVideo
+//   }
+// }
 
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
@@ -90,15 +90,15 @@ function initPoster() {
     // w   浏览器可见宽度
     // h   浏览器可见高度
     const data = {
-      openid: openid,
+      openid: window.$userinfo && window.$userinfo.openid,
       w: $(window).width(),
       h: $(window).height(),
     }
 
     $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
-      console.log(response)
+      $('#poster-image').attr('src', response.data.imgurl)
       $('#lansidai').hide()
-      $('#count').text(1233)
+      $('#pages').hide()
       $('#poster').show()
     })
   })
@@ -114,10 +114,26 @@ function initPoster() {
 
   $('#confirm-btn').on('click', e => {
     // http://api.hongyu.ren/lsd/apply
+    let store_name = $('#name')[0].value,
+      store_address = $('#address')[0].value,
+      name = $('#username')[0].value
 
-    name = $('#name')[0].value
-    address = $('#address')[0].value
-    address = $('#username')[0].value
+    if (!uploadImage) {
+      confirm('请上传图片')
+      return
+    }
+    if (!store_name) {
+      confirm('请输入酒店名称')
+      return
+    }
+    if (!store_address) {
+      confirm('请输入酒店地址')
+      return
+    }
+    if (!name) {
+      confirm('请申请人姓名')
+      return
+    }
 
     // 参数
     // store_name   酒店名称
@@ -128,19 +144,18 @@ function initPoster() {
     // h   浏览器可见高度
 
     const data = {
-      store_name: $('#name')[0].value,
-      store_address: $('#address')[0].value,
+      store_name,
+      store_address,
       store_image: uploadImage,
-      name: $('#username')[0].value,
+      name,
       w: $(window).width(),
       h: $(window).height(),
     }
 
     $.post('http://api.hongyu.ren/lsd/apply', data, function (response) {
-      console.log(response)
-      // response.image
       $('#wall-image').attr('src', response.data.imgurl)
       $('#form').hide()
+      $('#pages').hide()
       $('#wall').show()
     })
   })
@@ -158,23 +173,25 @@ function initPoster() {
   })
 }
 
-function videoAutoPlay(id) {
-  var video = document.getElementById(id);
-  document.addEventListener("WeixinJSBridgeReady", function () {
-    video.play();
-    var timer = setInterval(function () {
-      if (video.currentTime) {
-        video.pause();
-        clearInterval(timer)
-      }
-    }, 50)
+function initVideos() {
+  function videoAutoPlay(id) {
+    var video = document.getElementById(id);
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      video.play();
+      var timer = setInterval(function () {
+        if (video.currentTime) {
+          video.pause();
+          clearInterval(timer)
+        }
+      }, 50)
 
-  }, false);
+    }, false);
+  }
+
+  videos.forEach((video) => {
+    videoAutoPlay(video.id)
+  })
 }
-
-videos.forEach((video) => {
-  videoAutoPlay(video.id)
-})
 
 function init() {
   const width = 750,
@@ -478,9 +495,10 @@ function init() {
     musics[0].played = true
   }, false);
 
-  var openid = window.$userinfo.openid;
+  var openid = window.$userinfo && window.$userinfo.openid;
   console.log('op = ' + openid)
   initPoster();
+  initVideos();
 
   window.pages = hiloViews;
   window.nyphile = app$;

@@ -19,6 +19,7 @@
   <script src="./qrcode.min.js"></script>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script src="./share.js"></script>
+  <script type="text/javascript" src="./fullPage.min.js"></script>
   <script>
     ; (function () {
       var src = './eruda.min.js';
@@ -58,7 +59,7 @@
       <div class="progress">0%</div>
     </div>
 
-    <div class="pages">
+    <div id="pages">
       <div class="page">
         <video preload="auto" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true"
           playsinline="true" x5-playsinline="true" poster="/images/mother.png"
@@ -97,8 +98,7 @@
     </div>
 
     <div id="poster">
-      <img id="avator" src="/images/avator.png" alt="avator">
-      <span id="count">1213</span>
+      <img id="poster-img" alt="poster">
     </div>
 
     <div id="form">
@@ -135,7 +135,6 @@
     <div id="wall">
       <img id="wall-image" src="" alt="">
     </div>
-
 
   </div>
 

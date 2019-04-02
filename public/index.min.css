@@ -566,7 +566,7 @@ html {
 }
 
 
-#wall-image {
+#wall-image, #poster-img {
   height: 100%;
   width: 100%;
 }
