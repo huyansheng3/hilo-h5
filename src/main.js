@@ -183,7 +183,7 @@ function initVideos() {
           video.pause();
           clearInterval(timer)
         }
-      }, 50)
+      }, 20)
 
     }, false);
   }
@@ -336,12 +336,7 @@ function init() {
       $('.video').show();
       $('.wp').show();
       $('.wp-inner').fullpage({
-        change: function (e) {
-          console.log('change', e.next, e.cur);
-          $('.indicator li').removeClass('cur').eq(e.cur).addClass('cur');
-        },
         beforeChange: function (e) {
-          console.log('beforeChange', e.next, e.cur);
           let nextVideo, currVideo
           if (e.next !== undefined && videos[e.next]) {
             nextVideo = document.getElementById(videos[e.next].id);
@@ -349,12 +344,12 @@ function init() {
           if (e.cur !== undefined && videos[e.cur]) {
             currVideo = document.getElementById(videos[e.cur].id);
           }
-          nextVideo && nextVideo.play()
+
+          console.log('nextVideo', nextVideo)
+          console.log('currVideo', currVideo)
           currVideo && currVideo.pause()
+          nextVideo && nextVideo.play()
         },
-        afterChange: function (e) {
-          console.log('afterChange', e.next, e.cur);
-        }
       });
 
       $('#lansidai').show();
