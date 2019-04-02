@@ -158,12 +158,13 @@ function initVideos() {
     let video = document.getElementById(id);
     document.addEventListener("WeixinJSBridgeReady", function () {
       video.play();
-      var timer = setInterval(function () {
-        if (video.currentTime) {
-          video.pause();
-          clearInterval(timer)
-        }
-      }, 20)
+      video.pause();
+      // var timer = setInterval(function () {
+      //   if (video.currentTime) {
+      //     video.pause();
+      //     clearInterval(timer)
+      //   }
+      // }, 20)
     }, false);
   }
 
