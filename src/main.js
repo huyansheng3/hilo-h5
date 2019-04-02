@@ -96,7 +96,7 @@ function initPoster() {
     }
 
     $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
-      $('#poster-image').attr('src', response.data.imgurl)
+      $('#poster-img').attr('src', response.data.imgurl)
       $('#lansidai').hide()
       $('#pages').hide()
       $('#poster').show()
