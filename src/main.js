@@ -6,26 +6,6 @@ import { musics, images, videos } from "./constant";
 import views from "./views";
 import AnimateCurve, { coord } from './lib/bezier';
 
-// function initVideos() {
-//   for (let i = 0, len = videos.length; i < len; i++) {
-//     let video = videos[i]
-//     if (video.wechatVideo) return
-//     let wechatVideo = new wechatH5Video(video.src, {
-//       context: video.id,
-//       mask: true,
-//       fill: true,
-//       poster: `/images/${video.id}.png`,
-//       playBtn: true,
-//       jumpBtn: false,
-//       autoClose: false,
-//       canvas: false,
-//       isRotate: false,
-//     });
-//     wechatVideo.load();
-//     video.wechatVideo = wechatVideo
-//   }
-// }
-
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
 }
@@ -175,7 +155,7 @@ function initPoster() {
 
 function initVideos() {
   function videoAutoPlay(id) {
-    var video = document.getElementById(id);
+    let video = document.getElementById(id);
     document.addEventListener("WeixinJSBridgeReady", function () {
       video.play();
       var timer = setInterval(function () {
@@ -184,7 +164,6 @@ function initVideos() {
           clearInterval(timer)
         }
       }, 20)
-
     }, false);
   }
 
@@ -507,27 +486,22 @@ function init() {
       sex: window.$userinfo && window.$userinfo.sex,
     }
     $.post('http://api.hongyu.ren/lsd/save', data, function (response) {
-
+      console.log(response)
     })
   }
 
   initHilo();
   loadResource();
-  saveInfo();
+  // saveInfo();
   initMusicsOld();
+  initVideos();
+  initPoster();
 
   //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
   document.addEventListener("WeixinJSBridgeReady", function () {
     document.getElementById('z0_m1').play();
     musics[0].played = true
   }, false);
-
-  var openid = window.$userinfo && window.$userinfo.openid;
-  console.log('op = ' + openid)
-  initPoster();
-  initVideos();
-
-
 
   window.pages = hiloViews;
   window.nyphile = app$;
