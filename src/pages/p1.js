@@ -100,11 +100,9 @@ const views = [
         image: "story1-4-texture.jpg",
         parent: "null",
         propes: {
-            frames: [[2, 2674, 750, 1334],
-            [2, 1338, 750, 1334],
-            [2, 2, 750, 1334]],
+            frames: [[754, 2, 750, 1334], [2, 2, 750, 1334]],
             sprites: {
-                sprite: [0, 1, 2]
+                sprite: [0, 1]
             }
         },
         animations: {}

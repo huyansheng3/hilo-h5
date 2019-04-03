@@ -1,4 +1,4 @@
-const texture = require('./story1-5-texture.json')
+const texture = require('./story1-4-texture.json')
 const fs = require('fs')
 
 const frames = texture.frames.map(item => {

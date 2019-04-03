@@ -418,10 +418,11 @@ function init() {
         document.removeEventListener("WeixinJSBridgeReady", handleBridgeReady)
         document.removeEventListener("YixinJSBridgeReady", handleBridgeReady)
         music.el.play();
+        music.el.pause();
       };
-      $(`#${music.id}`).on("play", function () {
-        this.pause();
-      });
+      // $(`#${music.id}`).on("play", function () {
+      //   this.pause();
+      // });
       document.addEventListener("WeixinJSBridgeReady", handleBridgeReady, false);
       document.addEventListener("YixinJSBridgeReady", handleBridgeReady, false);
     }
