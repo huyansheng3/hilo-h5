@@ -184,7 +184,10 @@ function init() {
 
   function initHilo() {
     app$.attr({ width, height });
-    hiloStage = new Hilo.Stage({ canvas: app$[0], width, height });
+    hiloStage = new Hilo.Stage({
+      canvas: app$[0], width, height,
+      // renderType: 'webgl', 会流畅很多 但是有bug。。。
+    });
     ticker = new Hilo.Ticker(60);
     ticker.addTick(hiloStage);
     ticker.addTick(Hilo.Tween);
@@ -418,32 +421,6 @@ function init() {
     });
   }
 
-  function initMusics() {
-    for (let e = 1; e < musics.length; e++) {
-      let music = musics[e]
-      function handleBridgeReady() {
-        document.removeEventListener("WeixinJSBridgeReady", handleBridgeReady)
-        document.removeEventListener("YixinJSBridgeReady", handleBridgeReady)
-        music.el.play();
-        music.el.pause();
-      };
-      // $(`#${music.id}`).on("play", function () {
-      //   this.pause();
-      // });
-      document.addEventListener("WeixinJSBridgeReady", handleBridgeReady, false);
-      document.addEventListener("YixinJSBridgeReady", handleBridgeReady, false);
-    }
-
-    let firstTouch = true;
-    $("body").on("touchstart", function (e) {
-      if (firstTouch) {
-        firstTouch = false;
-        document.getElementById('z0_m1').play();
-      }
-    });
-
-  }
-
   function initMusicsOld() {
     for (var e = 1; e < musics.length; e++)
       !(function (e) {
@@ -452,11 +429,12 @@ function init() {
             document.removeEventListener("WeixinJSBridgeReady", i),
               document.removeEventListener("YixinJSBridgeReady", i),
               t.play();
+            t.pause();
           };
 
-        $(t).on("play", function () {
-          this.pause();
-        });
+        // $(t).on("play", function () {
+        //   this.pause();
+        // });
 
         t.addEventListener('ended', () => {
           musics[e].played = ''
