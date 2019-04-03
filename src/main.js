@@ -168,9 +168,9 @@ function init() {
 
   const delays = {
     p0: 0, //1
-    p1: height, //6
-    p2: height * 7, //6
-    p3: height * 13, //8
+    p1: 0, //6
+    p2: height * 6, //6
+    p3: height * 12, //8
   };
 
   let hiloStage, ticker, loadQueue, scroller = null, hiloViews = {};
@@ -279,10 +279,9 @@ function init() {
       app$.animate(
         {
           opacity: 0,
-          // translateY: '-1334px'
         },
         {
-          duration: 500,
+          duration: 2000,
           complete: () => {
             app$.hide()
             $('.video').show();
@@ -306,8 +305,6 @@ function init() {
         });
 
     }
-
-    console.log((top / height))
 
     window.timer = top;
 

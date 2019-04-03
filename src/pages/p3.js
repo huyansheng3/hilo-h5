@@ -20,7 +20,7 @@ const views = [
         parent: "p3",
         delay: "p3",
         propes: {
-            y: 0
+            y: 0 + t
         },
         animations: []
     },
@@ -31,7 +31,7 @@ const views = [
         parent: "p3",
         delay: "p3",
         propes: {
-            y: t
+            y: t + t
         },
         animations: []
     },
@@ -42,7 +42,7 @@ const views = [
         parent: "p3",
         delay: "p3",
         propes: {
-            y: 2 * t
+            y: 2 * t + t
         },
         animations: []
     }, {
@@ -52,7 +52,7 @@ const views = [
         parent: "p3",
         delay: "p3",
         propes: {
-            y: 3 * t
+            y: 3 * t + t
         },
         animations: []
     },
@@ -79,7 +79,7 @@ const views = [
         frames: "story3-4-texture.sprite",
         parent: "p3",
         delay: "p3",
-        propes: { interval: 200, timeBased: true, y: 4 * t },
+        propes: { interval: 200, timeBased: true, y: 4 * t + t },
         animations: []
     },
 
@@ -105,7 +105,7 @@ const views = [
         frames: "story3-5-texture.sprite",
         parent: "p3",
         delay: "p3",
-        propes: { interval: 200, timeBased: true, y: 5 * t },
+        propes: { interval: 200, timeBased: true, y: 5 * t + t },
         animations: []
     },
 
@@ -131,7 +131,7 @@ const views = [
         frames: "story3-6-texture.sprite",
         parent: "p3",
         delay: "p3",
-        propes: { interval: 200, timeBased: true, y: 6 * t },
+        propes: { interval: 200, timeBased: true, y: 6 * t + t },
         animations: []
     },
 
@@ -158,7 +158,7 @@ const views = [
         frames: "story3-7-texture.sprite",
         parent: "p3",
         delay: "p3",
-        propes: { interval: 800, timeBased: true, y: 7 * t },
+        propes: { interval: 800, timeBased: true, y: 7 * t + t },
         animations: []
     },
 ];

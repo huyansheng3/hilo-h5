@@ -10,7 +10,7 @@ const views = [
         propes: {},
         delay: "p1",
         animations: [
-            { prope: "y", time: [0, 0, 6 * t, 6 * t], value: [0, -6 * t] },
+            { prope: "y", time: [0, 0, 7 * t, 7 * t], value: [0, -7 * t] },
         ]
     },
 
@@ -21,7 +21,7 @@ const views = [
         parent: "p1",
         delay: "p1",
         propes: {
-            y: 0
+            y: 0 + t
         },
         animations: []
     },
@@ -48,7 +48,7 @@ const views = [
         parent: "p1",
         delay: "p1",
         propes: {
-            interval: 200, timeBased: true, y: t
+            interval: 200, timeBased: true, y: t + t
         },
         animations: {}
     },
@@ -75,7 +75,7 @@ const views = [
         delay: "p1",
         propes: {
             interval: 200, timeBased: true,
-            y: 2 * t,
+            y: 2 * t + t,
         },
         animations: [
 
@@ -89,7 +89,7 @@ const views = [
         parent: "p1",
         delay: "p1",
         propes: {
-            y: 3 * t
+            y: 3 * t + t
         },
         animations: []
     },
@@ -115,7 +115,7 @@ const views = [
         frames: "story1-4-texture.sprite",
         parent: "p1",
         delay: "p1",
-        propes: { interval: 200, timeBased: true, y: 4 * t },
+        propes: { interval: 200, timeBased: true, y: 4 * t + t },
         animations: []
     },
 
@@ -140,7 +140,7 @@ const views = [
         frames: "story1-5-texture.sprite",
         parent: "p1",
         delay: "p1",
-        propes: { interval: 200, timeBased: true, y: 5 * t },
+        propes: { interval: 200, timeBased: true, y: 5 * t + t },
         animations: []
     }
 ];
