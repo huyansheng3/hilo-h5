@@ -4,7 +4,6 @@ import { Scroller } from "scroller";
 import pace from "pace";
 import { musics, images, videos } from "./constant";
 import views from "./views";
-import AnimateCurve, { coord } from './lib/bezier';
 
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
@@ -59,11 +58,6 @@ function initPoster() {
 
 
   $('#left-btn').on('click', e => {
-
-    // 详细参考 https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
-    // const oauthUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=${encodeURI(location.href)}&response_type=code&scope=snsapi_base&state=authed#wechat_redirect`
-    // location.href = oauthUrl
-
     // http://api.hongyu.ren/lsd/posters
     // 参数
     // openid   微信openid
@@ -159,12 +153,6 @@ function initVideos() {
     document.addEventListener("WeixinJSBridgeReady", function () {
       video.play();
       video.pause();
-      // var timer = setInterval(function () {
-      //   if (video.currentTime) {
-      //     video.pause();
-      //     clearInterval(timer)
-      //   }
-      // }, 20)
     }, false);
   }
 
@@ -279,30 +267,6 @@ function init() {
       }
     }
 
-    // let P1 = coord(380, 500),
-    //   P2 = coord(300, 780),
-    //   P3 = coord(180, 570),
-    //   P4 = coord(400, 900)
-
-    // function drawStar(pos) {
-    //   hiloViews.star.x = pos.x
-    //   hiloViews.star.y = pos.y
-    //   if (hiloViews.star.scaleX > 3) {
-    //     hiloViews.star.scaleX = 1
-    //     hiloViews.star.scaleY = 1
-    //   }
-
-    //   if (hiloViews.star.rotation > 90) {
-    //     hiloViews.star.rotation = 0
-    //   }
-
-    //   hiloViews.star.rotation = hiloViews.star.rotation + 0.5
-    //   hiloViews.star.scaleX = hiloViews.star.scaleX + 0.02
-    //   hiloViews.star.scaleY = hiloViews.star.scaleY + 0.02
-    // }
-
-    // const animateCurve = new AnimateCurve({ P1, P2, P3, P4, callback: drawStar })
-    // animateCurve.start()
 
     for (let e = 0; e < musics.length; e++) {
       let i = musics[e];
@@ -312,27 +276,34 @@ function init() {
 
   function scrollerCallback(left, top, zoom) {
     if (top === 20 * height) {
-      app$.hide();
-      $('.video').show();
-      $('.wp').show();
-      $('.wp-inner').fullpage({
-        beforeChange: function (e) {
-          let nextVideo, currVideo
-          if (e.next !== undefined && videos[e.next]) {
-            nextVideo = document.getElementById(videos[e.next].id);
-          }
-          if (e.cur !== undefined && videos[e.cur]) {
-            currVideo = document.getElementById(videos[e.cur].id);
-          }
-
-          console.log('nextVideo', nextVideo)
-          console.log('currVideo', currVideo)
-          currVideo && currVideo.pause()
-          nextVideo && nextVideo.play()
+      app$.animate(
+        {
+          opacity: 0,
+          // translateY: '-1334px'
         },
-      });
+        {
+          duration: 500,
+          complete: () => {
+            // app$.hide()
+            $('.video').show();
+            $('.wp').show();
+            $('.wp-inner').fullpage({
+              beforeChange: function (e) {
+                let nextVideo, currVideo
+                if (e.next !== undefined && videos[e.next]) {
+                  nextVideo = document.getElementById(videos[e.next].id);
+                }
+                if (e.cur !== undefined && videos[e.cur]) {
+                  currVideo = document.getElementById(videos[e.cur].id);
+                }
+                currVideo && currVideo.pause()
+                nextVideo && nextVideo.play()
+              },
+            });
 
-      $('#lansidai').show();
+            $('#lansidai').show();
+          }
+        });
 
     }
 
@@ -497,6 +468,10 @@ function init() {
   initMusicsOld();
   initVideos();
   initPoster();
+
+  document.getElementById('z0_m1').addEventListener('play', e => {
+    e.target.volume = 0.5;
+  })
 
   //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
   document.addEventListener("WeixinJSBridgeReady", function () {

@@ -84,8 +84,7 @@ const views = [
             scaleY: 1
         },
         animations: [
-            { prope: "scaleX", time: [0, 1 * t, 3 * t, 3 * t], value: [1, 3] },
-            { prope: "scaleY", time: [0, 1 * t, 3 * t, 3 * t], value: [1, 3] },
+
         ]
     },
 
