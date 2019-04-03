@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "story1-5-1.jpg",
+	"filename": "帧-1.jpg",
 	"frame": {"x":2,"y":2674,"w":750,"h":1334},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":750,"h":1334}
 },
 {
-	"filename": "story1-5-2.jpg",
+	"filename": "帧-2.jpg",
 	"frame": {"x":2,"y":1338,"w":750,"h":1334},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":750,"h":1334}
 },
 {
-	"filename": "story1-5-3.jpg",
+	"filename": "帧-3.jpg",
 	"frame": {"x":2,"y":2,"w":750,"h":1334},
 	"rotated": false,
 	"trimmed": false,
@@ -31,6 +31,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":4096},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:fbcdf2017d4c81db1cbe0d9d86c08cf0:1/1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e5c57865879084a93feb24ca3f6d3ad4:1/1$"
 }
 }
