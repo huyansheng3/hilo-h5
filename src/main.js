@@ -284,7 +284,7 @@ function init() {
         {
           duration: 500,
           complete: () => {
-            // app$.hide()
+            app$.hide()
             $('.video').show();
             $('.wp').show();
             $('.wp-inner').fullpage({
@@ -306,6 +306,8 @@ function init() {
         });
 
     }
+
+    console.log((top / height))
 
     window.timer = top;
 

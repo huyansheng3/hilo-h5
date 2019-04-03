@@ -11,7 +11,6 @@ const views = [
         delay: "p3",
         animations: [
             { prope: "y", time: [0, 0, 8 * t, 8 * t], value: [0, -8 * t] },
-            { prope: "alpha", time: [0, 7.5 * t, 8 * t, 8 * t], value: [1, 0] }
         ]
     },
     {
