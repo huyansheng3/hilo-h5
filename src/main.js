@@ -322,6 +322,13 @@ function init() {
     }
 
     window.timer = top;
+    if (top > height) {
+      hiloViews['homepage-sprite'].stop()
+    } else {
+      if (hiloViews['homepage-sprite'].paused) {
+        hiloViews['homepage-sprite'].play()
+      }
+    }
 
     for (let len = views.length, i = 0; i < len; i++) {
       for (let view = views[i], animations = view.animations, j = 0; j < animations.length; j++) {
