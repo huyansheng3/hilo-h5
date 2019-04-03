@@ -286,7 +286,7 @@ function init() {
           opacity: 0,
         },
         {
-          duration: 2000,
+          duration: 3000,
           complete: () => {
             app$.hide()
             $('.video').show();
