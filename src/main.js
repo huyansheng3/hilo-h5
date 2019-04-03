@@ -154,6 +154,11 @@ function initVideos() {
       video.play();
       video.pause();
     }, false);
+
+    video.addEventListener('ended', e => {
+      $.fn.fullpage.moveNext(true)
+    })
+
   }
 
   videos.forEach((video) => {
@@ -291,6 +296,16 @@ function init() {
                 let nextVideo, currVideo
                 if (e.next !== undefined && videos[e.next]) {
                   nextVideo = document.getElementById(videos[e.next].id);
+
+                  if (videos[e.next].id === 'shallen') {
+                    $('.common-container, body, html').css({
+                      background: '#fff'
+                    })
+                  } else {
+                    $('.common-container, body, html').css({
+                      background: '#000'
+                    })
+                  }
                 }
                 if (e.cur !== undefined && videos[e.cur]) {
                   currVideo = document.getElementById(videos[e.cur].id);
