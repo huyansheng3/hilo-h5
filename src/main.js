@@ -302,7 +302,7 @@ function init() {
 
                   if (videos[e.next].id === 'shallen') {
                     $('.common-container, body, html').css({
-                      background: '#fff'
+                      background: '#f0f0f0'
                     })
                   } else {
                     $('.common-container, body, html').css({
@@ -464,7 +464,7 @@ function init() {
 
   initHilo();
   loadResource();
-  // saveInfo();
+  saveInfo();
   initMusicsOld();
   initVideos();
   initPoster();
