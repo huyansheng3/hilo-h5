@@ -657,3 +657,26 @@ html {
   -webkit-animation: start 1.5s infinite ease-in-out;
   animation: start 1.5s infinite ease-in-out;
 }
+
+
+body,
+div,
+span,
+canvas,
+iframe {
+    -webkit-touch-action: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -ms-touch-callout: none;
+    touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -ms-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
