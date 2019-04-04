@@ -10,7 +10,7 @@ const views = [
         propes: {},
         delay: "p3",
         animations: [
-            { prope: "y", time: [0, 0, 8 * t, 8 * t], value: [0, -8 * t] },
+            { prope: "y", time: [0, 0, 10 * t, 10 * t], value: [0, -10 * t] },
         ]
     },
     {
@@ -159,6 +159,17 @@ const views = [
         parent: "p3",
         delay: "p3",
         propes: { interval: 800, timeBased: true, y: 7 * t + t },
+        animations: []
+    },
+    {
+        id: "story3-8.jpg",
+        type: "Bitmap",
+        image: "story3-8.jpg",
+        parent: "p3",
+        delay: "p3",
+        propes: {
+            y: 9 * t
+        },
         animations: []
     },
 ];

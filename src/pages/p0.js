@@ -10,7 +10,7 @@ const views = [
         propes: {},
         delay: "p0",
         animations: [
-            { prope: "y", time: [0, 0, t, t], value: [0, -t] },
+            { prope: "y", time: [0, 0, 2 * t, 2 * t], value: [0, -2 * t] },
         ]
     },
     {

@@ -9,9 +9,9 @@ const height = 1334
 // 7硬地面奔跑_
 
 export const musics = [
-  { id: "z0_m1", start: 0, end: height * 20 },
+  { id: "z0_m1", start: 0, end: height * 21 },
   { id: "z1_m1", start: height * 3.5, end: height * 4 },
-  { id: "z3_m1", start: height * 5.5, end: height * 7 },
+  { id: "z3_m1", start: height * 5, end: height * 7 },
   { id: "z4_m1", start: height * 7.5, end: height * 8.5 },
   { id: "z5_m1", start: height * 13.5, end: height * 15 },
   { id: "z6_m1", start: height * 15.5, end: height * 17 },
@@ -33,7 +33,6 @@ export const videos = [
 const source = "/";
 export const images = [
   { id: "homepage-texture.jpg", src: source + "images/homepage-texture.jpg" },
-  { id: "star.png", src: source + "images/star.png" },
   { id: "story1-1-texture.jpg", src: source + "images/story1-1-texture.jpg" },
   { id: "story1-2-texture.jpg", src: source + "images/story1-2-texture.jpg" },
   { id: "story1-3.jpg", src: source + "images/story1-3.jpg" },
@@ -53,6 +52,7 @@ export const images = [
   { id: "story3-5-texture.jpg", src: source + "images/story3-5-texture.jpg" },
   { id: "story3-6-texture.jpg", src: source + "images/story3-6-texture.jpg" },
   { id: "story3-7-texture.jpg", src: source + "images/story3-7-texture.jpg" },
+  { id: "story3-8.jpg", src: source + "images/story3-8.jpg" },
   { id: "story3.jpg", src: source + "images/story3.jpg" },
 
 ];

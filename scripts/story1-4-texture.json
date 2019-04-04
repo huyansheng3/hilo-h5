@@ -1,15 +1,23 @@
 {"frames": [
 
 {
-	"filename": "story1-4-1.jpg",
-	"frame": {"x":754,"y":2,"w":750,"h":1334},
+	"filename": "1-4-1.jpg",
+	"frame": {"x":2,"y":2674,"w":750,"h":1334},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":750,"h":1334},
 	"sourceSize": {"w":750,"h":1334}
 },
 {
-	"filename": "story1-4-2.jpg",
+	"filename": "1-4-2.jpg",
+	"frame": {"x":2,"y":1338,"w":750,"h":1334},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":750,"h":1334},
+	"sourceSize": {"w":750,"h":1334}
+},
+{
+	"filename": "1-4-3.jpg",
 	"frame": {"x":2,"y":2,"w":750,"h":1334},
 	"rotated": false,
 	"trimmed": false,
@@ -21,8 +29,8 @@
 	"version": "1.0",
 	"image": "story1-4-texture.jpg",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
+	"size": {"w":1024,"h":4096},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:da168b24d0e935d94a44ecead205950d:1/1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d5706a0fa759b6fbb88fa23669c772e0:1/1$"
 }
 }

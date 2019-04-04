@@ -10,7 +10,7 @@ const views = [
         propes: {},
         delay: "p1",
         animations: [
-            { prope: "y", time: [0, 0, 7 * t, 7 * t], value: [0, -7 * t] },
+            { prope: "y", time: [0, 0, 8 * t, 8 * t], value: [0, -8 * t] },
         ]
     },
 
@@ -100,9 +100,11 @@ const views = [
         image: "story1-4-texture.jpg",
         parent: "null",
         propes: {
-            frames: [[754, 2, 750, 1334], [2, 2, 750, 1334]],
+            frames: [[2, 2674, 750, 1334],
+            [2, 1338, 750, 1334],
+            [2, 2, 750, 1334]],
             sprites: {
-                sprite: [0, 1]
+                sprite: [0, 1, 2]
             }
         },
         animations: {}

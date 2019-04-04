@@ -283,7 +283,7 @@ function init() {
   }
 
   function scrollerCallback(left, top, zoom) {
-    if (top === 20 * height) {
+    if (top === 21 * height) {
       app$.animate(
         {
           opacity: 0,
@@ -411,7 +411,7 @@ function init() {
       .on("touchmove", handleTouchMove)
       .on("touchend", handleTouchEnd);
 
-    scroller.setDimensions(width, height, width, 21 * height);
+    scroller.setDimensions(width, height, width, 22 * height);
     window.scroller = scroller;
   }
 
