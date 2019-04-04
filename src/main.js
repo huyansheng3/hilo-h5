@@ -186,7 +186,7 @@ function init() {
     app$.attr({ width, height });
     hiloStage = new Hilo.Stage({
       canvas: app$[0], width, height,
-      // renderType: 'webgl', 会流畅很多 但是有bug。。。
+      // renderType: 'webgl', //会流畅很多 但是有bug。。。
     });
     ticker = new Hilo.Ticker(60);
     ticker.addTick(hiloStage);
