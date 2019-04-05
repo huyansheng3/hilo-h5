@@ -421,30 +421,50 @@ function init() {
     });
   }
 
+  // function B() {
+  //   for (var e = 0; e < musics.length; e++)
+  //     !(function (e) {
+  //       var t = $("#" + musics[e].id)[0],
+  //         i = function () {
+  //           document.removeEventListener("WeixinJSBridgeReady", i),
+  //             document.removeEventListener("YixinJSBridgeReady", i),
+  //             t.play();
+  //         };
+
+  //       $(t).on("play", function () {
+  //         this.pause();
+  //       });
+  //       t.play();
+  //       document.addEventListener("WeixinJSBridgeReady", i, !1);
+  //       document.addEventListener("YixinJSBridgeReady", i, !1);
+  //     })(e);
+  // }
+
   function initMusicsOld() {
-    for (var e = 1; e < musics.length; e++)
+    for (let e = 1; e < musics.length; e++)
       !(function (e) {
-        var t = $("#" + musics[e].id)[0],
+        let t = $("#" + musics[e].id)[0],
           i = function () {
             document.removeEventListener("WeixinJSBridgeReady", i),
               document.removeEventListener("YixinJSBridgeReady", i),
               t.play();
             t.pause();
+            t.currentTime = 0;
+            setTimeout(() => {
+              t.pause()
+              t.currentTime = 0;
+            })
           };
-
-        // $(t).on("play", function () {
-        //   this.pause();
-        // });
 
         t.addEventListener('ended', () => {
           musics[e].played = ''
         })
 
-        try {
-          t.play();
-        } catch (error) {
-          console.error(error)
-        }
+        // try {
+        //   t.play();
+        // } catch (error) {
+        //   console.error(error)
+        // }
         document.addEventListener("WeixinJSBridgeReady", i, !1);
         document.addEventListener("YixinJSBridgeReady", i, !1);
       })(e);
