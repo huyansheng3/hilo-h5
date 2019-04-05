@@ -9,7 +9,7 @@ const height = 1334
 // 7硬地面奔跑_
 
 export const musics = [
-  { id: "z0_m1", start: 0, end: height * 21 },
+  { id: "z0_m1", start: 1, end: height * 21 },
   { id: "z1_m1", start: height * 3.5, end: height * 4 },
   { id: "z3_m1", start: height * 5, end: height * 7 },
   { id: "z4_m1", start: height * 7.5, end: height * 8.5 },
