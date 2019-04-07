@@ -13,6 +13,8 @@ function LOG(e) {
   $(".log").append("<p>" + e + "</p>");
 };
 
+let formData = new FormData()
+
 function initPoster() {
   let uploadImage = '', name = '', address = '';
 
@@ -117,25 +119,29 @@ function initPoster() {
     // w   浏览器可见宽度
     // h   浏览器可见高度
 
-    const data = {
-      store_name,
-      store_address,
-      name,
-      w: $(window).width(),
-      h: $(window).height(),
-      store_image: uploadImage
-    }
 
-    $.post('http://api.hongyu.ren/lsd/apply', data, function (response) {
-      if (response.data.status == 100) {
-          $('#wall-image').attr('src', response.data.imgurl)
-          $('#form').hide()
-          $('#pages').hide()
-          $('#wall').show()
+
+    formData.set('store_name', store_name)
+    formData.set('store_address', store_address)
+    formData.set('name', name)
+    formData.set('w', $(window).width())
+    formData.set('h', $(window).height())
+
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", function (e) {
+      const response = JSON.parse(e.target.response)
+      if (response.status == 100) {
+        $('#wall-image').attr('src', response.data.imgurl)
+        $('#form').hide()
+        $('#pages').hide()
+        $('#wall').show()
       } else {
-          confirm(response.data.err_msg)
+        confirm(response.data.err_msg)
       }
-    })
+    }, false);
+    xhr.open("POST", 'http://api.hongyu.ren/lsd/apply');
+    xhr.send(formData);
+
   })
 
   $('#upload').on('change', e => {
@@ -147,6 +153,7 @@ function initPoster() {
         $('#upload-btn').attr('src', e.target.result);
       };
       reader.readAsDataURL(files[0]);
+      formData.set('image', files[0])
     }
   })
 }
