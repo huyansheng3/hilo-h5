@@ -67,8 +67,8 @@ function initPoster() {
     // h   浏览器可见高度
     const data = {
       openid: window.$userinfo && window.$userinfo.openid,
-      w: $(window).width(),
-      h: $(window).height(),
+      w: document.body.clientWidth,
+      h: document.body.clientHeight,
     }
 
     $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
@@ -124,8 +124,8 @@ function initPoster() {
     formData.set('store_name', store_name)
     formData.set('store_address', store_address)
     formData.set('name', name)
-    formData.set('w', $(window).width())
-    formData.set('h', $(window).height())
+    formData.set('w', document.body.clientWidth)
+    formData.set('h', document.body.clientHeight)
 
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function (e) {
