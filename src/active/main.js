@@ -108,17 +108,21 @@ function initPoster() {
         const data = {
             store_name,
             store_address,
-            store_image: uploadImage,
             name,
             w: $(window).width(),
             h: $(window).height(),
+            store_image: uploadImage
         }
 
         $.post('http://api.hongyu.ren/lsd/apply', data, function (response) {
-            $('#wall-image').attr('src', response.data.imgurl)
-            $('#form').hide()
-            $('#pages').hide()
-            $('#wall').show()
+            if (response.data.status == 100) {
+                $('#wall-image').attr('src', response.data.imgurl)
+                $('#form').hide()
+                $('#pages').hide()
+                $('#wall').show()
+            } else {
+                confirm(response.data.err_msg)
+            }
         })
     })
 
