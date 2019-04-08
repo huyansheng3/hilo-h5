@@ -43,7 +43,7 @@ export const images = [
   { id: "story2-2.jpg", src: source + "images/story2-2.jpg" },
   { id: "story2-3.jpg", src: source + "images/story2-3.jpg" },
   { id: "story2-4.jpg", src: source + "images/story2-4.jpg" },
-  { id: "story2-5-1-2.jpg", src: source + "images/story2-5-1-2.jpg" },
+  { id: "story2-5-m-texture.jpg", src: source + "images/story2-5-m-texture.jpg" },
   { id: "story2.jpg", src: source + "images/story2.jpg" },
   { id: "story3-1.jpg", src: source + "images/story3-1.jpg" },
   { id: "story3-2.jpg", src: source + "images/story3-2.jpg" },
