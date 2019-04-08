@@ -4,6 +4,8 @@ import { Scroller } from "scroller";
 import pace from "pace";
 import { musics, images, videos } from "./constant";
 import views from "./views";
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
@@ -58,12 +60,12 @@ function initPoster() {
   });
 
   $('#wall-back').on('click', e => {
-      $('#lansidai').show()
-      $('#wall').hide()
+    $('#lansidai').show()
+    $('#wall').hide()
   })
   $('#poster-back').on('click', e => {
-      $('#lansidai').show()
-      $('#poster').hide()
+    $('#lansidai').show()
+    $('#poster').hide()
   })
 
   $('#left-btn').on('click', e => {
@@ -77,8 +79,9 @@ function initPoster() {
       w: document.body.clientWidth,
       h: document.body.clientHeight,
     }
-
+    NProgress.start();
     $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+      NProgress.done();
       $('#poster-img').attr('src', response.data.imgurl)
       $('.tipmsg').css({'bottom':response.data.bottom,'position':'absolute', 'color':'#919092', 'width':'100%', 'font-size':'17px', 'text-align':'center'})
       $('#lansidai').hide()
@@ -95,7 +98,11 @@ function initPoster() {
     $('#upload').click()
   })
 
+  let clicked = false
+
   $('#confirm-btn').on('click', e => {
+    if (clicked) return
+    clicked = true
     // http://api.hongyu.ren/lsd/apply
     let store_name = $('#name')[0].value,
       store_address = $('#address')[0].value,
@@ -127,7 +134,7 @@ function initPoster() {
     // h   浏览器可见高度
 
 
-    formData.set('openid', window.$userinfo.openid)
+    formData.set('openid', window.$userinfo && window.$userinfo.openid)
     formData.set('store_name', store_name)
     formData.set('store_address', store_address)
     formData.set('name', name)
@@ -135,7 +142,15 @@ function initPoster() {
     formData.set('h', document.body.clientHeight)
 
     let xhr = new XMLHttpRequest();
+
+    xhr.addEventListener("error", () => {
+      NProgress.done();
+      clicked = false
+    });
+
     xhr.addEventListener("load", function (e) {
+      NProgress.done();
+      clicked = false
       const response = JSON.parse(e.target.response)
       if (response.status == 100) {
         $('#wall-image').attr('src', response.data.imgurl)
@@ -147,6 +162,7 @@ function initPoster() {
       }
     }, false);
     xhr.open("POST", 'http://api.hongyu.ren/lsd/apply');
+    NProgress.start();
     xhr.send(formData);
 
   })
