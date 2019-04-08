@@ -581,6 +581,15 @@ html {
   top: 20px;
   right: 20px;
 }
+.tipmsg {
+  position: absolute;
+  width: 100%;
+  align-content: center;
+  align-self: center;
+  color: #919092;
+  size: 12px;
+  top: 20px;
+}
 
 .indicator {
   position: fixed;
