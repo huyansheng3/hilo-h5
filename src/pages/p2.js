@@ -86,13 +86,10 @@ const views = [
     {
         id: "story2-5-1-2",
         type: "TextureAtlas",
-        image: "story2-5-1-2.jpg",
+        image: "story2-5-m-texture.jpg",
         parent: "null",
         propes: {
-            frames: [
-                [754, 2, 750, 1334],
-                [2, 2, 750, 1334],
-            ],
+            frames: [[754, 2, 750, 1334], [2, 2, 750, 1334]],
             sprites: {
                 sprite: [0, 1]
             }
