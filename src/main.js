@@ -57,7 +57,14 @@ function initPoster() {
     }, 50);
   });
 
-
+  $('#wall-back').on('click', e => {
+      $('#lansidai').show()
+      $('#wall').hide()
+  })
+  $('#poster-back').on('click', e => {
+      $('#lansidai').show()
+      $('#poster').hide()
+  })
 
   $('#left-btn').on('click', e => {
     // http://api.hongyu.ren/lsd/posters
@@ -74,7 +81,6 @@ function initPoster() {
     $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
       $('#poster-img').attr('src', response.data.imgurl)
       $('#lansidai').hide()
-      $('#pages').hide()
       $('#poster').show()
     })
   })
@@ -120,7 +126,7 @@ function initPoster() {
     // h   浏览器可见高度
 
 
-
+    formData.set('openid', window.$userinfo.openid)
     formData.set('store_name', store_name)
     formData.set('store_address', store_address)
     formData.set('name', name)
@@ -133,7 +139,6 @@ function initPoster() {
       if (response.status == 100) {
         $('#wall-image').attr('src', response.data.imgurl)
         $('#form').hide()
-        $('#pages').hide()
         $('#wall').show()
       } else {
         confirm(response.data.err_msg)
@@ -500,21 +505,10 @@ function init() {
   initVideos();
   initPoster();
 
-  document.getElementById('z0_m1').addEventListener('play', e => {
-    e.target.volume = 0.5;
-  })
-
-  //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
-  document.addEventListener("WeixinJSBridgeReady", function () {
-    document.getElementById('z0_m1').play();
-    musics[0].played = true
-  }, false);
-
   window.pages = hiloViews;
   window.nyphile = app$;
   window.loadQueue = loadQueue;
   window.musics = musics;
   window.videos = videos;
 }
-
 $(init)

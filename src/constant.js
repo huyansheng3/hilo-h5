@@ -24,10 +24,10 @@ export const musics = [
 // http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/shallen.mp4
 
 export const videos = [
-  { id: "mother", src: 'http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/mum.mp4' },
-  { id: "manager", src: 'http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/manager.mp4' },
-  { id: "student", src: 'http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/student.mp4' },
-  { id: 'shallen', src: 'http://hongyu-static.oss-cn-beijing.aliyuncs.com/2019/03/lsd/video/shallen.mp4' }
+  { id: "mother", src: 'https://static-1251144334.cos.ap-guangzhou.myqcloud.com/201903/lsd/mum.mp4' },
+  { id: "student", src: 'https://static-1251144334.cos.ap-guangzhou.myqcloud.com/201903/lsd/student.mp4' },
+  { id: "manager", src: 'https://static-1251144334.cos.ap-guangzhou.myqcloud.com/201903/lsd/manager.mp4' },
+  { id: 'shallen', src: 'https://static-1251144334.cos.ap-guangzhou.myqcloud.com/201903/lsd/shallen.mp4' }
 ];
 
 const source = "/";

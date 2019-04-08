@@ -451,7 +451,7 @@ html {
 #poster {
   height: 100%;
   width: 100%;
-  background: url(./images/poster.jpg) no-repeat;
+  background: #152e3b;
   position: relative;
   display: none;
 }
@@ -569,6 +569,17 @@ html {
 #wall-image, #poster-img {
   height: 100%;
   width: 100%;
+}
+
+#wall-back {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+#poster-back {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .indicator {

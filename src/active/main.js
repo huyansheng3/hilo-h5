@@ -63,7 +63,6 @@ function initPoster() {
         $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
             $('#poster-img').attr('src', response.data.imgurl)
             $('#lansidai').hide()
-            $('#pages').hide()
             $('#poster').show()
         })
     })
@@ -75,6 +74,15 @@ function initPoster() {
 
     $('#upload-btn').on('click', e => {
         $('#upload').click()
+    })
+
+    $('#wall-back').on('click', e => {
+        $('#lansidai').show()
+        $('#wall').hide()
+    })
+    $('#poster-back').on('click', e => {
+        $('#lansidai').show()
+        $('#poster').hide()
     })
 
     $('#confirm-btn').on('click', e => {
@@ -120,7 +128,6 @@ function initPoster() {
             if (response.status == 100) {
                 $('#wall-image').attr('src', response.data.imgurl)
                 $('#form').hide()
-                $('#pages').hide()
                 $('#wall').show()
             } else {
                 confirm(response.data.err_msg)
