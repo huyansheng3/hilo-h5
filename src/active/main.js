@@ -1,6 +1,7 @@
 import "../lib/check";
 import './index.css'
-
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 let formData = new FormData()
 
@@ -85,7 +86,10 @@ function initPoster() {
         $('#poster').hide()
     })
 
+    let clicked = false
     $('#confirm-btn').on('click', e => {
+        if (clicked) return
+        clicked = true
         // http://api.hongyu.ren/lsd/apply
         let store_name = $('#name')[0].value,
             store_address = $('#address')[0].value,
@@ -123,7 +127,13 @@ function initPoster() {
         formData.set('h', document.body.clientHeight)
 
         let xhr = new XMLHttpRequest();
+        xhr.addEventListener("error", () => {
+            NProgress.done();
+            clicked = false
+        });
         xhr.addEventListener("load", function (e) {
+            NProgress.done();
+            clicked = false
             const response = JSON.parse(e.target.response)
             if (response.status == 100) {
                 $('#wall-image').attr('src', response.data.imgurl)
@@ -134,6 +144,7 @@ function initPoster() {
             }
         }, false);
         xhr.open("POST", 'http://api.hongyu.ren/lsd/apply');
+        NProgress.start();
         xhr.send(formData);
     })
 
