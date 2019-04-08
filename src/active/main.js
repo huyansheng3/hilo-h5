@@ -60,8 +60,9 @@ function initPoster() {
             w: document.body.clientWidth,
             h: document.body.clientHeight,
         }
-
+        NProgress.start();
         $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+            NProgress.done();
             $('#poster-img').attr('src', response.data.imgurl)
             $('#lansidai').hide()
             $('#poster').show()
