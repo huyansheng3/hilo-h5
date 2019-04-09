@@ -494,10 +494,10 @@ html {
 }
 
 #form #confirm-btn {
-  position: absolute;
-  left: 50%;
-  top: 72%;
-  transform: translateX(-50%);
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+  bottom: 25.5%;
 }
 
 #form #upload-btn {
@@ -584,11 +584,9 @@ html {
 .tipmsg {
   position: absolute;
   width: 100%;
-  align-content: center;
-  align-self: center;
+  text-align: center;
   color: #919092;
   size: 12px;
-  top: 20px;
 }
 
 .indicator {

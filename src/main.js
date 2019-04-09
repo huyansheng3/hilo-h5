@@ -1,8 +1,14 @@
 import "./lib/check";
 import Hilo from "hilojs";
-import { Scroller } from "scroller";
+import {
+  Scroller
+} from "scroller";
 import pace from "pace";
-import { musics, images, videos } from "./constant";
+import {
+  musics,
+  images,
+  videos
+} from "./constant";
 import views from "./views";
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -18,7 +24,9 @@ function LOG(e) {
 let formData = new FormData()
 
 function initPoster() {
-  let uploadImage = '', name = '', address = '';
+  let uploadImage = '',
+    name = '',
+    address = '';
 
   //解决ios微信浏览器页面滑动上去不能归位bug
   let focus_hotel_name = false;
@@ -76,14 +84,16 @@ function initPoster() {
     // h   浏览器可见高度
     const data = {
       openid: window.$userinfo && window.$userinfo.openid,
-      w: document.body.clientWidth,
-      h: document.body.clientHeight,
+      w: window.mApp.w,
+      h: window.mApp.h,
     }
     NProgress.start();
     $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
       NProgress.done();
       $('#poster-img').attr('src', response.data.imgurl)
-      $('.tipmsg').css({'bottom':response.data.bottom,'position':'absolute', 'color':'#919092', 'width':'100%', 'font-size':'17px', 'text-align':'center'})
+      $('.tipmsg').css({
+        'bottom': response.data.bottom
+      })
       $('#lansidai').hide()
       $('#poster').show()
     })
@@ -138,8 +148,8 @@ function initPoster() {
     formData.set('store_name', store_name)
     formData.set('store_address', store_address)
     formData.set('name', name)
-    formData.set('w', document.body.clientWidth)
-    formData.set('h', document.body.clientHeight)
+    formData.set('w', window.mApp.w)
+    formData.set('h', window.mApp.h)
 
     let xhr = new XMLHttpRequest();
 
@@ -154,7 +164,9 @@ function initPoster() {
       const response = JSON.parse(e.target.response)
       if (response.status == 100) {
         $('#wall-image').attr('src', response.data.imgurl)
-        $('.tipmsg').css({'bottom':response.data.bottom,'position':'absolute', 'color':'#919092', 'width':'100%', 'font-size':'17px', 'text-align':'center'})
+        $('.tipmsg').css({
+          'bottom': response.data.bottom
+        })
         $('#form').hide()
         $('#wall').show()
       } else {
@@ -212,14 +224,20 @@ function init() {
     p3: height * 12, //8
   };
 
-  let hiloStage, ticker, loadQueue, scroller = null, hiloViews = {};
+  let hiloStage, ticker, loadQueue, scroller = null,
+    hiloViews = {};
 
   let isScrolling = false;
 
   function initHilo() {
-    app$.attr({ width, height });
+    app$.attr({
+      width,
+      height
+    });
     hiloStage = new Hilo.Stage({
-      canvas: app$[0], width, height,
+      canvas: app$[0],
+      width,
+      height,
       // renderType: 'webgl', //会流畅很多 但是有bug。。。
     });
     ticker = new Hilo.Ticker(60);
@@ -245,13 +263,17 @@ function init() {
         progress++;
         let currentProgress = parseInt((progress / len) * 100, 10);
         progress$.html(currentProgress + "%");
-        progressBar$.css({ width: currentProgress + "%" })
+        progressBar$.css({
+          width: currentProgress + "%"
+        })
       })
       .on("error", function (n) {
         progress++;
         let currentProgress = parseInt((progress / len) * 100, 10);
         progress$.html(currentProgress + "%");
-        progressBar$.css({ width: currentProgress + "%" })
+        progressBar$.css({
+          width: currentProgress + "%"
+        })
       }),
       loadQueue.on("complete", function () {
         initViews();
@@ -318,43 +340,41 @@ function init() {
 
   function scrollerCallback(left, top, zoom) {
     if (top === 21 * height) {
-      app$.animate(
-        {
-          opacity: 0,
-        },
-        {
-          duration: 3000,
-          complete: () => {
-            app$.hide()
-            $('.video').show();
-            $('.wp').show();
-            $('.wp-inner').fullpage({
-              beforeChange: function (e) {
-                let nextVideo, currVideo
-                if (e.next !== undefined && videos[e.next]) {
-                  nextVideo = document.getElementById(videos[e.next].id);
+      app$.animate({
+        opacity: 0,
+      }, {
+        duration: 3000,
+        complete: () => {
+          app$.hide()
+          $('.video').show();
+          $('.wp').show();
+          $('.wp-inner').fullpage({
+            beforeChange: function (e) {
+              let nextVideo, currVideo
+              if (e.next !== undefined && videos[e.next]) {
+                nextVideo = document.getElementById(videos[e.next].id);
 
-                  if (videos[e.next].id === 'shallen') {
-                    $('.common-container, body, html').css({
-                      background: '#f0f0f0'
-                    })
-                  } else {
-                    $('.common-container, body, html').css({
-                      background: '#000'
-                    })
-                  }
+                if (videos[e.next].id === 'shallen') {
+                  $('.common-container, body, html').css({
+                    background: '#f0f0f0'
+                  })
+                } else {
+                  $('.common-container, body, html').css({
+                    background: '#000'
+                  })
                 }
-                if (e.cur !== undefined && videos[e.cur]) {
-                  currVideo = document.getElementById(videos[e.cur].id);
-                }
-                currVideo && currVideo.pause()
-                nextVideo && nextVideo.play()
-              },
-            });
+              }
+              if (e.cur !== undefined && videos[e.cur]) {
+                currVideo = document.getElementById(videos[e.cur].id);
+              }
+              currVideo && currVideo.pause()
+              nextVideo && nextVideo.play()
+            },
+          });
 
-            $('#lansidai').show();
-          }
-        });
+          $('#lansidai').show();
+        }
+      });
 
     }
 
@@ -399,20 +419,20 @@ function init() {
 
     for (let e = 0; e < musics.length; e++) {
       let v = musics[e];
-      v.start && top < v.start && !v.el.paused
-        ? ((v.played = ""),
+      v.start && top < v.start && !v.el.paused ?
+        ((v.played = ""),
           v.el.pause(),
-          LOG("min pause " + v.el.id + ", top:" + top))
-        : v.end && top >= v.end && !v.el.paused
-          ? (v.el.pause(),
-            (v.played = ""),
-            LOG("max pause " + v.el.id + ", top:" + top))
-          : v.start &&
-          top >= v.start &&
-          !v.played &&
-          v.el.paused &&
-          ((v.end && top < v.end) || !v.end) &&
-          (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
+          LOG("min pause " + v.el.id + ", top:" + top)) :
+        v.end && top >= v.end && !v.el.paused ?
+        (v.el.pause(),
+          (v.played = ""),
+          LOG("max pause " + v.el.id + ", top:" + top)) :
+        v.start &&
+        top >= v.start &&
+        !v.played &&
+        v.el.paused &&
+        ((v.end && top < v.end) || !v.end) &&
+        (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
     }
   }
 

@@ -4,6 +4,10 @@
       a,
       r = document.querySelector('meta[name="viewport"]'),
       o = document.documentElement.clientWidth;
+      window.mApp = {
+        w: document.documentElement.clientWidth,
+        h: document.documentElement.clientHeight,
+      };
     switch (e) {
       case "fixed":
         (n = t), (a = o / t);

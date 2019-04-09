@@ -17,7 +17,7 @@
   <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
   <script id="fiboDataSDK" type="text/javascript"
     src="http://sdk.fibodata.com/data/datasdk.min.js?pfid=fiboUser&appid=VCessiJ9"> </script>
-  <script src="./flexible.js"></script>
+  <script src="./flexible.js?v2"></script>
   <script src="./zepto.js"></script>
   <script src="./zepto.fullpage.js"></script>
   <script src="./qrcode.min.js"></script>
@@ -124,7 +124,7 @@
     </div>
 
     <div id="form">
-      <img id="confirm-btn" src="/images/confirm.png" alt="confirm" role="button">
+
       <img id="upload-btn" src="/images/upload.png" alt="upload" role="button">
       <input id="upload" hidden type="file" accept="image/*">
 
@@ -150,6 +150,8 @@
           </span>
           <input type="text" id="username" class="name" placeholder="请输入姓名">
         </div>
+
+        <img id="confirm-btn" src="/images/confirm.png" alt="confirm" role="button">
 
       </form>
     </div>

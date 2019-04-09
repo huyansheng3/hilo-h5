@@ -6,7 +6,9 @@ import 'nprogress/nprogress.css'
 let formData = new FormData()
 
 function initPoster() {
-    let uploadImage = '', name = '', address = '';
+    let uploadImage = '',
+        name = '',
+        address = '';
 
     //解决ios微信浏览器页面滑动上去不能归位bug
     let focus_hotel_name = false;
@@ -57,14 +59,16 @@ function initPoster() {
         // h   浏览器可见高度
         const data = {
             openid: window.$userinfo && window.$userinfo.openid,
-            w: document.body.clientWidth,
-            h: document.body.clientHeight,
+            w: window.mApp.w,
+            h: window.mApp.h,
         }
         NProgress.start();
         $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
             NProgress.done();
             $('#poster-img').attr('src', response.data.imgurl)
-            $('.tipmsg').css({'bottom':response.data.bottom,'position':'absolute', 'color':'#919092', 'width':'100%', 'font-size':'17px', 'text-align':'center'})
+            $('.tipmsg').css({
+                'bottom': response.data.bottom
+            })
             $('#lansidai').hide()
             $('#poster').show()
         })
@@ -125,8 +129,8 @@ function initPoster() {
         formData.set('store_name', store_name)
         formData.set('store_address', store_address)
         formData.set('name', name)
-        formData.set('w', document.body.clientWidth)
-        formData.set('h', document.body.clientHeight)
+        formData.set('w', window.mApp.w)
+        formData.set('h', window.mApp.h)
 
         let xhr = new XMLHttpRequest();
         xhr.addEventListener("error", () => {
@@ -139,7 +143,9 @@ function initPoster() {
             const response = JSON.parse(e.target.response)
             if (response.status == 100) {
                 $('#wall-image').attr('src', response.data.imgurl)
-                $('.tipmsg').css({'bottom':response.data.bottom,'position':'absolute', 'color':'#919092', 'width':'100%', 'font-size':'17px', 'text-align':'center'})
+                $('.tipmsg').css({
+                    'bottom': response.data.bottom
+                })
                 $('#form').hide()
                 $('#wall').show()
             } else {
