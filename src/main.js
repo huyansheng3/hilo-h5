@@ -94,7 +94,13 @@ function initPoster() {
       NProgress.done();
       $('#poster-img').attr('src', response.data.imgurl)
       $('.tipmsg').css({
-        'bottom': response.data.bottom
+          'position': 'absolute',
+          'font-size': '17px',
+          'color': '#919092',
+          'text-align': 'center',
+          'width': '100%',
+          'font-weight': 'bold',
+          'bottom': response.data.bottom
       })
       $('#lansidai').hide()
       $('#poster').show()
@@ -167,7 +173,13 @@ function initPoster() {
       if (response.status == 100) {
         $('#wall-image').attr('src', response.data.imgurl)
         $('.tipmsg').css({
-          'bottom': response.data.bottom
+            'position': 'absolute',
+            'font-size': '17px',
+            'color': '#919092',
+            'text-align': 'center',
+            'width': '100%',
+            'font-weight': 'bold',
+            'bottom': response.data.bottom
         })
         $('#form').hide()
         $('#wall').show()
