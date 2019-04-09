@@ -24,7 +24,7 @@ function LOG(e) {
 };
 
 let formData = new FormData()
-let isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+let isiOS = $.os.ios
 
 function initPoster() {
   let uploadImage = '',
@@ -234,14 +234,9 @@ function initVideos() {
           allv.pause();
       }, false);
       allv.addEventListener('ended', e => {
-          allv.play();
-          setTimeout(() => {
-              allv.pause();
-          }, 100)
+        $('#allvideo').hide();
+        $('#all-lansidai').show();
       })
-      allv.addEventListener("play",function(){
-          $('#all-lansidai').show();
-      },false);
   }
 }
 
