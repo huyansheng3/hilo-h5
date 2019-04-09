@@ -13,6 +13,8 @@ import views from "./views";
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+console.log(window.mApp)
+
 function mix(v0, v1, t1, t2, time) {
   return v0 + ((v1 - v0) / (t2 - t1)) * (time - t1);
 }
