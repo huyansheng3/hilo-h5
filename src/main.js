@@ -110,10 +110,44 @@ function initPoster() {
     })
   })
 
-  $('#right-btn').on('click', e => {
-    $('#lansidai').hide()
+  $('#all-right-btn').on('click', e => {
+    $('#all-lansidai').hide()
     $('#form').show()
   })
+
+    $('#left-btn').on('click', e => {
+        // http://api.hongyu.ren/lsd/posters
+        // 参数
+        // openid   微信openid
+        // w   浏览器可见宽度
+        // h   浏览器可见高度
+        const data = {
+            openid: window.$userinfo && window.$userinfo.openid,
+            w: window.mApp.w,
+            h: window.mApp.h,
+        }
+        NProgress.start();
+        $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+            NProgress.done();
+            $('#poster-img').attr('src', response.data.imgurl)
+            $('.tipmsg').css({
+                'position': 'absolute',
+                'font-size': '17px',
+                'color': '#919092',
+                'text-align': 'center',
+                'width': '100%',
+                'font-weight': 'bold',
+                'bottom': response.data.bottom
+            })
+            $('#lansidai').hide()
+            $('#poster').show()
+        })
+    })
+
+    $('#all-right-btn').on('click', e => {
+        $('#all-lansidai').hide()
+        $('#form').show()
+    })
 
   $('#upload-btn').on('click', e => {
     $('#upload').click()
