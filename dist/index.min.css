@@ -365,11 +365,21 @@ html {
   width: 100%;
   position: relative;
   display: none;
+  /*z-index: -1;*/
+}
+
+.video_on {
+    display: block;
+    z-index: -0;
 }
 
 .video .wechat_h5_video__playBtn svg {
   min-width: 80px;
   min-height: 80px;
+}
+.allvideo .wechat_h5_video__playBtn svg {
+    min-width: 80px;
+    min-height: 80px;
 }
 
 .cover .progress-box {
@@ -448,6 +458,14 @@ html {
   display: none;
 }
 
+#all-lansidai {
+    height: 100%;
+    width: 100%;
+    background: url(./images/lansidai.jpg) no-repeat;
+    position: absolute;
+    display: none;
+}
+
 #poster {
   height: 100%;
   width: 100%;
@@ -476,6 +494,18 @@ html {
   bottom: 20%;
 }
 
+#all-lansidai #all-left-btn {
+    position: absolute;
+    left: 15%;
+    bottom: 20%;
+}
+
+#all-lansidai #all-right-btn {
+    position: absolute;
+    right: 15%;
+    bottom: 20%;
+}
+
 #poster #avator{
   position: absolute;
   width: 200px;
@@ -494,10 +524,10 @@ html {
 }
 
 #form #confirm-btn {
-  position: absolute;
-  left: 50%;
-  top: 72%;
-  transform: translateX(-50%);
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+  bottom: 25.5%;
 }
 
 #form #upload-btn {
@@ -584,11 +614,9 @@ html {
 .tipmsg {
   position: absolute;
   width: 100%;
-  align-content: center;
-  align-self: center;
+  text-align: center;
   color: #919092;
   size: 12px;
-  top: 20px;
 }
 
 .indicator {
@@ -620,6 +648,15 @@ html {
   bottom: 0;
   overflow: hidden;
   display: none;
+}
+.all-wp{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: none;
 }
 .page{
   font-size: 72px;

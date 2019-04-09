@@ -24,6 +24,7 @@ function LOG(e) {
 };
 
 let formData = new FormData()
+let isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
 
 function initPoster() {
   let uploadImage = '',
@@ -71,10 +72,12 @@ function initPoster() {
 
   $('#wall-back').on('click', e => {
     $('#lansidai').show()
+      $('#all-lansidai').show()
     $('#wall').hide()
   })
   $('#poster-back').on('click', e => {
     $('#lansidai').show()
+      $('#all-lansidai').show()
     $('#poster').hide()
   })
 
@@ -211,19 +214,35 @@ function initVideos() {
   function videoAutoPlay(id) {
     let video = document.getElementById(id);
     document.addEventListener("WeixinJSBridgeReady", function () {
-      video.play();
-      video.pause();
+        video.play();
+        video.pause();
     }, false);
-
+    let ids = ['mother', 'student', 'manager', 'shallen']
     video.addEventListener('ended', e => {
-      $.fn.fullpage.moveNext(true)
+        $.fn.fullpage.moveNext(true)
     })
 
   }
-
-  videos.forEach((video) => {
-    videoAutoPlay(video.id)
-  })
+  if (isiOS) {
+      videos.forEach((video) => {
+          videoAutoPlay(video.id)
+      })
+  } else {
+      var allv = document.getElementById('allvideo')
+      document.addEventListener("WeixinJSBridgeReady", function () {
+          allv.play();
+          allv.pause();
+      }, false);
+      allv.addEventListener('ended', e => {
+          allv.play();
+          setTimeout(() => {
+              allv.pause();
+          }, 100)
+      })
+      allv.addEventListener("play",function(){
+          $('#all-lansidai').show();
+      },false);
+  }
 }
 
 function init() {
@@ -352,16 +371,36 @@ function init() {
     }
   }
 
+  var istime = true;
   function scrollerCallback(left, top, zoom) {
     if (top === 21 * height) {
+      // if (istime) {
+      //   istime = false
+      //   var i = 0
+      //   setInterval(function() {
+      //       if (i == 2500) {
+      //           document.getElementById(videos[0].id).play();
+      //       }
+      //       console.log(i)
+      //       i+=100
+      //   },100);
+      // }
       app$.animate({
         opacity: 0,
       }, {
-        duration: 3000,
+        duration: 2000,
         complete: () => {
           app$.hide()
           $('.video').show();
-          $('.wp').show();
+          if (isiOS) {
+              $('.all-wp').hide();
+              $('.wp').show();
+          } else {
+              $('#all-lansidai').hide();
+              $('.wp').hide();
+              $('.all-wp').show();
+          }
+
           $('.wp-inner').fullpage({
             beforeChange: function (e) {
               let nextVideo, currVideo
@@ -383,10 +422,13 @@ function init() {
               }
               currVideo && currVideo.pause()
               nextVideo && nextVideo.play()
-            },
+            }
           });
-
-          $('#lansidai').show();
+          if (isiOS) {
+              $('#lansidai').show();
+          } else {
+              document.getElementById('allvideo').play();
+          }
         }
       });
 
