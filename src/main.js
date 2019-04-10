@@ -421,7 +421,9 @@ function init() {
     if ($.os.android && top < 20.5 * height) {
       $('.start-btn').hide()
     }
-
+    if ($.os.ios) {
+        $('.start-btn').hide()
+    }
     if ($.os.ios && top === 21 * height) {
       app$.animate({
         opacity: 0,
