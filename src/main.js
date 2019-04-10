@@ -110,12 +110,12 @@ function initPoster() {
     })
   })
 
-  $('#all-right-btn').on('click', e => {
+  $('#right-btn').on('click', e => {
     $('#all-lansidai').hide()
     $('#form').show()
   })
 
-  $('#left-btn').on('click', e => {
+  $('#all-left-btn').on('click', e => {
     // http://api.hongyu.ren/lsd/posters
     // 参数
     // openid   微信openid

@@ -715,7 +715,15 @@ html {
   animation: start 1.5s infinite ease-in-out;
 }
 
+.start-btn {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  top: 60%;
+}
 
+/*
 body,
 div,
 span,
@@ -737,3 +745,4 @@ iframe {
     -ms-user-select: none;
     user-select: none;
 }
+ */
