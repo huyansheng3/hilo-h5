@@ -430,10 +430,12 @@ function init() {
   function scrollerCallback(left, top, zoom) {
     if ($.os.android && top > 20.5 * height) {
       $('.start-btn').show()
+      $('.start').hide()
     }
 
     if ($.os.android && top < 20.5 * height) {
       $('.start-btn').hide()
+      $('.start').show()
     }
     if ($.os.ios) {
       $('.start-btn').hide()
@@ -476,6 +478,12 @@ function init() {
               }
               currVideo && currVideo.pause()
               nextVideo && nextVideo.play()
+
+              if(e.next === 4) {
+                $('.start').hide()
+              } else {
+                $('.start').show()
+              }
             }
           });
           if (isiOS) {
