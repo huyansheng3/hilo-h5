@@ -31,8 +31,13 @@ export const videos = [
 ];
 
 const source = "/";
+const androidImage = { id: "homepage-android-texture.jpg", src: source + "images/homepage-android-texture.jpg" }
+const iosImage = { id: "homepage-texture.jpg", src: source + "images/homepage-texture.jpg" }
+
+const homepageImage = $.os.android ? androidImage : iosImage
+
 export const images = [
-  { id: "homepage-texture.jpg", src: source + "images/homepage-texture.jpg" },
+  homepageImage,
   { id: "story1-1-texture.jpg", src: source + "images/story1-1-texture.jpg" },
   { id: "story1-2-texture.jpg", src: source + "images/story1-2-texture.jpg" },
   { id: "story1-3.jpg", src: source + "images/story1-3.jpg" },

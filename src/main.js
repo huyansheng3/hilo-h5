@@ -72,12 +72,12 @@ function initPoster() {
 
   $('#wall-back').on('click', e => {
     $('#lansidai').show()
-      $('#all-lansidai').show()
+    $('#all-lansidai').show()
     $('#wall').hide()
   })
   $('#poster-back').on('click', e => {
     $('#lansidai').show()
-      $('#all-lansidai').show()
+    $('#all-lansidai').show()
     $('#poster').hide()
   })
 
@@ -97,13 +97,13 @@ function initPoster() {
       NProgress.done();
       $('#poster-img').attr('src', response.data.imgurl)
       $('.tipmsg').css({
-          'position': 'absolute',
-          'font-size': '17px',
-          'color': '#919092',
-          'text-align': 'center',
-          'width': '100%',
-          'font-weight': 'bold',
-          'bottom': response.data.bottom
+        'position': 'absolute',
+        'font-size': '17px',
+        'color': '#919092',
+        'text-align': 'center',
+        'width': '100%',
+        'font-weight': 'bold',
+        'bottom': response.data.bottom
       })
       $('#lansidai').hide()
       $('#poster').show()
@@ -115,39 +115,39 @@ function initPoster() {
     $('#form').show()
   })
 
-    $('#left-btn').on('click', e => {
-        // http://api.hongyu.ren/lsd/posters
-        // 参数
-        // openid   微信openid
-        // w   浏览器可见宽度
-        // h   浏览器可见高度
-        const data = {
-            openid: window.$userinfo && window.$userinfo.openid,
-            w: window.mApp.w,
-            h: window.mApp.h,
-        }
-        NProgress.start();
-        $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
-            NProgress.done();
-            $('#poster-img').attr('src', response.data.imgurl)
-            $('.tipmsg').css({
-                'position': 'absolute',
-                'font-size': '17px',
-                'color': '#919092',
-                'text-align': 'center',
-                'width': '100%',
-                'font-weight': 'bold',
-                'bottom': response.data.bottom
-            })
-            $('#lansidai').hide()
-            $('#poster').show()
-        })
+  $('#left-btn').on('click', e => {
+    // http://api.hongyu.ren/lsd/posters
+    // 参数
+    // openid   微信openid
+    // w   浏览器可见宽度
+    // h   浏览器可见高度
+    const data = {
+      openid: window.$userinfo && window.$userinfo.openid,
+      w: window.mApp.w,
+      h: window.mApp.h,
+    }
+    NProgress.start();
+    $.post('http://api.hongyu.ren/lsd/posters', data, function (response) {
+      NProgress.done();
+      $('#poster-img').attr('src', response.data.imgurl)
+      $('.tipmsg').css({
+        'position': 'absolute',
+        'font-size': '17px',
+        'color': '#919092',
+        'text-align': 'center',
+        'width': '100%',
+        'font-weight': 'bold',
+        'bottom': response.data.bottom
+      })
+      $('#lansidai').hide()
+      $('#poster').show()
     })
+  })
 
-    $('#all-right-btn').on('click', e => {
-        $('#all-lansidai').hide()
-        $('#form').show()
-    })
+  $('#all-right-btn').on('click', e => {
+    $('#all-lansidai').hide()
+    $('#form').show()
+  })
 
   $('#upload-btn').on('click', e => {
     $('#upload').click()
@@ -210,13 +210,13 @@ function initPoster() {
       if (response.status == 100) {
         $('#wall-image').attr('src', response.data.imgurl)
         $('.tipmsg').css({
-            'position': 'absolute',
-            'font-size': '17px',
-            'color': '#919092',
-            'text-align': 'center',
-            'width': '100%',
-            'font-weight': 'bold',
-            'bottom': response.data.bottom
+          'position': 'absolute',
+          'font-size': '17px',
+          'color': '#919092',
+          'text-align': 'center',
+          'width': '100%',
+          'font-weight': 'bold',
+          'bottom': response.data.bottom
         })
         $('#form').hide()
         $('#wall').show()
@@ -248,30 +248,42 @@ function initVideos() {
   function videoAutoPlay(id) {
     let video = document.getElementById(id);
     document.addEventListener("WeixinJSBridgeReady", function () {
-        video.play();
-        video.pause();
+      video.play();
+      video.pause();
     }, false);
     let ids = ['mother', 'student', 'manager', 'shallen']
     video.addEventListener('ended', e => {
-        $.fn.fullpage.moveNext(true)
+      $.fn.fullpage.moveNext(true)
     })
 
   }
   if (isiOS) {
-      videos.forEach((video) => {
-          videoAutoPlay(video.id)
-      })
+    videos.forEach((video) => {
+      videoAutoPlay(video.id)
+    })
   } else {
-      var allv = document.getElementById('allvideo')
-      document.addEventListener("WeixinJSBridgeReady", function () {
-          allv.play();
-          allv.pause();
-      }, false);
-      allv.addEventListener('ended', e => {
-        $('#allvideo').hide();
-        $('#all-lansidai').show();
-      })
+    var allv = document.getElementById('allvideo')
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      allv.play();
+      allv.pause();
+    }, false);
+    allv.addEventListener('ended', e => {
+      $('#allvideo').hide();
+      $('#all-lansidai').show();
+    })
   }
+
+  $('.start-btn').on('click', e => {
+    $("#app").hide()
+    $('.video').show();
+    $('#all-lansidai').hide();
+    $('.wp').hide();
+    $('.all-wp').show();
+    setTimeout(() => {
+      $('.start-btn').hide()
+    }, 100)
+    document.getElementById('allvideo').play()
+  })
 }
 
 function init() {
@@ -402,64 +414,61 @@ function init() {
 
   var istime = true;
   function scrollerCallback(left, top, zoom) {
-    if (top === 21 * height) {
-      // if (istime) {
-      //   istime = false
-      //   var i = 0
-      //   setInterval(function() {
-      //       if (i == 2500) {
-      //           document.getElementById(videos[0].id).play();
-      //       }
-      //       console.log(i)
-      //       i+=100
-      //   },100);
-      // }
+    if ($.os.android && top > 20.5 * height) {
+      $('.start-btn').show()
+    }
+
+    if ($.os.android && top < 20.5 * height) {
+      $('.start-btn').hide()
+    }
+
+    if ($.os.ios && top === 21 * height) {
       app$.animate({
         opacity: 0,
       }, {
-        duration: 2000,
-        complete: () => {
-          app$.hide()
-          $('.video').show();
-          if (isiOS) {
+          duration: 2000,
+          complete: () => {
+            app$.hide()
+            $('.video').show();
+            if (isiOS) {
               $('.all-wp').hide();
               $('.wp').show();
-          } else {
+            } else {
               $('#all-lansidai').hide();
               $('.wp').hide();
               $('.all-wp').show();
-          }
-
-          $('.wp-inner').fullpage({
-            beforeChange: function (e) {
-              let nextVideo, currVideo
-              if (e.next !== undefined && videos[e.next]) {
-                nextVideo = document.getElementById(videos[e.next].id);
-
-                if (videos[e.next].id === 'shallen') {
-                  $('.common-container, body, html').css({
-                    background: '#f0f0f0'
-                  })
-                } else {
-                  $('.common-container, body, html').css({
-                    background: '#000'
-                  })
-                }
-              }
-              if (e.cur !== undefined && videos[e.cur]) {
-                currVideo = document.getElementById(videos[e.cur].id);
-              }
-              currVideo && currVideo.pause()
-              nextVideo && nextVideo.play()
             }
-          });
-          if (isiOS) {
+
+            $('.wp-inner').fullpage({
+              beforeChange: function (e) {
+                let nextVideo, currVideo
+                if (e.next !== undefined && videos[e.next]) {
+                  nextVideo = document.getElementById(videos[e.next].id);
+
+                  if (videos[e.next].id === 'shallen') {
+                    $('.common-container, body, html').css({
+                      background: '#f0f0f0'
+                    })
+                  } else {
+                    $('.common-container, body, html').css({
+                      background: '#000'
+                    })
+                  }
+                }
+                if (e.cur !== undefined && videos[e.cur]) {
+                  currVideo = document.getElementById(videos[e.cur].id);
+                }
+                currVideo && currVideo.pause()
+                nextVideo && nextVideo.play()
+              }
+            });
+            if (isiOS) {
               $('#lansidai').show();
-          } else {
+            } else {
               document.getElementById('allvideo').play();
+            }
           }
-        }
-      });
+        });
 
     }
 
@@ -509,15 +518,15 @@ function init() {
           v.el.pause(),
           LOG("min pause " + v.el.id + ", top:" + top)) :
         v.end && top >= v.end && !v.el.paused ?
-        (v.el.pause(),
-          (v.played = ""),
-          LOG("max pause " + v.el.id + ", top:" + top)) :
-        v.start &&
-        top >= v.start &&
-        !v.played &&
-        v.el.paused &&
-        ((v.end && top < v.end) || !v.end) &&
-        (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
+          (v.el.pause(),
+            (v.played = ""),
+            LOG("max pause " + v.el.id + ", top:" + top)) :
+          v.start &&
+          top >= v.start &&
+          !v.played &&
+          v.el.paused &&
+          ((v.end && top < v.end) || !v.end) &&
+          (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
     }
   }
 
