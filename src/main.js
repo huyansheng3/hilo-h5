@@ -284,6 +284,19 @@ function initVideos() {
     }, 100)
     document.getElementById('allvideo').play()
   })
+
+  document.getElementById('allvideo').addEventListener("x5videoexitfullscreen", function () {
+    $('#allvideo').hide();
+    $('#all-lansidai').show();
+  })
+
+  $('#allvideo').on('click', e => {
+    if (e.target.paused) {
+      e.target.play()
+    } else {
+      e.target.pause()
+    }
+  })
 }
 
 function init() {
@@ -413,6 +426,7 @@ function init() {
   }
 
   var istime = true;
+
   function scrollerCallback(left, top, zoom) {
     if ($.os.android && top > 20.5 * height) {
       $('.start-btn').show()
@@ -422,55 +436,55 @@ function init() {
       $('.start-btn').hide()
     }
     if ($.os.ios) {
-        $('.start-btn').hide()
+      $('.start-btn').hide()
     }
     if ($.os.ios && top === 21 * height) {
       app$.animate({
         opacity: 0,
       }, {
-          duration: 2000,
-          complete: () => {
-            app$.hide()
-            $('.video').show();
-            if (isiOS) {
-              $('.all-wp').hide();
-              $('.wp').show();
-            } else {
-              $('#all-lansidai').hide();
-              $('.wp').hide();
-              $('.all-wp').show();
-            }
-
-            $('.wp-inner').fullpage({
-              beforeChange: function (e) {
-                let nextVideo, currVideo
-                if (e.next !== undefined && videos[e.next]) {
-                  nextVideo = document.getElementById(videos[e.next].id);
-
-                  if (videos[e.next].id === 'shallen') {
-                    $('.common-container, body, html').css({
-                      background: '#f0f0f0'
-                    })
-                  } else {
-                    $('.common-container, body, html').css({
-                      background: '#000'
-                    })
-                  }
-                }
-                if (e.cur !== undefined && videos[e.cur]) {
-                  currVideo = document.getElementById(videos[e.cur].id);
-                }
-                currVideo && currVideo.pause()
-                nextVideo && nextVideo.play()
-              }
-            });
-            if (isiOS) {
-              $('#lansidai').show();
-            } else {
-              document.getElementById('allvideo').play();
-            }
+        duration: 2000,
+        complete: () => {
+          app$.hide()
+          $('.video').show();
+          if (isiOS) {
+            $('.all-wp').hide();
+            $('.wp').show();
+          } else {
+            $('#all-lansidai').hide();
+            $('.wp').hide();
+            $('.all-wp').show();
           }
-        });
+
+          $('.wp-inner').fullpage({
+            beforeChange: function (e) {
+              let nextVideo, currVideo
+              if (e.next !== undefined && videos[e.next]) {
+                nextVideo = document.getElementById(videos[e.next].id);
+
+                if (videos[e.next].id === 'shallen') {
+                  $('.common-container, body, html').css({
+                    background: '#f0f0f0'
+                  })
+                } else {
+                  $('.common-container, body, html').css({
+                    background: '#000'
+                  })
+                }
+              }
+              if (e.cur !== undefined && videos[e.cur]) {
+                currVideo = document.getElementById(videos[e.cur].id);
+              }
+              currVideo && currVideo.pause()
+              nextVideo && nextVideo.play()
+            }
+          });
+          if (isiOS) {
+            $('#lansidai').show();
+          } else {
+            document.getElementById('allvideo').play();
+          }
+        }
+      });
 
     }
 
@@ -520,15 +534,15 @@ function init() {
           v.el.pause(),
           LOG("min pause " + v.el.id + ", top:" + top)) :
         v.end && top >= v.end && !v.el.paused ?
-          (v.el.pause(),
-            (v.played = ""),
-            LOG("max pause " + v.el.id + ", top:" + top)) :
-          v.start &&
-          top >= v.start &&
-          !v.played &&
-          v.el.paused &&
-          ((v.end && top < v.end) || !v.end) &&
-          (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
+        (v.el.pause(),
+          (v.played = ""),
+          LOG("max pause " + v.el.id + ", top:" + top)) :
+        v.start &&
+        top >= v.start &&
+        !v.played &&
+        v.el.paused &&
+        ((v.end && top < v.end) || !v.end) &&
+        (v.el.play(), (v.played = !0), LOG("play " + v.el.id + ", top:" + top));
     }
   }
 
